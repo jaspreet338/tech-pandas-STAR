@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
+import StarList from "./StarList";
 import "./Home.css";
 import logo from "./logo.svg";
 
@@ -36,6 +37,8 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
+				<Navbar />
+				<StarList />
 			</div>
 		</main>
 	);
