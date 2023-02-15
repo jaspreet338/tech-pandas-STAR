@@ -23,6 +23,12 @@ export function Home() {
 			});
 	}, []);
 
+	const client_id = "a823fe614b9796fe502f";
+    const redirect_uri = "http://localhost:3100/api/auth/github";
+    const githubLoginUrl = "https://github.com/login/oauth/authorize";
+    const state = "secret-key";
+    const url = `${githubLoginUrl}?client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}`;
+
 	return (
 		<main role="main">
 			<div>
@@ -35,7 +41,9 @@ export function Home() {
 				<h1 className="message" data-qa="message">
 					{message}
 				</h1>
-				<Link to="/about/this/site">About</Link>
+				<Link to="/about/this/site">About</Link> 
+				<br />
+				<Link to={url}>GitHub login:</Link>
 			</div>
 		</main>
 	);
