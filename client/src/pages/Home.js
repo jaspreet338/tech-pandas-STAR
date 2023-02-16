@@ -41,7 +41,7 @@ export function Home() {
 				<h1 className="message" data-qa="message">
 					{message}
 				</h1>
-				<Link to="/about/this/site">About</Link> 
+				<Link to="/about/this/site">About</Link>
 				<br />
 				<Link to={url}>GitHub login:</Link>
 			</div>
