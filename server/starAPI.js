@@ -30,12 +30,14 @@ router.get("/stars/:id", async (req, res) => {
 		res.status(500).json({ error: "Failed to retrieve star" });
 	}
 });
+
+//  getting stars by unique id
 router.get("/users/:id/stars", async (req, res) => {
 	const userId = req.params.id;
 
 	try {
 		const result = await db.query(
-			"SELECT s.id, s.name, s.description " +
+			"SELECT  s.name, s.description " +
 				"FROM stars s " +
 				"JOIN users u ON s.user_id = u.id " +
 				"WHERE u.id = $1",
@@ -59,10 +61,18 @@ router.post("/stars", async (req, res) => {
 	}
 
 	try {
-		await db.query("INSERT INTO stars (name, description) VALUES ($1, $2)", [
-			name,
-			description,
-		]);
+		const { rows: users } = await db.query("SELECT id FROM users");
+		if (users.length === 0) {
+			return res.status(404).json({ error: "No users found" });
+		}
+
+		// Randomly select a user ID from the available ones
+		const userId = users[Math.floor(Math.random() * users.length)].id;
+
+		await db.query(
+			"INSERT INTO stars (name, description, user_id) VALUES ($1, $2, $3)",
+			[name, description, userId]
+		);
 		res.status(201).send();
 	} catch (error) {
 		logger.error(error);
@@ -89,6 +99,7 @@ router.delete("/stars/:id", async (req, res) => {
 	}
 });
 
+//  modifying stars by id
 
 router.put("/stars/:id", async (req, res) => {
 	const id = req.params.id;
