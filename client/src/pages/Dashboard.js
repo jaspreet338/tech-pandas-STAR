@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 
 
-export function Dashboard() {
-	const [token, setToken] = useState(null);
+const Dashboard = () => {
     const [name, setName] = useState("");
+
+	useEffect(() => setName("Someone"),[]);
 
 	return (
 		<div>
 			<h1>Hello {name}</h1>
 		</div>
 	);
-}
+};
 
 export default Dashboard;
