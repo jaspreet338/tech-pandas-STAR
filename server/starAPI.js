@@ -11,7 +11,7 @@ router.get("/stars", async (req, res) => {
 		res.json(result.rows);
 	} catch (error) {
 		logger.error(error);
-		res.status(200).json(error);
+		res.status(500).json(error);
 	}
 });
 
@@ -79,6 +79,8 @@ router.post("/stars", async (req, res) => {
 		res.status(500).json({ error: "Failed to create star" });
 	}
 });
+
+
 
 //   deleting star from the database by id
 
