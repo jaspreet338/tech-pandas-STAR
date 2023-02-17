@@ -1,0 +1,82 @@
+body {
+    
+    background: #bdc3c7; 
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+ 
+ .form-container {
+    
+  border-radius: 25px;
+  border-style:groove;
+  height: 85vh;
+  /* width: 70vh; */
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-decoration: solid;
+    color:blue
+}
+.form-body {
+    text-align: left;
+    padding: 20px 10px;
+    margin-top: 2.5rem ;
+}
+
+.form-body > *{
+    padding: 5px;
+}
+
+
+.form_label {
+/* text-align: left;
+padding: 0.25rem 0; */
+width: 40%;
+font-size: 25px;
+}
+
+.form_input {
+	margin:0.5rem, 0;
+	padding: 1rem;
+	/* border: none; */
+	border-radius: 10px;
+    width: 60%;
+    margin-left: 2rem;
+}
+select {
+    margin:0.5rem, 0;
+	padding: 1rem;
+	/* border: none; */
+	border-radius: 10px;
+    width: 60%;
+    margin-left: 2rem;
+}
+
+button {
+	margin-top: 1rem;
+	border: none;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+    
+}
+.btn {
+	background: none;
+	color: blue;
+   font-size: 25px;
+   text-decoration: underline; 
+	
+}
