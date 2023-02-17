@@ -10,13 +10,14 @@ CREATE TABLE stars (
 );
 
 CREATE TABLE users (
-  id        SERIAL PRIMARY KEY,
-  username  VARCHAR(60) NOT NULL,  
-  name      VARCHAR(60) NOT NULL,
-  area      VARCHAR(60),
-  class     VARCHAR(60),
-  role      VARCHAR(20)
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(60) NOT NULL,
+  name VARCHAR(60) NOT NULL,
+  area VARCHAR(60),
+  class VARCHAR(60),
+  role VARCHAR(20) NOT NULL CHECK (role IN ('TA', 'student', 'mentor'))
 );
+
 
 
 CREATE TABLE "session" (  "sid" varchar NOT NULL COLLATE "default",  "sess" json NOT NULL,  "expire" timestamp(6) NOT NULL)WITH (OIDS=FALSE);
