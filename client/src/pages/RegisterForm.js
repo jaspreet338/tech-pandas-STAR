@@ -1,12 +1,24 @@
 import React, { useState } from "react";
+import { json } from "react-router-dom";
 function RegisterForm() {
 	const [name, setName] = useState("");
 	const [role, setRole] = useState("");
 	const [section, setSection] = useState("");
 	const [area, setArea] = useState("");
 
-	function register() {
-		console.warn(name,role,section,area);
+	async function register() {
+		console.warn(name, role, section, area);
+
+		let result = await fetch("http://localhost:3000/api/register",{
+			method:'POST',
+			body: JSON.stringify(item),
+			headers:{
+				"Content-Type": 'application/json',
+				"Accept": 'application/json',
+			};
+		});
+		result = await result.json()
+		localStorage.setItem("user-info", JSON.stringify(result))
 	}
 	return (
 		<div className="form-container">
@@ -30,7 +42,10 @@ function RegisterForm() {
 						Role
 					</label>
 					<select>
-						<option defaultValue={role} onChange={(e) => setRole(e.target.value)}></option>
+						<option
+							defaultValue={role}
+							onChange={(e) => setRole(e.target.value)}
+						></option>
 						<option value="Student">Student</option>
 						<option value="Mentor">Training Mentor</option>
 					</select>
@@ -63,7 +78,7 @@ function RegisterForm() {
 				</div>
 			</div>
 			<div>
-				<button  onClick={register} type="submit" className="btn">
+				<button onClick={register} type="submit" className="btn">
 					Register
 				</button>
 			</div>
