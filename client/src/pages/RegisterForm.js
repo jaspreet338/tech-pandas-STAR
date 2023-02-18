@@ -63,7 +63,7 @@ function RegisterForm() {
 				</div>
 			</div>
 			<div>
-				<button type="submit" className="btn">
+				<button  onClick={register} type="submit" className="btn">
 					Register
 				</button>
 			</div>
