@@ -17,11 +17,11 @@ class User {
 		this.Area = Area;
 	}
 
-	async save() {
+	async add() {
 		try {
 			// check if user already exists in the DB
 			const { rows: existingUser } = await pool.query(
-				"SELECT * FROM users WHERE Name = $1",
+				"SELECT * FROM users WHERE name = $1",
 				[this.Name]
 			);
 			if (existingUser.length) {
