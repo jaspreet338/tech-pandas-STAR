@@ -1,25 +1,15 @@
 import React, { useState } from "react";
-import { json } from "react-router-dom";
+// import { json } from "react-router-dom";
 function RegisterForm() {
 	const [name, setName] = useState("");
 	const [role, setRole] = useState("");
 	const [section, setSection] = useState("");
 	const [area, setArea] = useState("");
 
-	async function register() {
+ function register() {
 		console.warn(name, role, section, area);
 
-		let result = await fetch("http://localhost:3000/api/register",{
-			method:'POST',
-			body: JSON.stringify(item),
-			headers:{
-				"Content-Type": 'application/json',
-				"Accept": 'application/json',
-			};
-		});
-		result = await result.json()
-		localStorage.setItem("user-info", JSON.stringify(result))
-	}
+ }
 	return (
 		<div className="form-container">
 			<h1>Register Here</h1>
