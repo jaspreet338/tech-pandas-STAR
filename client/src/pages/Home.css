@@ -14,6 +14,20 @@ display: grid;
 
 }
 
+.edit-btn {
+	display: flex;
+  
+  background-color: blue;
+ /* float: right; */
+  align-content: flex-start;
+  font-size: 15px;
+  
+} 
+
+
+
+
+
 .header {
 	display: flex;
 	align-items: center;

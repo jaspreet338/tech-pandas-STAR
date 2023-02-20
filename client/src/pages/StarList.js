@@ -27,7 +27,10 @@ const StarList = () => {
 			<h2>Welcome to your Star List</h2>
 			<ul>
 				{stars.map((star) => (
-					<li  id="list-item" key={star.name}>
+					<li id="list-item" key={star.name}>
+						<div className="edit">
+							<button className="edit-btn">Edit</button>
+						</div>
 						<SingleStar star={star} />
 					</li>
 				))}
