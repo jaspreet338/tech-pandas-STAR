@@ -1,6 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar";
-import StarList from "./StarList";
+import { Link } from "react-router-dom";
+// import Navbar from "./Navbar";
+// import StarList from "./StarList";
 import "./Home.css";
 
 
@@ -15,7 +16,7 @@ export function Home() {
 	return (
 		<main role="main">
 			<div>
-				<img
+				{/* <img
 					className="logo"
 					data-qa="logo"
 					src={logo}
@@ -23,7 +24,7 @@ export function Home() {
 				/>
 				<h1 className="message" data-qa="message">
 					{message}
-				</h1>
+				</h1> */}
 				<Link to="/about/this/site">About</Link>
 				<br />
 				<Link to={url}>GitHub login:</Link>
