@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import StarList from "./StarList";
-import RegisterForm from "./RegisterForm";
- import "./Registration.css";
+// import RegisterForm from "./RegisterForm";
+//  import "./Registration.css";
 import "./Home.css";
 
 
@@ -13,7 +13,7 @@ return (
 		<div>
 			<Navbar />
 			<StarList />
-			<RegisterForm />
+			{/* <RegisterForm /> */}
 		</div>
 	</main>
 );
