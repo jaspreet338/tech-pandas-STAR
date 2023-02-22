@@ -13,7 +13,6 @@ const client_id = "a823fe614b9796fe502f";
     const githubLoginUrl = "https://github.com/login/oauth/authorize";
     const state = "secret-key";
     const url = `${githubLoginUrl}?client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}`;
-    
 return (
 	<main role="main">
 		<div>
