@@ -103,16 +103,16 @@ router.delete("/stars/:id", async (req, res) => {
 
 router.put("/stars/:id", async (req, res) => {
 	const id = req.params.id;
-	const { name, description } = req.body;
+	const { name, description, situation, task, action, result } = req.body;
 
-	if (!name || !description) {
+	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Name and description are required" });
 	}
 
 	try {
 		await db.query(
-			"UPDATE stars SET name = $1, description = $2 WHERE id = $3",
-			[name, description, id]
+			"UPDATE stars SET name = $1, description = $2, situation = $3, task = $4, action = $5, result = $6 WHERE id = $7",
+			[name, description, situation, task, action, result, id]
 		);
 
 		const result = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
