@@ -12,3 +12,40 @@ const Dashboard = () => {
 		navigate(`/dashboard?search=${searchString}`);
 		window.location.reload();
 	};
+	// fetch stars data initially and when search query changes
+	useEffect(() => {
+		// function to fetch stars data based on search query
+		const fetchStarsData = async () => {
+			const res = await fetch(`/stars?search=${searchString}`);
+			const data = await res.json();
+			setStars(data);
+		};
+		fetchStarsData();
+	}, [searchString]);
+
+	return (
+		<div>
+			<h1>Dashboard</h1>
+			<form onSubmit={handleSearchSubmit}>
+				<input
+					type="text"
+					value={searchString}
+					onChange={(event) => setSearchString(event.target.value)}
+					placeholder="Search STARs by title"
+				/>
+				<button type="submit">Search</button>
+			</form>
+			{searchString !== "" && (
+				<button onClick={handleShowAllClick}>Show all</button>
+			)}
+			<ul>
+				{stars.map((star) => (
+					<li key={star.id}>
+						<h1>{star.name}</h1>
+						<span>{star.description}</span>
+					</li>
+				))}
+			</ul>
+		</div>
+	);
+};
