@@ -30,11 +30,7 @@ const StarList = () => {
 			</div>
 			<ul>
 				{stars.map((star) => (
-
 					<li id="list-item" key={star.name}>
-						<div className="edit">
-							<button className="edit-btn">Edit</button>
-						</div>
 						<SingleStar star={star} />
 					</li>
 				))}
