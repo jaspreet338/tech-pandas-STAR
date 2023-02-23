@@ -10,19 +10,20 @@ const pool = new Pool({
 });
 
 class User {
-	constructor({ Name, Role, Class, Area }) {
+	constructor({Username ,Name, Role, Class, Area }) {
 		this.Name = Name;
 		this.Role = Role;
 		this.Class = Class;
 		this.Area = Area;
+		this.Username=Username;
 	}
 
 	async add() {
 		try {
 			// check if user already exists in the DB
 			const { rows: existingUser } = await pool.query(
-				"SELECT * FROM users WHERE name = $1",
-				[this.Name]
+				"SELECT * FROM users WHERE username = $1",
+				[this.Username]
 			);
 			if (existingUser.length) {
 				throw new Error("User already exists");
@@ -30,8 +31,8 @@ class User {
 
 			// save the user to the DB
 			const { rows: newUser } = await pool.query(
-				"INSERT INTO users(Name, Role, Class, Area) VALUES ($1, $2, $3, $4) RETURNING *",
-				[this.Name, this.Role, this.Class, this.Area]
+				"INSERT INTO users(Usernam,Name, Role, Class, Area) VALUES ($1, $2, $3, $4,$5) RETURNING *",
+				[this.Username,this.Name, this.Role, this.Class, this.Area]
 			);
 			return newUser[0];
 		} catch (error) {
