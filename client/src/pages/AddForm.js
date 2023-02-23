@@ -17,8 +17,8 @@ const AddForm = ({ setStars }) => {
 	const handleClose = () => setShowForm(false);
 	const handleShow = () => setShowForm(true);
 
-	const handleAdd = async (event) => {
-	event.preventDefault();
+	const handleAdd = async () => {
+		// event.preventDefault();
 		try {
 			const response = await fetch("/api/stars", {
 				method: "POST",
@@ -121,10 +121,10 @@ const AddForm = ({ setStars }) => {
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="danger" onClick={handleClose}>
+					<Button variant="danger"  onClick={handleClose}>
 						Delete
 					</Button>
-					<Button variant="success" onClick={handleAdd}>
+					<Button variant="success"  type="submit" onClick={handleAdd}>
 						Save
 					</Button>
 				</Modal.Footer>
