@@ -32,8 +32,8 @@ const StarList = () => {
 				{loading && <span>Loading, please wait until stars loads...</span>}
 				{error && <span>{"There is a problem fetching the  data "}</span>}
 				{stars.length > 0 &&
-					stars.map((stars, index) => (
-						<li id="list-item" key={index}>
+					stars.map((stars, id) => (
+						<li id="list-item" key={id}>
 							<SingleStar star={stars} />
 						</li>
 					))}
