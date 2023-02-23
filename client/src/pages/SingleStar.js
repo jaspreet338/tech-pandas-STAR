@@ -3,11 +3,14 @@ import React from "react";
 
   const SingleStar = ({ star }) => {
   return (
-    <div>
-      <h3>{star.name}</h3>
-      <p>{star.description}</p>
-    </div>
-  );
+		<div>
+			<h3>{star.name}</h3>
+			<p>{star.description}</p>
+			<div className="edit">
+				<button className="edit-btn">Edit</button>
+			</div>
+		</div>
+	);
 };
 
 
