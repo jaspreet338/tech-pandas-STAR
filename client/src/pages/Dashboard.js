@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const  Dashboard = () => {
-	const [name, setName] = useState("");
-    useEffect(() => setName("Someone"), []);
-	return (
-		<div>
-			<h1>Hello {name}</h1>
-		</div>
-	);
-};
+const Dashboard = () => {
+	const [searchString, setSearchString] = useState("");
+	const [stars, setStars] = useState([]);
+	const navigate = useNavigate();
 
-export default Dashboard;
+	// function to handle search from submission
+	const handleSearchSubmit = (e) => {
+		e.preventDefault();
+		navigate(`/dashboard?search=${searchString}`);
+		window.location.reload();
+	};
