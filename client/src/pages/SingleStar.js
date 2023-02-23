@@ -1,8 +1,8 @@
 import React from "react";
 
-const SingleStar = ({ star }) => {
+const SingleStar = ({ star , id }) => {
 	return (
-		<div>
+		<div key={id}>
 			<h3>{star.name}</h3>
 			<p>
 				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Situation :</span>
