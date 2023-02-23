@@ -5,15 +5,15 @@ const SingleStar = ({ star }) => {
 		<div>
 			<h3>{star.name}</h3>
 			<p>
-				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Situation :</span>{" "}
+				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Situation :</span>
 				{star.situation}
 			</p>
       <p>
-				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Task:</span>{" "}
+				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Task:</span>
 				{star.task}
 			</p>
       <p>
-				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Action:</span>{" "}
+				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Action:</span>
 				{star.action}
 			</p>
       <p>
