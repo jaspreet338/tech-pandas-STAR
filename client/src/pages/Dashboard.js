@@ -6,8 +6,9 @@ const  Dashboard = () => {
     useEffect(() => setName("Someone"), []);
 	return (
 		<div>
-			<h1>Hello {name}</h1>
 			<Navbar />
+			<h1>Hello {name}</h1>
+
 			<StarList />
 		</div>
 	);
