@@ -54,7 +54,7 @@ router.get("/auth/github", async( req, res) => {
 	}
 	req.session.user = user;
 
-	res.send(user);
+	res.send("/dashboard");
 });
 
 export default router;
