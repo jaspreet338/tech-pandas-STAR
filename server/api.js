@@ -41,13 +41,13 @@ router.get("/auth/github", async( req, res) => {
 		headers: { Authorization: auth },
 	});
 
-	const gh_user = await user_resp.json();
+	const github_user = await user_resp.json();
 
-	// res.send(gh_user);
-	let result = await db.query("SELECT * FROM users WHERE username=$1", [gh_user.login]);
+	res.send(github_user);
+	let result = await db.query("SELECT * FROM users WHERE username=$1", [github_user.login]);
     let user;
 	if(result.rowCount === 0 ){
-		result = await db.query("INSERT INTO users (username, name, role) VALUES ($1, $2,'student') RETURNING *", [gh_user.login, gh_user.name]);
+		result = await db.query("INSERT INTO users (username, name, role) VALUES ($1, $2,'student') RETURNING *", [github_user.login, github_user.name]);
 		user = result.rows[0];
 	} else {
 		user = result.rows[0];
