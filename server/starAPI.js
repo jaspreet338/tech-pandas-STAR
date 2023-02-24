@@ -37,7 +37,7 @@ router.get("/users/:id/stars", async (req, res) => {
 
 	try {
 		const result = await db.query(
-			"SELECT  s.name, s.description " +
+			"SELECT  s.name, s.description,s.situation,s.task,s.action,s.result " +
 				"FROM stars s " +
 				"JOIN users u ON s.user_id = u.id " +
 				"WHERE u.id = $1",
@@ -79,6 +79,7 @@ router.post("/stars", async (req, res) => {
 		res.status(500).json({ error: "Failed to create star" });
 	}
 });
+
 
 //   deleting star from the database by id
 
