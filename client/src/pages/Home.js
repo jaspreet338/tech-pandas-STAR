@@ -7,11 +7,10 @@ import "./Home.css";
 
 export function Home() {
 
-
-	const client_id = "a823fe614b9796fe502f";
-    const redirect_uri = "http://localhost:3000/api/auth/github";
-    const githubLoginUrl = "https://github.com/login/oauth/authorize";
-    const state = "secret-key";
+	const githubLoginUrl = "https://github.com/login/oauth/authorize";
+	const client_id = process.env.CLIENT_ID;
+    const redirect_uri = process.env.REDIRECT_URI;
+    const state = process.env.CLIENT_KEY;
     const url = `${githubLoginUrl}?client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}`;
 
 return (
