@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 // import { json } from "react-router-dom";
 function RegisterForm() {
 	const [username, setUsername] = useState("");
@@ -9,8 +10,24 @@ function RegisterForm() {
 
  function register() {
 		console.warn(username,name, role, section, area);
-
- }
+		fetch("/api/register", {
+			method:"PUT",
+			body: `{
+				"username": ${username}, 
+				"name": ${name},
+				"role": ${role},
+				"class": ${section},
+				"area": ${area}
+			}`,
+		})
+		.then((response) =>  response.json())
+		.then((data) => {
+			return redirect(`/dashboard/${data.name}`);
+		})
+		.catch((error) => {
+			console.warn(error);
+		});
+    }
 	return (
 		<div>
 
