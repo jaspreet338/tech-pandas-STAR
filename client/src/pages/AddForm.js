@@ -17,7 +17,7 @@ const AddForm = ({ setStars }) => {
 	const handleClose = () => setShowForm(false);
 	const handleShow = () => setShowForm(true);
 
-	const handleSubmit = async (event) => {
+	const handleAdd = async (event) => {
 		console.log("working");
 		event.preventDefault();
 		try {
@@ -70,7 +70,7 @@ const AddForm = ({ setStars }) => {
 					<Modal.Title>Your Star </Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Form onSubmit={handleSubmit}>
+					<Form >
 						<Form.Group controlId="name">
 							<Form.Label>Name:</Form.Label>
 							<Form.Control
