@@ -13,11 +13,6 @@ router.get("/", (_, res) => {
 });
 router.use(starRouter);
 
-
-
-
-
-
 router.get("/auth/github", async( req, res) => {
 	const { code, state } = req.query;
 	if(state !== config.client_key) {
@@ -54,7 +49,11 @@ router.get("/auth/github", async( req, res) => {
 	}
 	req.session.user = user;
 
-	res.redirect(`/dashboard/${user.name}`);
+	if(!user.name || !user.role || !user.area || !user.class){
+		res.redirect(`/register/${user.username}`);
+	} else {
+		res.redirect(`/dashboard/${user.name}`);
+    }
 });
 
 export default router;
