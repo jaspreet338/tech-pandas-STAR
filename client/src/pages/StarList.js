@@ -1,36 +1,42 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import SingleStar from "./SingleStar";
+import AddForm from "./AddForm";
 const StarList = () => {
-	const stars = [
-		{
-			id: 1,
-			name: "Node",
-			description:
-				"Sit similique quas et molestias magni aut officia quod eum Quis eaque et internos molestias ut dolore incidunt? Ea provident quod quo ullam debitis et nobis internos vel nobis omnis est voluptates eligendi et quia iste vel incidunt maiores. A voluptas nemo et blanditiis commodi et vero enim et optio ratione ad possimus laboriosam sed aliquid aperiam.",
-		},
-		{
-			id: 2,
-			name: "React.js",
-			description:
-				"Vel laudantium animi eum vitae atque vel assumenda veniam cum amet quasi ea commodi commodi eum sint beatae. Sit nulla optio qui sapiente excepturi sit accusantium explicabo vel omnis ratione a reiciendis distinctio. Qui nisi recusandae ut ipsum corrupti sit accusantium minima est illum perspiciatis et omnis vitae ut impedit accusantium!",
-		},
-		{
-			id: 3,
-			name: "Javascript",
-			description:
-				"Lorem ipsum dolor sit amet. Vel ratione quaerat hic laborum earum ut dolore sequi aut consequatur aliquid in galisum impedit eum veritatis Quis? Et laborum repellendus sed sequi eligendi aut soluta veritatis qui voluptas placeat. Sit laboriosam suscipit et eius omnis a libero ratione est labore ullam",
-		},
-	];
+	const [stars, setStars] = useState([]);
+	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		console.log("data working");
+		fetch("/api/stars")
+			.then((res) => {
+				if (res.status === 500) {
+					throw new Error(res.status);
+				} else {
+					return res.json();
+				}
+			})
+			.then((data) => {
+				console.log(data);
+				setStars(data);
+				setLoading(false);
+			})
+			.catch(() => setError(true));
+	}, []);
 	return (
 		<div className="star-container">
 			<h1>Hello....</h1>
 			<h2>Welcome to your Star List</h2>
+			<AddForm setStars={setStars} />
 			<ul>
-				{stars.map((star) => (
-					<li  id="list-item" key={star.name}>
-						<SingleStar star={star} />
-					</li>
-				))}
+				{loading && <span>Loading, please wait until stars loads...</span>}
+				{error && <span>{"There is a problem fetching the  data "}</span>}
+				{stars.length > 0 &&
+					stars.map((stars) => (
+						<li id="list-item" key={stars.id}>
+							<SingleStar star={stars} />
+						</li>
+					))}
 			</ul>
 		</div>
 	);

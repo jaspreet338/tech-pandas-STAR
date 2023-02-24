@@ -129,6 +129,14 @@ const AddForm = ({ setStars }) => {
 						</Modal.Footer>
 					</Form>
 				</Modal.Body>
+				<Modal.Footer>
+					<Button variant="danger" onClick={handleClose}>
+						Cancel
+					</Button>
+					<Button variant="success" type="submit" onClick={handleAdd}>
+						Save
+					</Button>
+				</Modal.Footer>
 			</Modal>
 		</div>
 	);
