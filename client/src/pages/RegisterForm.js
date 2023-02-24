@@ -21,7 +21,7 @@ function RegisterForm() {
 			}`,
 		})
 		.then((response) =>  response.json())
-		.then((data) => {
+		.then(({ data }) => {
 			return redirect(`/dashboard/${data.name}`);
 		})
 		.catch((error) => {
