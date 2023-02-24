@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+//  import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import StarList from "./StarList";
 import { useParams } from "react-router-dom";
