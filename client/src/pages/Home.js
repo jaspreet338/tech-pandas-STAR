@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import StarList from "./StarList";
+
 import "./Home.css";
 
 
@@ -16,9 +15,8 @@ export function Home() {
 return (
 	<main role="main">
 		<div>
-			<Navbar />
-			<Link to={url}>GitHub login:</Link>
-			<StarList />
+        <Link to={url}>GitHub login:</Link>
+
 		</div>
 	</main>
 );
