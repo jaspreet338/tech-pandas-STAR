@@ -103,25 +103,25 @@ router.delete("/stars/:id", async (req, res) => {
 
 router.put("/stars/:id", async (req, res) => {
 	const id = req.params.id;
-	const { name, description } = req.body;
+	const { name, description, situation, task, action, result } = req.body;
 
-	if (!name || !description) {
+	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Name and description are required" });
 	}
 
 	try {
 		await db.query(
-			"UPDATE stars SET name = $1, description = $2 WHERE id = $3",
-			[name, description, id]
+			"UPDATE stars SET name = $1, description = $2, situation = $3, task = $4, action = $5, result = $6 WHERE id = $7",
+			[ name, description, situation, task, action, result, id]
 		);
 
-		const result = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
+		const queryResult = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
 
-		if (result.rowCount === 0) {
+		if (queryResult.rowCount === 0) {
 			return res.status(404).json({ error: `Star with id ${id} not found` });
 		}
 
-		res.status(200).json(result.rows[0]);
+		res.status(200).json(queryResult.rows[0]);
 	} catch (error) {
 		logger.error(error);
 		res.status(500).json({ error: "Failed to update star" });
