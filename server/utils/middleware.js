@@ -32,6 +32,17 @@ export const httpsOnly = () => (req, res, next) => {
 	next();
 };
 
+export const ensureAuthenticated = () => (req, res, next) => {
+	if (
+		(req.session && req.session.user) ||
+		req.path === "/" ||
+		req.path.includes("/api/auth")
+	) {
+		return next();
+	}
+	res.status(403).json({ message: "Unauthorized!!" });
+};
+
 export const logErrors = () => (err, _, res, next) => {
 	if (res.headersSent) {
 		return next(err);
