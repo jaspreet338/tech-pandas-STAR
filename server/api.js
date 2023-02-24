@@ -43,7 +43,7 @@ router.get("/auth/github", async( req, res) => {
 
 	const github_user = await user_resp.json();
 
-	res.send(github_user);
+	// res.send(github_user);
 	let result = await db.query("SELECT * FROM users WHERE username=$1", [github_user.login]);
     let user;
 	if(result.rowCount === 0 ){
@@ -54,7 +54,7 @@ router.get("/auth/github", async( req, res) => {
 	}
 	req.session.user = user;
 
-	res.redirect("/dashboard");
+	res.redirect(`/dashboard/${user.name}`);
 });
 
 export default router;
