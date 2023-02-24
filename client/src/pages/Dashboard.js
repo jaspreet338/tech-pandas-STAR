@@ -1,9 +1,12 @@
+
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import StarList from "./StarList";
+import { useParams } from "react-router-dom";
+
+
 const  Dashboard = () => {
-	const [name, setName] = useState("");
-    useEffect(() => setName("Someone"), []);
+    const { name } = useParams();
 	return (
 		<div>
 			<Navbar />
