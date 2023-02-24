@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
- Import db from "./db";
+import db from "../db";
 class User {
-	constructor({Username ,Name, Role, Class, Area }) {
+	constructor({ Username ,Name, Role, Class, Area }) {
 		this.Name = Name;
 		this.Role = Role;
 		this.Class = Class;
@@ -12,7 +12,7 @@ class User {
 	async add() {
 		try {
 			// check if user already exists in the DB
-			const { rows: existingUser } = await pool.query(
+			const { rows: existingUser } = await db.query(
 				"SELECT * FROM users WHERE username = $1",
 				[this.Username]
 			);
@@ -21,8 +21,8 @@ class User {
 			}
 
 			// save the user to the DB
-			const { rows: newUser } = await pool.query(
-				"INSERT INTO users(Usernam,Name, Role, Class, Area) VALUES ($1, $2, $3, $4,$5) RETURNING *",
+			const { rows: newUser } = await db.query(
+				"INSERT INTO users(Username,Name, Role, Class, Area) VALUES ($1, $2, $3, $4,$5) RETURNING *",
 				[this.Username,this.Name, this.Role, this.Class, this.Area]
 			);
 			return newUser[0];
@@ -34,7 +34,7 @@ class User {
 
 	static async getAll() {
 		try {
-			const { rows: users } = await pool.query("SELECT * FROM users");
+			const { rows: users } = await db.query("SELECT * FROM users");
 			return users;
 		} catch (error) {
 			console.error(error);
