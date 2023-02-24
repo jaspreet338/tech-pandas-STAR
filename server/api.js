@@ -4,6 +4,7 @@ import fetch from "node-fetch";
 import db from "./db";
 import logger from "./utils/logger";
 import starRouter from "./starAPI";
+import registrationRouter from "./registrationAPI";
 
 const router = Router();
 
@@ -11,7 +12,9 @@ router.get("/", (_, res) => {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
 });
+
 router.use(starRouter);
+router.use(registrationRouter);
 
 router.get("/auth/github", async( req, res) => {
 	const { code, state } = req.query;
