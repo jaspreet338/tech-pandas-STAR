@@ -67,11 +67,11 @@ router.post("/stars", async (req, res) => {
 		}
 
 		// Randomly select a user ID from the available ones
-		const useId = users[Math.floor(Math.random() * users.length)].id;
+		const userId = users[Math.floor(Math.random() * users.length)].id;
 
 		await db.query(
 			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-			[name, description, useId, situation, task, action, result]
+			[name, description, userId, situation, task, action, result]
 		);
 		res.status(201).send();
 	} catch (error) {
