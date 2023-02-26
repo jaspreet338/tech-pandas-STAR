@@ -14,7 +14,7 @@ const EditForm = ({ setStars }) => {
 	const [description, setDescription] = useState("");
 
 	const handleClose = () => setShowForm(false);
-	const handleShow = () => setShowForm(true);
+	// const handleShow = () => setShowForm(true);
 
 	const handleAdd = async () => {
 		// event.preventDefault();
