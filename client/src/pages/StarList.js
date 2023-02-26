@@ -25,8 +25,7 @@ const StarList = () => {
 	}, []);
 	return (
 		<div className="star-container">
-			<h1>Hello....</h1>
-			<h2>Welcome to your Star List</h2>
+         <h2>Welcome to your Star List</h2>
 			<AddForm setStars={setStars} />
 			<ul>
 				{loading && <span>Loading, please wait until stars loads...</span>}
