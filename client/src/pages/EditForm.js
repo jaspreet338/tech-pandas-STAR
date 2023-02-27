@@ -4,22 +4,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const EditForm = ({ setStars }) => {
-	const [showForm, setShowForm] = useState(false);
-	const [name, setName] = useState("");
-	const [situation, setSituation] = useState("");
-	const [task, setTask] = useState("");
-	const [action, setAction] = useState("");
-	const [result, setResult] = useState("");
-	const [description, setDescription] = useState("");
+const EditForm = ({ active, star, refreshStars }) => {
+	const [name, setName] = useState(star.name);
+	const [situation, setSituation] = useState(star.situation);
+	const [task, setTask] = useState(star.task);
+	const [action, setAction] = useState(star.action);
+	const [result, setResult] = useState(star.result);
+	const [description, setDescription] = useState(star.description);
 
-	const handleClose = () => setShowForm(false);
-	// const handleShow = () => setShowForm(true);
+	const handleClose = () => {
+		refreshStars(false);
+	};
 
 	const handleAdd = async () => {
-		// event.preventDefault();
 		try {
-			const response = await fetch("/api/stars", {
+			const response = await fetch(`/api/stars/${star.id}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -35,14 +34,10 @@ const EditForm = ({ setStars }) => {
 			});
 			if (response.ok) {
 				console.log("Star updated successfully");
-				const res = await fetch("/api/stars");
-				const stars = await res.json();
-				setStars(stars);
+				refreshStars(true);
 			} else {
 				console.error("Failed to update star");
 			}
-
-			setShowForm(false);
 		} catch (error) {
 			console.error("Network error:", error);
 		}
@@ -50,7 +45,7 @@ const EditForm = ({ setStars }) => {
 
 	return (
 		<div>
-			<Modal show={showForm} onHide={handleClose} centered>
+			<Modal show={active} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Your Star </Modal.Title>
 				</Modal.Header>
