@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import SingleStar from "./SingleStar";
 import AddForm from "./AddForm";
 const StarList = () => {
-	const [stars, setStars] = useState([]);
+	const [stars, setStars] = useState(null);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		if(stars === null){
 		console.log("data working");
 		fetch("/api/stars")
 			.then((res) => {
@@ -21,20 +22,23 @@ const StarList = () => {
 				setStars(data);
 				setLoading(false);
 			})
-			.catch(() => setError(true));
-	}, []);
+			.catch(() => {
+				setStars([]);
+                setError(true);
+			});
+		}
+	}, [stars]);
 	return (
 		<div className="star-container">
-			<h1>Hello....</h1>
-			<h2>Welcome to your Star List</h2>
+         <h2>Welcome to your Star List</h2>
 			<AddForm setStars={setStars} />
 			<ul>
 				{loading && <span>Loading, please wait until stars loads...</span>}
 				{error && <span>{"There is a problem fetching the  data "}</span>}
-				{stars.length > 0 &&
-					stars.map((stars) => (
-						<li id="list-item" key={stars.id}>
-							<SingleStar star={stars} />
+				{stars && stars.length > 0 &&
+					stars.map((star) => (
+						<li id="list-item" key={star.id}>
+							<SingleStar star={star} setStars={setStars} />
 						</li>
 					))}
 			</ul>
