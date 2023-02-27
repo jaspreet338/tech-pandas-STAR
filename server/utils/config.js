@@ -8,6 +8,7 @@ export default {
 	client_id: process.env.CLIENT_ID,
 	client_secret: process.env.CLIENT_SECRET,
 	client_key: process.env.CLIENT_KEY,
+	cookie_secret: process.env.COOKIE_SECRET,
 };
 
 function createDatabaseUrl() {
