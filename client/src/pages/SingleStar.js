@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const SingleStar = ({ star, setStars }) => {
 	const [editing, setEditing] = useState(false);
@@ -12,7 +13,9 @@ const SingleStar = ({ star, setStars }) => {
 	};
 	return (
 		<div key={star.id}>
-			<h3>{star.name}</h3>
+			<Link to={"/dashboard"}>
+				<h2>{star.name}</h2>
+			</Link>
 			<p>
 				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
 					Situation :
