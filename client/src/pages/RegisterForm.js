@@ -29,6 +29,7 @@ function RegisterForm() {
 			console.warn(error);
 		});
     }
+
 	return (
 		<div>
 

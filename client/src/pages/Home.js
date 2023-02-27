@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "./Home.css";
 
 
 export function Home() {
-
-	const githubLoginUrl = "https://github.com/login/oauth/authorize";
+const githubLoginUrl = "https://github.com/login/oauth/authorize";
 	const client_id = process.env.CLIENT_ID;
     const redirect_uri = process.env.REDIRECT_URI;
     const state = process.env.CLIENT_KEY;
@@ -14,8 +12,7 @@ export function Home() {
 return (
 	<main role="main">
 		<div>
-        <Link to={url}>GitHub login:</Link>
-
+ <Link to={url}>GitHub login:</Link>
 		</div>
 	</main>
 );
