@@ -25,10 +25,9 @@ const StarList = () => {
 	}, []);
 	return (
 		<div className="star-container">
-			<h1>Hello....</h1>
 			<h2>Welcome to your Star List</h2>
 			<AddForm setStars={setStars} />
-			<ul>
+			<ul style={{ listStyleType: "none" }}>
 				{loading && <span>Loading, please wait until stars loads...</span>}
 				{error && <span>{"There is a problem fetching the  data "}</span>}
 				{stars.length > 0 &&
