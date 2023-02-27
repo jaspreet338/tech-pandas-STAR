@@ -1,5 +1,5 @@
-ARG NODE_RELEASE
-ARG ALPINE_RELEASE=3.17
+ARG NODE_RELEASE=18
+ARG ALPINE_RELEASE
 
 FROM node:${NODE_RELEASE}-alpine${ALPINE_RELEASE} AS build
 
@@ -17,6 +17,7 @@ RUN mkdir -p ./dist
 COPY ./.babelrc .
 COPY ./client ./client
 COPY ./server ./server
+COPY ./.env ./.env
 
 RUN npm run build
 

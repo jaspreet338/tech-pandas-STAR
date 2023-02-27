@@ -65,6 +65,14 @@ principles are followed:
 - Code must be reviewed by senior developers before being pushed to production;
 - APIs must be secure. Make sure we are not handling security on the frontend.
 
+### Docker
+If you want to use docker to test your project:
+- Install docker, using `sudo apt install docker.io`.
+- Use `sudo docker build . --tag star-image` to build the docker image named `star-image`.
+- Use `sudo docker container create --env-file "./.env" --publish "3000:80" --name star star-image` to create a container named `star` from this image using the .env file and making it available on localhost:3000 when started.
+- Then you can start the container using `sudo docker start star` making it available on localhost:3000.
+- Finally you can stop the container running using `sudo docker stop star`.
+
 ### Troubleshooting
 
 See the guidance in the [wiki].
