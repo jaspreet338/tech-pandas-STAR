@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { redirect } from "react-router-dom";
+
 // import { json } from "react-router-dom";
 function RegisterForm() {
 	const [username, setUsername] = useState("");
@@ -67,7 +68,11 @@ function RegisterForm() {
 						<select>
 							<option
 								defaultValue={role}
-								onChange={(e) => setRole(e.target.value)}
+								onChange={(e) => {
+									console.log(JSON.stringify(e));
+									setRole(e.target.value);
+								}
+								}
 							></option>
 							<option value="Student">Student</option>
 							<option value="Mentor">Training Mentor</option>
