@@ -6,18 +6,17 @@ const DeleteBtn = ({ star , setStars , refreshStars }) => {
 
 
 	function removeStar(index) {
-		alert("Do you want to delete " + index);
+		alert("Do you want to delete : " + star.name);
 
 		fetch(`/api/stars/${index}`, {
 			method: "DELETE",
 		})
-			.then((res) => res.json())
+			.then((res) => res)
 			.then((data) => {
 				console.log(data);
 			})
 			.catch((error) => console.error(error));
-			setStars(star.filter((t) => t.id !== index));
-		console.log((setStars(star.filter((t) => t.id !== index))));
+		setStars(star);
 		refreshStars(true);
 	}
 
