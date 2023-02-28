@@ -53,11 +53,11 @@ router.get("/users/:id/stars", async (req, res) => {
 //  Adding star on the database
 
 router.post("/stars", async (req, res) => {
-	const { name, description } = req.body;
+	const { name, description, situation, task, action, result } = req.body;
 
 	// Check if all required fields are provided
-	if (!name || !description) {
-		return res.status(400).json({ error: "Missing required fields" });
+	if (!name || !description || !situation ||!task ||!action ||!result) {
+		return res.status(400).json({ error: "Missing required fields!" });
 	}
 
 	try {
@@ -70,8 +70,8 @@ router.post("/stars", async (req, res) => {
 		const userId = users[Math.floor(Math.random() * users.length)].id;
 
 		await db.query(
-			"INSERT INTO stars (name, description, user_id) VALUES ($1, $2, $3)",
-			[name, description, userId]
+			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+			[name, description, userId, situation, task, action, result]
 		);
 		res.status(201).send();
 	} catch (error) {

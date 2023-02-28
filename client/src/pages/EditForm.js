@@ -1,27 +1,25 @@
 import { useState } from "react";
-// import axios from "axios";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const AddForm = ({ setStars }) => {
-	const [showForm, setShowForm] = useState(false);
-	const [name, setName] = useState("");
-	const [situation, setSituation] = useState("");
-	const [task, setTask] = useState("");
-	const [action, setAction] = useState("");
-	const [result, setResult] = useState("");
-	const [description, setDescription] = useState("");
+const EditForm = ({ active, star, refreshStars }) => {
+	const [name, setName] = useState(star.name);
+	const [situation, setSituation] = useState(star.situation);
+	const [task, setTask] = useState(star.task);
+	const [action, setAction] = useState(star.action);
+	const [result, setResult] = useState(star.result);
+	const [description, setDescription] = useState(star.description);
 
-	const handleClose = () => setShowForm(false);
-	const handleShow = () => setShowForm(true);
+	const handleClose = () => {
+		refreshStars(false);
+	};
 
 	const handleAdd = async () => {
-		// event.preventDefault();
 		try {
-			const response = await fetch("/api/stars", {
-				method: "POST",
+			const response = await fetch(`/api/stars/${star.id}`, {
+				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -34,26 +32,12 @@ const AddForm = ({ setStars }) => {
 					result,
 				}),
 			});
-
 			if (response.ok) {
-				console.log("Star created successfully");
-				const res = await fetch("/api/stars");
-				const stars = await res.json();
-				setStars(stars);
+				console.log("Star updated successfully");
+				refreshStars(true);
 			} else {
-				console.error("Failed to create star");
+				console.error("Failed to update star");
 			}
-
-			// clear form inputs
-			setName("");
-			setSituation("");
-			setTask("");
-			setAction("");
-			setResult("");
-			setDescription("");
-
-			// hide the form
-			setShowForm(false);
 		} catch (error) {
 			console.error("Network error:", error);
 		}
@@ -61,10 +45,7 @@ const AddForm = ({ setStars }) => {
 
 	return (
 		<div>
-			<Button onClick={handleShow} className="ml-">
-				Add STAR
-			</Button>
-			<Modal show={showForm} onHide={handleClose} centered>
+			<Modal show={active} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Your Star </Modal.Title>
 				</Modal.Header>
@@ -132,5 +113,4 @@ const AddForm = ({ setStars }) => {
 		</div>
 	);
 };
-
-export default AddForm;
+export default EditForm;
