@@ -5,9 +5,12 @@ import Home from "./pages/Home";
 
 const App = () => (
 	<Routes>
+
+			<Route path="/" element={<Home />} />
+			<Route path="/about/this/site" element={<About />} />
 		<Route path="/" element={<Home />} />
 		<Route path="/about/this/site" element={<About />} />
-		<Route path="/dashboard" element={<Dashboard />} />
+		<Route path="/dashboard/:name" element={<Dashboard />} />
 	</Routes>
 );
 
