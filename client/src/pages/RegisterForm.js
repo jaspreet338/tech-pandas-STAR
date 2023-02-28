@@ -17,7 +17,7 @@ function RegisterForm() {
 				"username": ${username}, 
 				"name": ${name},
 				"role": ${role},
-				"class": ${section},
+				"section": ${section},
 				"area": ${area}
 			}`,
 		})
@@ -32,7 +32,6 @@ function RegisterForm() {
 
 	return (
 		<div>
-
 			<div className="form-container">
 				<h1>Register Here</h1>
 				<div className="form-body">
@@ -66,17 +65,16 @@ function RegisterForm() {
 						<label className="form_label" htmlFor="role">
 							Role
 						</label>
-						<select>
-							<option
-								defaultValue={role}
-								onChange={(e) => {
-									console.log(JSON.stringify(e));
-									setRole(e.target.value);
-								}
-								}
-							></option>
-							<option value="Student">Student</option>
-							<option value="Mentor">Training Mentor</option>
+						<select
+							defaultValue={role}
+							onChange={(e) => {
+								//console.log(JSON.stringify(e));
+								setRole(e.target.value);
+							}}
+						>
+							<option value="TA">TA</option>
+							<option value="student">Student</option>
+							<option value="mentor">Mentor</option>
 						</select>
 					</div>
 					<div>
