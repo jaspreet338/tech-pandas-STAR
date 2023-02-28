@@ -1,34 +1,37 @@
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // import { json } from "react-router-dom";
 function RegisterForm() {
+	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [name, setName] = useState("");
 	const [role, setRole] = useState("");
 	const [section, setSection] = useState("");
 	const [area, setArea] = useState("");
 
- function register() {
-		console.warn(username,name, role, section, area);
+	function register() {
 		fetch("/api/register", {
-			method:"PUT",
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
 			body: `{
-				"username": ${username}, 
-				"name": ${name},
-				"role": ${role},
-				"section": ${section},
-				"area": ${area}
+				"username": "${username}", 
+				"name": "${name}",
+				"role": "${role}",
+				"section": "${section}",
+				"area": "${area}"
 			}`,
 		})
-		.then((response) =>  response.json())
-		.then(({ data }) => {
-			return redirect(`/dashboard/${data.name}`);
-		})
-		.catch((error) => {
-			console.warn(error);
-		});
-    }
+			.then((response) => response.json())
+			.then(({ data }) => {
+				return navigate(`/dashboard/${data.name}`);
+			})
+			.catch((error) => {
+				console.warn(error);
+			});
+	}
 
 	return (
 		<div>
