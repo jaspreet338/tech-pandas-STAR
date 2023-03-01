@@ -5,6 +5,7 @@ import db from "./db";
 import logger from "./utils/logger";
 import starRouter from "./starAPI";
 import registrationRouter from "./registrationAPI";
+import userRouter from "./userAPI";
 
 const router = Router();
 
@@ -13,6 +14,7 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 
+router.use(userRouter);
 router.use(starRouter);
 router.use(registrationRouter);
 
