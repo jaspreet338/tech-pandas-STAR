@@ -37,7 +37,7 @@ router.get("/users/:id/stars", async (req, res) => {
 
 	try {
 		const result = await db.query(
-			"SELECT  s.name, s.description " +
+			"SELECT  s.name, s.description,s.situation,s.task,s.action,s.result " +
 				"FROM stars s " +
 				"JOIN users u ON s.user_id = u.id " +
 				"WHERE u.id = $1",
@@ -53,11 +53,11 @@ router.get("/users/:id/stars", async (req, res) => {
 //  Adding star on the database
 
 router.post("/stars", async (req, res) => {
-	const { name, description } = req.body;
+	const { name, description, situation, task, action, result } = req.body;
 
 	// Check if all required fields are provided
-	if (!name || !description) {
-		return res.status(400).json({ error: "Missing required fields" });
+	if (!name || !description || !situation ||!task ||!action ||!result) {
+		return res.status(400).json({ error: "Missing required fields!" });
 	}
 
 	try {
@@ -70,8 +70,8 @@ router.post("/stars", async (req, res) => {
 		const userId = users[Math.floor(Math.random() * users.length)].id;
 
 		await db.query(
-			"INSERT INTO stars (name, description, user_id) VALUES ($1, $2, $3)",
-			[name, description, userId]
+			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+			[name, description, userId, situation, task, action, result]
 		);
 		res.status(201).send();
 	} catch (error) {
@@ -79,6 +79,7 @@ router.post("/stars", async (req, res) => {
 		res.status(500).json({ error: "Failed to create star" });
 	}
 });
+
 
 //   deleting star from the database by id
 
@@ -103,25 +104,25 @@ router.delete("/stars/:id", async (req, res) => {
 
 router.put("/stars/:id", async (req, res) => {
 	const id = req.params.id;
-	const { name, description } = req.body;
+	const { name, description, situation, task, action, result } = req.body;
 
-	if (!name || !description) {
+	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Name and description are required" });
 	}
 
 	try {
 		await db.query(
-			"UPDATE stars SET name = $1, description = $2 WHERE id = $3",
-			[name, description, id]
+			"UPDATE stars SET name = $1, description = $2, situation = $3, task = $4, action = $5, result = $6 WHERE id = $7",
+			[ name, description, situation, task, action, result, id]
 		);
 
-		const result = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
+		const queryResult = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
 
-		if (result.rowCount === 0) {
+		if (queryResult.rowCount === 0) {
 			return res.status(404).json({ error: `Star with id ${id} not found` });
 		}
 
-		res.status(200).json(result.rows[0]);
+		res.status(200).json(queryResult.rows[0]);
 	} catch (error) {
 		logger.error(error);
 		res.status(500).json({ error: "Failed to update star" });
