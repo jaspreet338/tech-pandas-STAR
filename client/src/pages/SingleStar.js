@@ -42,6 +42,7 @@ import React, { useState } from "react";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
 
+
 const SingleStar = ({ star, setStars }) => {
 	const [editing, setEditing] = useState(false);
 	const refreshStars = (refresh) => {
@@ -50,6 +51,7 @@ const SingleStar = ({ star, setStars }) => {
 		}
 		setEditing(null);
 	};
+
 	return (
 		<div key={star.id}>
 			<h3>{star.name}</h3>
@@ -80,7 +82,7 @@ const SingleStar = ({ star, setStars }) => {
 			<Button onClick={() => setEditing(true)} className="ml-">
 				Edit STAR
 			</Button>
-			<EditForm active={editing} star={star} refreshStars={refreshStars} />
+			<EditForm active={editing} star={star} setStars={setStars} refreshStars={refreshStars} />
 		</div>
 	);
 };
