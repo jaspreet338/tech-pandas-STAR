@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import db from "../db";
-class User {
-	constructor(Username, Name, Role, Class, Area) {
+ import db from "./db";
+ class User {
+		constructor({ Username ,Name, Role, Class, Area }) {
 		this.Name = Name;
 		this.Role = Role;
 		this.Class = Class;
@@ -31,7 +31,6 @@ class User {
 			throw new Error("Internal server error");
 		}
 	}
-
 	async update() {
 		try {
 			// check if user already exists in the DB
@@ -56,7 +55,6 @@ class User {
 			throw new Error("Internal server error");
 		}
 	}
-
 	static async getAll() {
 		try {
 			const { rows: users } = await db.query("SELECT * FROM users");
