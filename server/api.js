@@ -55,9 +55,9 @@ router.get("/auth/github", async( req, res) => {
 	req.session.user = user;
 
 	if(!user.name || !user.role || !user.area || !user.class){
-		res.redirect(`/register/${user.username}`);
+		res.redirect("/register");
 	} else {
-		res.redirect(`/dashboard/${user.name}`);
+		res.redirect("/dashboard");
     }
 });
 
