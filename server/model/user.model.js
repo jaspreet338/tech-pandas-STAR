@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
  import db from "../db";
  class User {
-		constructor({ Username ,Name, Role, Class, Area }) {
+		constructor( Username ,Name, Role, Class, Area ) {
 		this.Name = Name;
 		this.Role = Role;
 		this.Class = Class;
