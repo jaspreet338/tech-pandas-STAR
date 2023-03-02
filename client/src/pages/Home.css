@@ -1,7 +1,8 @@
 
 
-ul {
-display: grid;
+/* ul {
+ 
+  display: grid;
   grid-template-rows: auto;
   text-align: start;
   padding: 0.8em;
@@ -12,7 +13,7 @@ display: grid;
   list-style: none;
   font-size: 1.3rem;
 
-}
+} */
 
 .header {
 	display: flex;
@@ -20,7 +21,7 @@ display: grid;
 	justify-content: space-between;
 	height: 80px;
 	padding: 0 2rem;
-	background-color: #29335c;
+	background-color: #fff;
 	font-size: 30px;
 	
 }
@@ -38,4 +39,12 @@ display: grid;
 	border-radius: 10px;
 	cursor: pointer;
 	/* margin-bottom: 1rem; */
+}
+
+.main{
+	background-color: #fff;
+}
+
+.card{
+	width: 50%;
 }
