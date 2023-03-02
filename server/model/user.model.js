@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
- import db from "./db";
+ import db from "../db";
  class User {
 		constructor({ Username ,Name, Role, Class, Area }) {
 		this.Name = Name;
