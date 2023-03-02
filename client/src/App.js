@@ -13,3 +13,4 @@ const App = () => (
 	</Routes>
 );
 
+export default App;
