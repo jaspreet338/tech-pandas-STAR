@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Registration.css";
 
 // import { json } from "react-router-dom";
 function RegisterForm() {
