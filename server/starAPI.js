@@ -6,9 +6,15 @@ const router = Router();
 // Getting all star from the database
 
 router.get("/stars", async (req, res) => {
+	const user = req.session.user;
 	try {
-		const result = await db.query("SELECT * FROM stars");
-		res.json(result.rows);
+		if(user.role === "student") {
+			const result = await db.query("SELECT * FROM stars where user_id = $1", [user.id]);
+			res.json(result.rows);
+		} else {
+			const result = await db.query("SELECT * FROM stars");
+			res.json(result.rows);
+		}
 	} catch (error) {
 		logger.error(error);
 		res.status(200).json(error);
