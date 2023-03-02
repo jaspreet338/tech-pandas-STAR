@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Registration.css";
+
 
 // import { json } from "react-router-dom";
 function RegisterForm() {
