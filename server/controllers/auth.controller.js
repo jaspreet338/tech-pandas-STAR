@@ -11,6 +11,7 @@ export const updateUser = async (req, res) => {
 	const user = new User( username, name, role, section, area );
 	try {
 		const updatedUser = await user.update();
+		req.session.user = updatedUser;
 		return res.status(201).json({
 			message: "User registered successfully",
 			data: updatedUser,
