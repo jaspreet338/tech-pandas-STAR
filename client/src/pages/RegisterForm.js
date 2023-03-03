@@ -127,8 +127,18 @@ function RegisterForm() {
 							placeholder="Area"
 						/>
 					</Form.Group>
-					<div style={{ marginTop: "20px" }}>
-						<Button className="btn" variant="primary" onClick={register}>
+					<div>
+						<Button
+							style={{
+								marginTop: "20px",
+								d: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+							className="btn"
+							variant="primary"
+							onClick={register}
+						>
 							Register
 						</Button>
 					</div>
