@@ -11,10 +11,33 @@ const githubLoginUrl = "https://github.com/login/oauth/authorize";
     const url = `${githubLoginUrl}?client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}`;
 return (
 	<main className="main" role="main">
-		<div className="card">
-			<h2 className="header">Welcome to</h2>
-			<h1 className>STAR</h1>
-			<Link to={url}><GithubButton></GithubButton></Link>
+		<img src="https://tinyurl.com/2pa3jyxu" alt="logo" className="cyf-logo" />
+		<div className="login_wrapper">
+			<div className="star_wrapper">
+				<article className="star_article">
+					<ul>
+						<h3>
+							<b>S</b>ituation
+						</h3>
+						<h3>
+							<b>T</b>ask
+						</h3>
+						<h3>
+							<b>A</b>ction
+						</h3>
+						<h3>
+							<b>R</b>esult
+						</h3>
+					</ul>
+				</article>
+			</div>
+			<div className="login_git">
+				<h2 className="header">Welcome to</h2>
+				<h1 className><b>STAR</b></h1>
+				<Link to={url} className="link">
+					<GithubButton className="git_btn"></GithubButton>
+				</Link>
+			</div>
 		</div>
 	</main>
 );
