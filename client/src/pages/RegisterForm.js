@@ -128,7 +128,7 @@ function RegisterForm() {
 						/>
 					</Form.Group>
 					<div style={{ marginTop: "20px" }}>
-						<Button variant="primary" onClick={register}>
+						<Button className="btn" variant="primary" onClick={register}>
 							Register
 						</Button>
 					</div>

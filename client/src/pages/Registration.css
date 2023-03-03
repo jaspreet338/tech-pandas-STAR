@@ -84,16 +84,14 @@ select {
 button {
 	margin-top: 1rem;
 	border: none;
-	background-color: white;
 	padding: 20px;
 	border-radius: 10px;
 	cursor: pointer;
     
 }
-/* .btn {
+.btn {
 	background: none;
-	color: blue;
-   font-size: 25px;
-   text-decoration: underline; 
-	
-} */
+	color: white;
+    background-color: blue;
+
+}
