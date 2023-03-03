@@ -19,9 +19,9 @@ const SingleStar = ({ star, setStars }) => {
       <Card.Body>
         <Row>
           <Col sm={12} md={6}>
-            <link to={"/dashboard">
+            <Link to={"/dashboard"}>
             <Card.Title>{star.name}</Card.Title>
-            </link>
+            </Link>
             <Card.Text>
               <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
                 Situation:
