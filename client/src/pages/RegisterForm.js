@@ -1,9 +1,10 @@
 import fetch from "node-fetch";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import { BsChevronDown } from "react-icons/bs";
+import "./Registration.css";
 
-
-// import { json } from "react-router-dom";
 function RegisterForm() {
 	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
@@ -11,19 +12,17 @@ function RegisterForm() {
 	const [role, setRole] = useState("");
 	const [section, setSection] = useState("");
 	const [area, setArea] = useState("");
-
 	useEffect(() => {
 		fetch("/api/users")
-		.then((res) => res.json())
-		.then((data) => {
-			setUsername(data.username);
-			setName(data.name);
-			setRole(data.role);
-			setSection(data.class);
-			setArea(data.area);
-		});
+			.then((res) => res.json())
+			.then((data) => {
+				setUsername(data.username);
+				setName(data.name);
+				setRole(data.role);
+				setSection(data.class);
+				setArea(data.area);
+			});
 	}, []);
-
 	function register() {
 		fetch("/api/register", {
 			method: "PUT",
@@ -31,12 +30,12 @@ function RegisterForm() {
 				"Content-Type": "application/json",
 			},
 			body: `{
-				"username": "${username}", 
-				"name": "${name}",
-				"role": "${role}",
-				"section": "${section}",
-				"area": "${area}"
-			}`,
+        "username": "${username}",
+        "name": "${name}",
+        "role": "${role}",
+        "section": "${section}",
+        "area": "${area}"
+      }`,
 		})
 			.then((response) => response.json())
 			.then(() => {
@@ -46,86 +45,94 @@ function RegisterForm() {
 				console.warn(error);
 			});
 	}
-
 	return (
-		<div>
-			<div className="form-container">
-				<h1>Register Here</h1>
-				<div className="form-body">
-					<div>
-						<label className="form_label" htmlFor="name">
-							Username
-						</label>
-						<input
-							className="form_input"
+		<div className="wrapper">
+			<div className="image">
+				<img
+					src="https://tinyurl.com/2pa3jyxu"
+					alt="logo"
+					className="cyf-img"
+				/>
+			</div>
+			<div
+				className="p-4 m-4"
+				style={{
+					width: "500px",
+					borderRadius: "25px",
+					borderStyle: "groove",
+					height: "85vh",
+				}}
+			>
+				<Form style={{ backgroundImage: 'url("./cyf_brand.png")' }}>
+					<h1>Register Here</h1>
+					<Form.Group>
+						<Form.Label className="form_label">Username </Form.Label>
+						<Form.Control
 							type="text"
+							className="form_input"
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
-							id="username"
-							placeholder="type your name"
-						></input>
-					</div>
-					<div>
-						<label className="form_label" htmlFor="name">
-							Name
-						</label>
-						<input
-							className="form_input"
+							placeholder="Type your name"
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label className="form_label">Name</Form.Label>
+						<Form.Control
 							type="text"
+							className="form_input"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
-							id="name"
 							placeholder="Display Name"
-						></input>
-					</div>
-					<div>
-						<label className="form_label" htmlFor="role">
-							Role
-						</label>
-						<select
-							value={role}
-							onChange={(e) => {
-								//console.log(JSON.stringify(e));
-								setRole(e.target.value);
-							}}
-						>
-							<option value="TA" >TA</option>
-							<option value="student" >Student</option>
-							<option value="mentor" >Mentor</option>
-						</select>
-					</div>
-					<div>
-						<label className="form_label" htmlFor="section">
-							Class
-						</label>
-						<input
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label className="form_label">Role</Form.Label>
+						<div className="position-relative">
+							<Form.Control
+								as="select"
+								className="form_input"
+								value={role}
+								onChange={(e) => {
+									setRole(e.target.value);
+								}}
+							>
+								<option value="TA">TA</option>
+								<option value="student">Student</option>
+								<option value="mentor">Mentor</option>
+							</Form.Control>
+							<BsChevronDown
+								className="position-absolute top-50 end-0 translate-middle-y"
+								size={24}
+								color="#6C757D"
+							/>
+						</div>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label className="form_label">Class</Form.Label>
+						<Form.Control
 							className="form_input"
 							type="text"
-							id="class"
 							value={section}
 							onChange={(e) => setSection(e.target.value)}
 							placeholder="Class"
-						></input>
-					</div>
-					<div>
-						<label className="form_label" htmlFor="area">
-							Area
-						</label>
-						<input
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Label className="form_label">Area</Form.Label>
+						<Form.Control
 							className="form_input"
 							type="text"
-							id="area"
 							value={area}
 							onChange={(e) => setArea(e.target.value)}
 							placeholder="Area"
-						></input>
+						/>
+					</Form.Group>
+					<div style={{ marginTop: "20px" }}>
+						<Button variant="primary" onClick={register}>
+							Register
+						</Button>
 					</div>
-				</div>
-				<div>
-					<button onClick={register} type="submit" className="btn">
-						Register
-					</button>
-				</div>
+				</Form>
 			</div>
 		</div>
 	);

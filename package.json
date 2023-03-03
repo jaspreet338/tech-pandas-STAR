@@ -83,6 +83,7 @@
 		"node-fetch": "^2.6.9",
 		"pg": "^8.9.0",
 		"react-bootstrap": "^2.7.2",
+		"react-icons": "^4.8.0",
 		"winston": "^3.8.2"
 	},
 	"engines": {
