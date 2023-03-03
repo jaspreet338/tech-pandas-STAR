@@ -1,15 +1,8 @@
 body {
     
-    background: #bdc3c7; 
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
  
  .form-container {
@@ -55,6 +48,7 @@ font-size: 25px;
     width: 60%;
     margin-left: 2rem;
 }
+
 select {
     margin:0.5rem, 0;
 	padding: 1rem;
