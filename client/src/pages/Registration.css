@@ -37,8 +37,9 @@ h1 {
 .cyf-img {
     float: left;
     height:250px;
-    width:560px;
+    width:760px;
     margin-right: 200px;
+    margin-bottom: 150px;
     
 }
 
@@ -79,19 +80,22 @@ select {
 	border-radius: 10px;
     width: 60%;
     margin-left: 2rem;*/
-} 
+}  
 
-button {
+Button {
 	margin-top: 1rem;
 	border: none;
 	padding: 20px;
 	border-radius: 10px;
 	cursor: pointer;
     
+    
 }
 .btn {
 	background: none;
 	color: white;
     background-color: blue;
+    
+   
 
 }
