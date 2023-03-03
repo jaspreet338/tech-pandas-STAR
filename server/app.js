@@ -1,6 +1,6 @@
 import express from "express";
 import session from "express-session";
-import pgSessionStore from "connect-pg-simple";
+import db from "./db";
 import apiRouter from "./api";
 import config from "./utils/config";
 import {
@@ -21,7 +21,7 @@ app.use(configuredHelmet());
 app.use(configuredMorgan());
 
 app.use(session({
-	store: new (pgSessionStore(session))({
+	store: db.sessionStore(session)({
 		// insert connect-pg-simple options here
 	}),
 	secret: config.cookie_secret,

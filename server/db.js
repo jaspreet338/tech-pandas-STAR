@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-
+import pgSessionStore from "connect-pg-simple";
 import config from "./utils/config";
 import logger from "./utils/logger";
 
@@ -33,5 +33,8 @@ export default {
 	query: (...args) => {
 		logger.debug("Postgres querying %O", args);
 		return pool.query.apply(pool, args);
+	},
+	sessionStore: (session) => {
+		return new (pgSessionStore(session))({ pool: pool });
 	},
 };
