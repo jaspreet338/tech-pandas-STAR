@@ -21,9 +21,7 @@ app.use(configuredHelmet());
 app.use(configuredMorgan());
 
 app.use(session({
-	store: db.sessionStore(session)({
-		// insert connect-pg-simple options here
-	}),
+	store: db.sessionStore(session),
 	secret: config.cookie_secret,
 	resave: false,
 }));
