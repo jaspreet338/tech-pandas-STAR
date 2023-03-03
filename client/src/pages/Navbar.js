@@ -1,16 +1,37 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
- function Navbar() {
-  return (
-		<div className="header">
-			<h3>CYF-STARs</h3>
-			<div className="nav">
-				<a href="/#">Home</a>
-				<a href="/#">Profile</a>
-				<button className="btn-out">Logout</button>
-			</div>
-		</div>
+function CustomNavbar() {
+	const linkStyle = {
+		fontSize: "1.2rem",
+		padding: "0.5rem",
+		border: "1px solid #fff",
+		margin: "0 0.5rem",
+		fontWeight: "bold", // add fontWeight to make text bolder
+	};
 
+	return (
+		<>
+			<Navbar bg="primary" variant="dark">
+				<Container>
+					<Navbar.Brand href="/">CYF-STARs</Navbar.Brand>
+					<Nav className="justify-content-end" style={{ width: "100%" }}>
+						<Nav.Link href="/" style={linkStyle}>
+							Home
+						</Nav.Link>
+						<Nav.Link href="/profile" style={linkStyle}>
+							Profile
+						</Nav.Link>
+						<Nav.Link href="/logout" style={linkStyle}>
+							Logout
+						</Nav.Link>
+					</Nav>
+				</Container>
+			</Navbar>
+		</>
 	);
 }
-export default Navbar;
+
+export default CustomNavbar;
