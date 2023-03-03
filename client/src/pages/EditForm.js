@@ -3,8 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import DeleteBtn from "./Component/DeleteBtn";
 
-const EditForm = ({ active, star, refreshStars }) => {
+const EditForm = ({ active, star, setStars, refreshStars }) => {
 	const [name, setName] = useState(star.name);
 	const [situation, setSituation] = useState(star.situation);
 	const [task, setTask] = useState(star.task);
@@ -108,6 +109,7 @@ const EditForm = ({ active, star, refreshStars }) => {
 					<Button variant="success" type="submit" onClick={handleAdd}>
 						Save
 					</Button>
+					<DeleteBtn refreshStars={refreshStars} star={star} setStars={setStars} />
 				</Modal.Footer>
 			</Modal>
 		</div>

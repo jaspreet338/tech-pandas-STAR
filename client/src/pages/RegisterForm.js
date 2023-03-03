@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import fetch from "node-fetch";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 
 // import { json } from "react-router-dom";
 function RegisterForm() {
@@ -9,6 +11,18 @@ function RegisterForm() {
 	const [role, setRole] = useState("");
 	const [section, setSection] = useState("");
 	const [area, setArea] = useState("");
+
+	useEffect(() => {
+		fetch("/api/users")
+		.then((res) => res.json())
+		.then((data) => {
+			setUsername(data.username);
+			setName(data.name);
+			setRole(data.role);
+			setSection(data.class);
+			setArea(data.area);
+		});
+	}, []);
 
 	function register() {
 		fetch("/api/register", {
@@ -25,8 +39,8 @@ function RegisterForm() {
 			}`,
 		})
 			.then((response) => response.json())
-			.then(({ data }) => {
-				return navigate(`/dashboard/${data.name}`);
+			.then(() => {
+				return navigate("/dashboard");
 			})
 			.catch((error) => {
 				console.warn(error);
@@ -69,15 +83,15 @@ function RegisterForm() {
 							Role
 						</label>
 						<select
-							defaultValue={role}
+							value={role}
 							onChange={(e) => {
 								//console.log(JSON.stringify(e));
 								setRole(e.target.value);
 							}}
 						>
-							<option value="TA">TA</option>
-							<option value="student">Student</option>
-							<option value="mentor">Mentor</option>
+							<option value="TA" >TA</option>
+							<option value="student" >Student</option>
+							<option value="mentor" >Mentor</option>
 						</select>
 					</div>
 					<div>
