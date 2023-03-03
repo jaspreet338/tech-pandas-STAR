@@ -16,8 +16,7 @@ const DeleteBtn = ({ star , setStars , refreshStars }) => {
 				console.log(data);
 			})
 			.catch((error) => console.error(error));
-		setStars(star);
-		refreshStars(true);
+			refreshStars(true);
 	}
 
 	return (
