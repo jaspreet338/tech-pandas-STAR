@@ -45,9 +45,10 @@ font-size: 25px;
 	padding: 1rem;
 	/* border: none; */
 	border-radius: 10px;
-    width: 60%;
-    margin-left: 2rem;
-}
+    width: 90%;
+    margin-left: 0.5rem;
+   
+} 
 
 select {
     margin:0.5rem, 0;
