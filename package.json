@@ -85,6 +85,7 @@
 		"react-bootstrap": "^2.7.2",
 		"react-icons": "^4.8.0",
 		"react-github-login-button": "^1.0.1",
+		"react-icons": "^4.8.0",
 		"react-social-login-buttons": "^3.6.1",
 		"winston": "^3.8.2"
 	},
