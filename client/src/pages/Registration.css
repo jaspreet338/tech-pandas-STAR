@@ -1,15 +1,7 @@
 body {
-    
-    background: #bdc3c7; 
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
-    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
  
  .form-container {
@@ -39,44 +31,69 @@ h1 {
     padding: 5px;
 }
 
+.cyf-img {
+    float: left;
+    height:250px;
+    width:760px;
+    margin-right: 200px;
+    margin-bottom: 150px;
+    
+}
+
+.p-4 m-4 {
+ float: right;
+ 
+ 
+}
+.wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+   
+    
+
+}
 
 .form_label {
-/* text-align: left;
-padding: 0.25rem 0; */
+text-align: left;
+padding: 0.25rem 0;
 width: 40%;
 font-size: 25px;
 }
 
-.form_input {
+ .form_input {
 	margin:0.5rem, 0;
 	padding: 1rem;
 	/* border: none; */
 	border-radius: 10px;
-    width: 60%;
-    margin-left: 2rem;
-}
+    width: 90%;
+    margin-left: 0.5rem;
+   
+} 
+
 select {
     margin:0.5rem, 0;
 	padding: 1rem;
-	/* border: none; */
+	/* border: none; 
 	border-radius: 10px;
     width: 60%;
-    margin-left: 2rem;
-}
+    margin-left: 2rem;*/
+}  
 
-button {
+Button {
 	margin-top: 1rem;
 	border: none;
-	background-color: white;
 	padding: 20px;
 	border-radius: 10px;
 	cursor: pointer;
     
+    
 }
 .btn {
 	background: none;
-	color: blue;
-   font-size: 25px;
-   text-decoration: underline; 
-	
+	color: white;
+    background-color: blue;
+    
+   
+
 }
