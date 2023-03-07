@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
 const SingleStar = ({ star, setStars }) => {
   const [editing, setEditing] = useState(false);
   const refreshStars = (refresh) => {
@@ -19,7 +18,7 @@ const SingleStar = ({ star, setStars }) => {
       <Card.Body>
         <Row>
           <Col sm={12} md={6}>
-            <Link to={"/dashboard"}>
+            <Link to={`/star/${star.id}`} state={star}>
             <Card.Title>{star.name}</Card.Title>
             </Link>
             <Card.Text>
