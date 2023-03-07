@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import RegisterForm from "./pages/RegisterForm";
+import SingleStarPage from "./pages/SingleStarPage";
 
 const App = () => (
 	<Routes>
