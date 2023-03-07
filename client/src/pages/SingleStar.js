@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 const SingleStar = ({ star, setStars }) => {
   const [editing, setEditing] = useState(false);
   const refreshStars = (refresh) => {
@@ -17,11 +17,15 @@ const SingleStar = ({ star, setStars }) => {
     <Card key={star.id} className="my-3 shadow">
       <Card.Body>
         <Row>
-          <Col sm={12} md={6}>
-            <Link to={`/star/${star.id}`} state={star}>
-            <Card.Title>{star.name}</Card.Title>
-            </Link>
-            <Card.Text>
+        <Col sm={12} md={6}>
+						<Card.Title>{star.name}</Card.Title>
+						<Card.Text>
+							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+								Situation:
+							</span>{" "}
+							{star.situation}
+						</Card.Text>
+						<Card.Text>
               <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
                 Situation:
               </span>{" "}
