@@ -52,7 +52,7 @@ const StarList = ({ user } ) => {
 			<h2>Welcome to your Star List</h2>
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
-					<Search setSearch={setUserSearch} placeholder="filter users" />
+					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
 					<Search setSearch={setStarSearch} placeholder="filter stars" />
 					<ul>
 						{loading && <span>Loading, please wait until stars loads...</span>}
