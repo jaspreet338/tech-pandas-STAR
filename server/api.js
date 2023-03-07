@@ -6,6 +6,7 @@ import logger from "./utils/logger";
 import starRouter from "./starAPI";
 import registrationRouter from "./registrationAPI";
 import userRouter from "./userAPI";
+import authRouter from "./authAPI";
 
 const router = Router();
 
@@ -17,6 +18,7 @@ router.get("/", (_, res) => {
 router.use(userRouter);
 router.use(starRouter);
 router.use(registrationRouter);
+router.use(authRouter);
 
 router.get("/auth/github", async( req, res) => {
 	const { code, state } = req.query;
