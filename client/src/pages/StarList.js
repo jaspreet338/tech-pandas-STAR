@@ -50,7 +50,6 @@ const StarList = ({ user } ) => {
 	return (
 		<div className="star-container">
 			<h2>Welcome to your Star List</h2>
-			<AddForm setStars={setStars} />
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
 					<Search setSearch={setUserSearch} placeholder="filter users" />
@@ -66,15 +65,19 @@ const StarList = ({ user } ) => {
 					</ul>
 				</>
 			) : (
-				<ul>
-					{loading && <span>Loading, please wait until stars loads...</span>}
-					{error && <span>{"There is a problem fetching the  data "}</span>}
-					{filteredStars.map((star) => (
-						<li id="list-item" key={star.id}>
-							<SingleStar user={user} star={star} setStars={setStars} />
-						</li>
-					))}
-				</ul>
+				<>
+					<AddForm setStars={setStars} />
+					<Search setSearch={setStarSearch} placeholder="filter stars" />
+					<ul>
+						{loading && <span>Loading, please wait until stars loads...</span>}
+						{error && <span>{"There is a problem fetching the  data "}</span>}
+						{filteredStars.map((star) => (
+							<li id="list-item" key={star.id}>
+								<SingleStar user={user} star={star} setStars={setStars} />
+							</li>
+						))}
+					</ul>
+				</>
 			)}
 		</div>
 	);
