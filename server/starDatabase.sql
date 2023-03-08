@@ -18,6 +18,7 @@ CREATE TABLE users (
   role VARCHAR(20) NOT NULL CHECK (role IN ('TA', 'student', 'mentor'))
 );
 
+
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
@@ -25,7 +26,7 @@ CREATE TABLE comments (
   comment TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (star_id) REFERENCES stars(id)
+  FOREIGN KEY (star_id) REFERENCES stars(id) ON DELETE CASCADE
 );
 
 
