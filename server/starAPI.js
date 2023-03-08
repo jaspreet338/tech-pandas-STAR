@@ -11,12 +11,12 @@ router.get("/stars", async (req, res) => {
 		let result;
 		if (user.role === "student") {
 			result = await db.query(
-				"SELECT s.*, c.comment FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1",
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id",
 				[user.id]
 			);
 		} else {
 			result = await db.query(
-				"SELECT s.*, c.comment FROM stars s LEFT JOIN comments c ON s.id = c.star_id"
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id"
 			);
 		}
 		res.json(result.rows);
@@ -25,21 +25,41 @@ router.get("/stars", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
 //  Getting star by id
 
 router.get("/stars/:id", async (req, res) => {
-	const id = req.params.id;
-	try {
-		const result = await db.query("SELECT * FROM stars WHERE id = $1", [id]);
-		if (result.rows.length === 0) {
-			return res.status(404).json({ error: `Star with id ${id} not found` });
-		}
-		res.json(result.rows[0]);
-	} catch (error) {
-		logger.error(error);
-		res.status(500).json({ error: "Failed to retrieve star" });
-	}
+    const id = req.params.id;
+    try {
+        const result = await db.query(`
+            SELECT 
+                s.*, 
+                CASE WHEN COUNT(c) = 0 THEN 
+                    to_json('{}'::json[]) 
+                ELSE 
+                    to_json(ARRAY_AGG(c))
+                END AS comments
+            FROM stars AS s 
+            LEFT JOIN (
+                SELECT comments.*, users.name AS commenter
+                FROM comments 
+                INNER JOIN users 
+                on comments.user_id = users.id  
+            ) AS c
+            ON s.id = c.star_id
+            WHERE s.id = $1
+            GROUP BY s.id, s.*;
+        `, [id]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: `Star with id ${id} not found` });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (error) {
+        logger.error(error);
+        res.status(500).json({ error: "Failed to retrieve star" });
+    }
 });
 
 //  getting stars by unique id
