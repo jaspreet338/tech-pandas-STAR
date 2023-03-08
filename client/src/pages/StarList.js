@@ -35,14 +35,13 @@ const StarList = () => {
 
 	if (starSearch.trim() !== "") {
 		console.log(starSearch);
-		const searchLowerCase = starSearch.trim().toLowerCase(); // convert search input to lowercase
+
 		filteredStars = filteredStars.filter(
 			(star) =>
-			star.name.toLowerCase().includes(searchLowerCase) ||
-				star.situation.toLowerCase().includes(searchLowerCase) || // convert star properties to lowercase before comparison
-				star.task.toLowerCase().includes(searchLowerCase) ||
-				star.action.toLowerCase().includes(searchLowerCase) ||
-				star.result.toLowerCase().includes(searchLowerCase)
+				star.situation.includes(starSearch.trim()) ||
+				star.task.includes(starSearch.trim()) ||
+				star.action.includes(starSearch.trim()) ||
+				star.result.includes(starSearch.trim())
 		);
 	}
 
