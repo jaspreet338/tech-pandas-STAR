@@ -6,17 +6,17 @@ import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 
 const SingleStarPage = ({ star }) => {
-  const navigate = useNavigate();
-	const close =()=>{
-// redirect back to DASHBOARD
-navigate ("/dashboard");
+	const navigate = useNavigate();
+	const close = () => {
+		// redirect back to DASHBOARD
+		navigate("/dashboard");
 	};
-		return (
+	return (
 		<Card key={star.id} className="my-3 shadow">
 			<Card.Body>
 				<Row>
 					<Col sm={12} md={6}>
-						<Card.Title>{star.name}</Card.Title>
+						<Card.Title onClick={close}>{star.name}</Card.Title>
 						<Card.Text>
 							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
 								Situation:
@@ -49,9 +49,12 @@ navigate ("/dashboard");
 						</Card.Text>
 					</Col>
 					<Col
-						sm={12} md={6}className="d-flex justify-content-center align-items-center">
+						sm={12}
+						md={6}
+						className="d-flex justify-content-center align-items-center"
+					>
 						<Button onClick={close} className="ml-">
-						Close
+							Close
 						</Button>
 					</Col>
 				</Row>
