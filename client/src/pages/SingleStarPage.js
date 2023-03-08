@@ -16,7 +16,7 @@ navigate ("/dashboard");
 			<Card.Body>
 				<Row>
 					<Col sm={12} md={6}>
-						<Card.Title onClick={close}>{star.name}</Card.Title>
+						<Card.Title>{star.name}</Card.Title>
 						<Card.Text>
 							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
 								Situation:

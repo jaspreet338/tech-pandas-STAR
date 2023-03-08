@@ -1,41 +1,95 @@
 
+.main{
+	width: auto;
+	height: auto;
+	background-color: #fff;
+	justify-content: center;
+	align-items: center;
+	/* margin-top: 1%; */
+}
 
-ul {
-display: grid;
-  grid-template-rows: auto;
-  text-align: start;
-  padding: 0.8em;
-  margin: 0.8em;
-  border-radius: 15px;
-  border-style: groove;
-  box-shadow: -4px 4px 15px 2px rgb(136, 156, 238);
-  list-style: none;
-  font-size: 1.3rem;
+.login_wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-top: 3%;
+}
+
+
+
+.login_git{
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	float: right;
+	font-size: 4em; 
+	justify-content: center;
+	align-items: center; 
+	width: 30%;
+	height: 500px;
+	border-style: solid;
+	border-width: 1.6px;
+	padding: 50px;
+}
+
+.login_git h1{
+	font-size: 0.74em;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.header{
+	font-size: 0.72em;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.star_wrapper{
+	float: left;
+	/* position: relative; */
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 500px;
+	height: 400px;
+	/* padding: 50px; */
+	background-image: linear-gradient(180deg, rgb(242, 205, 205), rgb(236, 162, 149));
+	box-shadow: 0 0 81px 100px white inset;
+}
+
+.star_article{
+	text-align: center;
+	margin-top: 100px;
+}
+
+/* .star_article h1 {
+	text-align: center;
+	font-size: 4em;
+	margin-left: 30px;
+	margin-top: 100px;
+	margin-bottom: 20px;
+} */
+
+.star_article h3 {
+	text-align: left;
+	margin-left: 162px;
+	font-size: 2.5em;
+} 
+
+.cyf-logo{
+	margin:20px;
+	width: 20%;
+	height: 10%;
 
 }
 
-.header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 80px;
-	padding: 0 2rem;
-	background-color: #29335c;
-	font-size: 30px;
+.link{
+	text-decoration: none;
 	
 }
 
-.nav a {
-	margin: 0 2rem;
-	color: rosybrown;
-	text-decoration: none;
-}
-
-.btn-out {
-	border: none;
-	background-color: red; 
-	padding: 10px;
-	border-radius: 10px;
-	cursor: pointer;
-	/* margin-bottom: 1rem; */
+.git_btn{
+	margin-left: 50px;
 }
