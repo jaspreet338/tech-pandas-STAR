@@ -25,6 +25,7 @@ router.get("/stars", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
+
 //  Getting star by id
 
 router.get("/stars/:id", async (req, res) => {
@@ -116,10 +117,12 @@ router.post("/stars", async (req, res) => {
 
 router.post("/stars/:id/comments", async (req, res) => {
 	const { comment } = req.body;
+
 	// Check if comment is provided
 	if (!comment) {
 		return res.status(400).json({ error: "Missing comment field!" });
 	}
+
 	const starId = req.params.id;
 	try {
 		// Check if the star exists
@@ -130,14 +133,18 @@ router.post("/stars/:id/comments", async (req, res) => {
 		if (!star) {
 			return res.status(404).json({ error: "Star not found" });
 		}
+
 		// Retrieve all user IDs from the users table
 		const { rows: users } = await db.query("SELECT id FROM users");
+
 		// Check if any users were found
 		if (users.length === 0) {
 			return res.status(404).json({ error: "No users found" });
 		}
+
 		// Randomly select a user ID from the available ones
 		const randomUserId = users[Math.floor(Math.random() * users.length)].id;
+
 		// Insert the comment into the database
 		await db.query(
 			"INSERT INTO comments (star_id, user_id, comment) VALUES ($1, $2, $3)",
