@@ -9,6 +9,27 @@ const StarList = () => {
 	const [loading, setLoading] = useState(true);
 	const [userSearch, setUserSearch] = useState("");
 	const [starSearch, setStarSearch] = useState("");
+	const [comments, setComments] = useState(null);
+
+	useEffect(() => {
+		fetch("/api/comments")
+			.then((res) => {
+				if (res.status === 500) {
+					throw new Error(res.status);
+				} else {
+					return res.json();
+				}
+			})
+			.then((data) => {
+				console.log(data);
+				setComments(data);
+				setLoading(false);
+			})
+			.catch((err) => {
+				setComments(null);
+				setError(err);
+			});
+	}, [comments]);
 
 	useEffect(() => {
 		if (stars === null) {
@@ -57,10 +78,14 @@ const StarList = () => {
 				{loading && <span>Loading, please wait until stars loads...</span>}
 				{error && <span>{"There is a problem fetching the  data "}</span>}
 				{filteredStars.map((star) => (
-						<li id="list-item" key={star.id}>
-							<SingleStar star={star} setStars={setStars} />
-						</li>
-					))}
+					<li id="list-item" key={star.id}>
+						<SingleStar
+							star={star}
+							setStars={setStars}
+							comments={comments}
+						/>
+					</li>
+				))}
 			</ul>
 		</div>
 	);
