@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
 
 const SingleStar = ({ star, setStars }) => {
   const [editing, setEditing] = useState(false);
@@ -46,6 +47,14 @@ const SingleStar = ({ star, setStars }) => {
               </span>{" "}
               {star.description}
             </Card.Text>
+            <Card.Text>
+							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+								Comment:
+							</span>{" "}
+							<Badge pill bg="success">
+								{star.comment_count}
+							</Badge>{" "}
+						</Card.Text>
           </Col>
           <Col sm={12} md={6} className="d-flex justify-content-center align-items-center">
             <Button onClick={() => setEditing(true)} className="ml-">
