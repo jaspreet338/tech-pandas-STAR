@@ -19,6 +19,16 @@ CREATE TABLE users (
 );
 
 
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  star_id UUID NOT NULL,
+  comment TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (star_id) REFERENCES stars(id) ON DELETE CASCADE
+);
+
 
 CREATE TABLE "session" (  "sid" varchar NOT NULL COLLATE "default",  "sess" json NOT NULL,  "expire" timestamp(6) NOT NULL)WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
