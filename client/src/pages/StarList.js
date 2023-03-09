@@ -34,14 +34,15 @@ const StarList = () => {
 	let filteredStars = stars ? stars : [];
 
 	if (starSearch.trim() !== "") {
-		console.log(starSearch);
+       const lowerCaseSearch = starSearch.trim().toLowerCase();
 
 		filteredStars = filteredStars.filter(
 			(star) =>
-				star.situation.includes(starSearch.trim()) ||
-				star.task.includes(starSearch.trim()) ||
-				star.action.includes(starSearch.trim()) ||
-				star.result.includes(starSearch.trim())
+				star.name.toLowerCase().includes(lowerCaseSearch) ||
+				star.situation.toLowerCase().includes(lowerCaseSearch) ||
+				star.task.toLowerCase().includes(lowerCaseSearch) ||
+				star.action.toLowerCase().includes(lowerCaseSearch) ||
+				star.result.toLowerCase().includes(lowerCaseSearch)
 		);
 	}
 
