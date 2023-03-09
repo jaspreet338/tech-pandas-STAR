@@ -1,86 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
-import Badge from "react-bootstrap/Badge";
+import CommentList from "./CommentList";
 
-const SingleStar = ({ star, setStars }) => {
-	const [editing, setEditing] = useState(false);
-	const refreshStars = (refresh) => {
-		if (refresh) {
-			setStars(null);
-		}
-		setEditing(null);
-	};
-	return (
-		<Card key={star.id} className="my-3 shadow">
-			<Card.Body>
-				<Row>
-					<Col sm={12} md={6}>
-						<Link to={`/star/${star.id}`}>
-							<Card.Title>{star.name}</Card.Title>
-						</Link>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Situation:
-							</span>{" "}
-							{star.situation}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Task:
-							</span>{" "}
-							{star.task}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Action:
-							</span>{" "}
-							{star.action}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Result:
-							</span>{" "}
-							{star.result}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Description:
-							</span>{" "}
-							{star.description}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Comment:
-							</span>{" "}
-							<Badge pill bg="success">
-								{star.comment_count}
-							</Badge>{" "}
-						</Card.Text>
-					</Col>
+const SingleStarView = () => {
+  const [editing, setEditing] = useState(false);
+  const [star, setStar] = useState(null);
+  const { id } = useParams();
 
-					<Col
-						sm={12}
-						md={6}
-						className="d-flex justify-content-center align-items-center"
-					>
-						<Button onClick={() => setEditing(true)} className="ml-">
-							Edit STAR
-						</Button>
-						<EditForm
-							active={editing}
-							star={star}
-							refreshStars={refreshStars}
-						/>
-					</Col>
-				</Row>
-			</Card.Body>
-		</Card>
-	);
+  const refreshStars = (refresh) => {
+    if (refresh) {
+      setStar(null);
+    }
+    setEditing(false);
+  };
+
+  useEffect(() => {
+    const fetchStarData = async () => {
+      try {
+        const response = await fetch(`/api/stars/${id}`);
+        const data = await response.json();
+        setStar(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchStarData();
+  }, [id]);
+
+  return (
+    <div className="container my-4">
+      {star && (
+        <Card key={star.id} className="shadow">
+          <Card.Body>
+            <Row>
+              <Col sm={12} md={6}>
+                <Card.Title>{star.name}</Card.Title>
+                <Card.Text className="mb-3">
+                  <span className="font-weight-bold">Situation: </span>
+                  {star.situation}
+                </Card.Text>
+                <Card.Text className="mb-3">
+                  <span className="font-weight-bold">Task: </span>
+                  {star.task}
+                </Card.Text>
+                <Card.Text className="mb-3">
+                  <span className="font-weight-bold">Action: </span>
+                  {star.action}
+                </Card.Text>
+                <Card.Text className="mb-3">
+                  <span className="font-weight-bold">Result: </span>
+                  {star.result}
+                </Card.Text>
+                <Card.Text className="mb-3">
+                  <span className="font-weight-bold">Description: </span>
+                  {star.description}
+                </Card.Text>
+                <CommentList comments={star.comments} />
+              </Col>
+              <Col sm={12} md={6} className="d-flex flex-column">
+                <div className="mb-3">
+                  <Button onClick={() => setEditing(true)}>Edit STAR</Button>
+                </div>
+                <EditForm active={editing} star={star} refreshStars={refreshStars} />
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      )}
+    </div>
+  );
 };
 
-export default SingleStar;
+export default SingleStarView;
