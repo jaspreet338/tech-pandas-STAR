@@ -46,29 +46,15 @@ function RegisterForm() {
 			});
 	}
 	return (
-		<div className="wrapper">
-			<div className="image">
-				<img
-					src="https://tinyurl.com/2pa3jyxu"
-					alt="logo"
-					className="cyf-img"
-				/>
-			</div>
-			<div
-				className="p-4 m-4"
-				style={{
-					width: "500px",
-					borderRadius: "25px",
-					borderStyle: "groove",
-					height: "85vh",
-				}}
-			>
-				<Form style={{ backgroundImage: 'url("./cyf_brand.png")' }}>
-					<h1>Register Here</h1>
-					<Form.Group>
-						<Form.Label className="form_label">Username </Form.Label>
-						<Form.Control
-							type="text"
+		<div>
+			<div className="form-container">
+				<h1>Register Here</h1>
+				<div className="form-body">
+					<div>
+						<label className="form_label" htmlFor="name">
+							Username
+						</label>
+						<input
 							className="form_input"
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}

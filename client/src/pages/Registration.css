@@ -1,84 +1,54 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
- 
- .form-container {
     
-  border-radius: 25px;
-  border-style:groove;
-  height: 85vh;
-  /* width: 70vh; */
-    background-color: white;
-    border-radius: 5px;
-    width: 550px;
-    margin: 20px auto;
-    padding: 20px;
+    background: #bdc3c7; 
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); 
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
 }
 
 h1 {
-    text-decoration: solid;
-    color:blue
+	text-decoration: solid;
+	color: blue;
 }
 .form-body {
-    text-align: left;
-    padding: 20px 10px;
-    margin-top: 2.5rem ;
+	text-align: left;
+	padding: 20px 10px;
+	margin-top: 2.5rem;
 }
 
-.form-body > *{
-    padding: 5px;
+.form-body > * {
+	padding: 5px;
 }
 
-.cyf-img {
-    float: left;
-    height:250px;
-    width:760px;
-    margin-right: 200px;
-    margin-bottom: 150px;
-    
-}
-
-.p-4 m-4 {
- float: right;
- 
- 
-}
-.wrapper {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-   
-    
-
-}
 
 .form_label {
-text-align: left;
-padding: 0.25rem 0;
+/* text-align: left;
+padding: 0.25rem 0; */
 width: 40%;
 font-size: 25px;
 }
 
- .form_input {
+.form_input {
 	margin:0.5rem, 0;
+	padding: 1rem;
+	border-radius: 10px;
+    width: 60%;
+    margin-left: 2rem;
+}
+select {
+	margin: 0.5rem, 0;
 	padding: 1rem;
 	/* border: none; */
 	border-radius: 10px;
-    width: 90%;
-    margin-left: 0.5rem;
-   
-} 
-
-select {
-    margin:0.5rem, 0;
-	padding: 1rem;
-	/* border: none; 
-	border-radius: 10px;
     width: 60%;
-    margin-left: 2rem;*/
-}  
+    margin-left: 2rem;
+}
 
 Button {
 	margin-top: 1rem;
@@ -87,13 +57,11 @@ Button {
 	border-radius: 10px;
 	cursor: pointer;
     
-    
 }
 .btn {
 	background: none;
-	color: white;
-    background-color: blue;
-    
-   
-
+	color: blue;
+   font-size: 25px;
+   text-decoration: underline; 
+	
 }
