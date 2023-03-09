@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Link } from "react-router-dom";
 
 const SingleStar = ({ star, setStars }) => {
   const [editing, setEditing] = useState(false);
@@ -18,7 +19,9 @@ const SingleStar = ({ star, setStars }) => {
       <Card.Body>
         <Row>
           <Col sm={12} md={6}>
-            <Card.Title>{star.name}</Card.Title>
+          <Link to={`/star/${star.id}`}>
+							<Card.Title>{star.name}</Card.Title>
+						</Link>
             <Card.Text>
               <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
                 Situation:
