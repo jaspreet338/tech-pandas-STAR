@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 
-const DeleteBtn = ({ star , setStars , refreshStars }) => {
+const DeleteBtn = ({ star , refreshStars }) => {
 
 
 	function removeStar(index) {

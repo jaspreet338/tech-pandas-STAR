@@ -91,4 +91,4 @@ const SingleStar = ({ star, setStars }) => {
 	);
 };
 
-export default SingleStar;
+ export default SingleStar;
