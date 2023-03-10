@@ -3,11 +3,10 @@ import SingleStar from "./SingleStar";
 import AddForm from "./AddForm";
 import Search from "./Search";
 
-const StarList = ({ user } ) => {
+const StarList = ({ user }) => {
 	const [stars, setStars] = useState(null);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
-	const [userSearch, setUserSearch] = useState("");
 	const [starSearch, setStarSearch] = useState("");
 	const [comments, setComments] = useState(null);
 
@@ -54,18 +53,18 @@ const StarList = ({ user } ) => {
 		}
 	}, [stars]);
 	let filteredStars = stars ? stars : [];
-	if (userSearch.trim() !== "") {
-		filteredStars = filteredStars.filter((star) =>
-			star.name.includes(userSearch.trim())
-		);
-	}
+
 	if (starSearch.trim() !== "") {
+       const lowerCaseSearch = starSearch.trim().toLowerCase();
+
 		filteredStars = filteredStars.filter(
 			(star) =>
-				star.situation.includes(starSearch.trim()) ||
-				star.task.includes(starSearch.trim()) ||
-				star.action.includes(starSearch.trim()) ||
-				star.result.includes(starSearch.trim())
+				star.name.toLowerCase().includes(lowerCaseSearch) ||
+				star.situation.toLowerCase().includes(lowerCaseSearch) ||
+				star.task.toLowerCase().includes(lowerCaseSearch) ||
+				star.action.toLowerCase().includes(lowerCaseSearch) ||
+				star.result.toLowerCase().includes(lowerCaseSearch) ||
+				star.description.toLowerCase().includes(lowerCaseSearch)
 		);
 	}
 	return (
@@ -74,8 +73,8 @@ const StarList = ({ user } ) => {
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
 					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
-					<Search setSearch={setStarSearch} placeholder="filter stars" />
-					<ul>
+					<Search updateFilter={setStarSearch} placeholder="search stars" />
+					<ul className="list-group">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
@@ -88,8 +87,8 @@ const StarList = ({ user } ) => {
 			) : (
 				<>
 					<AddForm setStars={setStars} />
-					<Search setSearch={setStarSearch} placeholder="filter stars" />
-					<ul>
+					<Search updateFilter={setStarSearch} placeholder="search stars" />
+					<ul className="list-group">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
