@@ -7,14 +7,12 @@ function CommentList({ comments, refreshStar }) {
 		<>
 			{Array.isArray(comments) && comments.length > 0 && (
 				<ListGroup className="mt-3">
-					{comments.map((comment, index) => (
-					<li id="list-item" key={index}>
-						<SingleComment
-							key={comment.id}
-							comment={comment}
-							refreshStar={refreshStar}
-						/>
-					</li>
+					{comments.map((comment) => (
+							<SingleComment
+								key={comment.id}
+								comment={comment}
+								refreshStar={refreshStar}
+							/>
 					))}
 				</ListGroup>
 			)}
