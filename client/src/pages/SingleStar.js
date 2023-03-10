@@ -51,28 +51,20 @@ const SingleStar = ({ user, star, setStars }) => {
               {star.description}
             </Card.Text>
             <Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Comment:
-							</span>{" "}
-							<Badge pill bg="success">
-								{star.comment_count}
-							</Badge>{" "}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Comment:
-							</span>{" "}
-							<Badge pill bg="success">
-								{star.comment_count}
-							</Badge>{" "}
-						</Card.Text>
-					</Col>
-					<Col
-						sm={12}
-						md={6}
-						className="d-flex justify-content-center align-items-center"
-					>
-						{user.role === "TA" || user.role === "mentor" ? null : (
+				<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+					Comment:
+				</span>{" "}
+				<Badge pill bg="success">
+					{star.comment_count}
+				</Badge>{" "}
+			</Card.Text>
+			</Col>
+			<Col
+			sm={12}
+			md={6}
+			className="d-flex justify-content-center align-items-center"
+		>
+			{user.role === "TA" || user.role === "mentor" ? null : (
 							<>
             <Button onClick={() => setEditing(true)} className="ml-">
               Edit STAR
