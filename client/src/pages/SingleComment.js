@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import EditComment from "./Component/EditComment";
 
-function SingleComment({ comment, refreshStar }) {
+function SingleComment({ comment, refreshStar, user }) {
 	const [editing, setEditing] = useState(false);
 
 	const refreshComment = (refresh) => {
@@ -20,6 +20,8 @@ function SingleComment({ comment, refreshStar }) {
 					{comment.commenter} {comment.created_at}
 				</Card.Subtitle>
 				<Card.Text>{comment.comment}</Card.Text>
+				{user.role === "TA" || user.role === "mentor" ? (
+				<>
 				<div className="mb-3">
 					<Button onClick={() => setEditing(true)}>Edit Comment</Button>
 				</div>
@@ -28,6 +30,9 @@ function SingleComment({ comment, refreshStar }) {
 					active={editing}
 					refreshComment={refreshComment}
 				/>
+				</>
+				) : null
+				}
 			</Card>
 		</div>
 	);
