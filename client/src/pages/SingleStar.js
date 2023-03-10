@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 
-const SingleStar = ({ star, setStars }) => {
+const SingleStar = ({ user, star, setStars }) => {
   const [editing, setEditing] = useState(false);
   const refreshStars = (refresh) => {
     if (refresh) {
@@ -15,6 +15,9 @@ const SingleStar = ({ star, setStars }) => {
     }
     setEditing(null);
   };
+
+
+
   return (
     <Card key={star.id} className="my-3 shadow">
       <Card.Body>
@@ -57,10 +60,14 @@ const SingleStar = ({ star, setStars }) => {
 						</Card.Text>
           </Col>
           <Col sm={12} md={6} className="d-flex justify-content-center align-items-center">
+            {user.role === "TA" || user.role === "mentor" ? null : (
+							<>
             <Button onClick={() => setEditing(true)} className="ml-">
               Edit STAR
             </Button>
             <EditForm active={editing} star={star} refreshStars={refreshStars} />
+            </>
+            )}
           </Col>
         </Row>
       </Card.Body>
@@ -68,4 +75,4 @@ const SingleStar = ({ star, setStars }) => {
   );
 };
 
-export default SingleStar;
+ export default SingleStar;
