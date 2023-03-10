@@ -1,3 +1,10 @@
+
+body {
+    margin :0;
+    padding: 0;
+    border :0;
+
+}
 .head {
     text-align: center;
     text-decoration: underline  #ee4434;
@@ -40,6 +47,10 @@
     justify-content: center;
     gap: 75px;
     margin-top: 30px;
+    
+}
+.app{
+    margin-left: 40px;
 }
 
  h3 {
@@ -74,5 +85,6 @@
     background-color: #ee4434;
     width: 150px;
     height: 60px;
+    margin-bottom: 100px;
 
    }

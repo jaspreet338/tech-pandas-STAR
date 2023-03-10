@@ -52,8 +52,8 @@ const About = () => (
 				></iframe>
 			</section>
 
-			<div>
-				<p>
+			<div className="app">
+				<p >
 					This app ensures that does not happen. You can track what you have
 					learned, even if it is not aligned with your goals, it is good to see
 					the extra tasks you did and what you learned from that.
@@ -64,7 +64,7 @@ const About = () => (
 				</p>
 				<p>
 					Please watch this video by Gargi Sharma where she discusses the
-					importance of "bragging" about yourself and celebrating your
+					importance of  &quot; bragging&quot;  about yourself and celebrating your
 					achievements.
 				</p>
 			</div>
@@ -80,7 +80,7 @@ const About = () => (
 				Comment section.
 			</p>
 			<Link to="/dashboard">
-				<button className="start">Let's Start</button>{" "}
+				<button className="start">Let&apos;s Start</button>{" "}
 			</Link>
 		</div>
 	</div>
