@@ -54,7 +54,7 @@ const StarList = ({ user } ) => {
 				<>
 					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
 					<Search setSearch={setStarSearch} placeholder="filter stars" />
-					<ul>
+					<ul className="list-group">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
@@ -68,7 +68,7 @@ const StarList = ({ user } ) => {
 				<>
 					<AddForm setStars={setStars} />
 					<Search setSearch={setStarSearch} placeholder="filter stars" />
-					<ul>
+					<ul className="list-group">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
