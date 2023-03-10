@@ -37,7 +37,7 @@ const EditComment = ({
 				console.log("Comment updated successfully");
 				refreshComment(true);
 			} else {
-				console.error("Failed to update comment");
+				console.error("Failed to edit comment");
 			}
 		} catch (error) {
 			console.error("Network error:", error);
