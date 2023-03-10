@@ -15,7 +15,7 @@ const  Dashboard = () => {
 			<Navbar />
 			<h1>Hello {user.name} ({user.role})</h1>
 
-			<StarList />
+			<StarList user={user} />
 		</div>
 	);
 };
