@@ -1,0 +1,78 @@
+.head {
+    text-align: center;
+    text-decoration: underline  #ee4434;
+    color: black;
+    margin-top: 25px;
+}
+
+.STAR {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px;
+    text-align: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+
+}
+
+.situation, .action {
+    background-color: #ee4434;
+}
+
+.situation h4, .action h4 {
+    color: white;
+}
+
+.task, .result {
+    background-color: #f3f3f3;
+}
+
+.about {
+    background-color: #f3f3f3;
+    margin-top: 40px;
+   
+}
+
+.video {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    text-align: center;
+    justify-content: center;
+    gap: 75px;
+    margin-top: 30px;
+}
+
+ h3 {
+    text-align: center;
+   
+}
+
+.concept {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.use h3 {
+    text-decoration: underline  #ee4434;
+}
+
+.use {
+    text-align: center;
+    
+}
+
+.use p {
+    display: grid;
+    grid-template-columns: 650px; 
+    text-align: center;
+    justify-content: center;
+
+}
+
+.start {
+    background-color: #ee4434;
+    width: 150px;
+    height: 60px;
+
+   }
