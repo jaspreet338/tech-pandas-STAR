@@ -11,7 +11,7 @@ const App = () => (
 		<Route path="/about/this/site" element={<About />} />
 		<Route path="/dashboard" element={<Dashboard />} />
 		<Route path="/register" element={<RegisterForm />} />
-		<Route path="/star/:id" element={ <SingleStarPage />} />
+		<Route path="/star/star:id" element={ <SingleStarPage />} />
 	</Routes>
 );
 export default App;
