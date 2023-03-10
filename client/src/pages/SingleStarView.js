@@ -74,6 +74,7 @@ const SingleStarView = () => {
 								<CommentList
 									comments={star.comments}
 									refreshStar={refreshStars}
+									user={user}
 								/>
 							</Col>
 							{user.role === "TA" || user.role === "mentor" ? (
