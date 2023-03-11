@@ -1,42 +1,10 @@
-/* 
-.main{
-	width: auto;
-	height: auto;
-	background-color: #fff;
-	justify-content: center;
-	align-items: center;
-}
-
-
-
-.header{
-	font-size: 0.72em;
-	margin-top: 60px;
-	text-align: center;
-}
-
-
-
-.star_article{
-	text-align: center;
-	margin-top: 100px;
-}
-
-
-
-
-
-}
-
-
-
-*/
-
 
 .main-login{
 	width: 100%;
 	height: 800px;
-	background: url("http://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80") no-repeat center center fixed;
+	background-image: url("./greg-rakozy-oMpAz-DN-9I-unsplash.jpeg");
+	background-repeat: no-repeat;
+    background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -54,7 +22,8 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	margin-top: 3%;
+	margin-top: 7%;
+	margin-right: 15%;
 }
 
 .login_git {
@@ -70,7 +39,6 @@
 	background-color: #fff;
 	opacity: 0.8;
 	margin-bottom: 100px;
-	margin-left: 600px;
 	border: none;
 	box-shadow: 0 0 5px 5px rgb(232, 229, 229);
 }
@@ -123,7 +91,7 @@
 	font-size: 40px;
 	font-style: italic;
 	text-align: center;
-	color: #fff;
+	color: rgb(18, 16, 16);
 	margin-left: 182px;
 	width: 500px;
 	height: 400px;
