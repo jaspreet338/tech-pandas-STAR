@@ -7,7 +7,7 @@ const About = () => (
 		<h1 className="head">What is STAR?</h1>
 		<article className="STAR">
 			<section className="situation">
-				<h4 className="section-h4">Situation</h4>
+				<h4 className="situation-h4">Situation</h4>
 				<p>Set the scene and give the necessary details of your example.</p>
 			</section>
 			<section className="task">
