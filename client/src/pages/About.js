@@ -7,19 +7,19 @@ const About = () => (
 		<h1 className="head">What is STAR?</h1>
 		<article className="STAR">
 			<section className="situation">
-				<h4>Situation</h4>
+				<h4 className="section-h4">Situation</h4>
 				<p>Set the scene and give the necessary details of your example.</p>
 			</section>
 			<section className="task">
-				<h4>Task</h4>
+				<h4 className="task-h4">Task</h4>
 				<p>Describe what your responsibility was in that situation.</p>
 			</section>
 			<section className="action">
-				<h4>Actions</h4>
+				<h4 className="action-h4">Actions</h4>
 				<p>Explain exactly what steps you took to address it.</p>
 			</section>
 			<section className="result">
-				<h4>Result</h4>
+				<h4 className="result-h4">Result</h4>
 				<p>Share what outcomes your actions achieved.</p>
 			</section>
 		</article>
@@ -53,7 +53,7 @@ const About = () => (
 			</section>
 
 			<div className="div-concept">
-				<p>
+				<div>
 					This app ensures that does not happen. You can track what you have
 					learned, even if it is not aligned with your goals, it is good to see
 					the extra tasks you did and what you learned from that.
@@ -62,7 +62,7 @@ const About = () => (
 						Do not forget any invisible work, i.e extra hours spent on learning
 						a new concept.
 					</p>
-				</p>
+				</div>
 				<br />
 				<p>
 					* Please watch this video by Gargi Sharma where she discusses the
@@ -73,13 +73,12 @@ const About = () => (
 		</article>
 
 		<div className="use">
-			<h3>How to use the STAR APP</h3>
-			<p>
-				Add your Stars by filling out the form.
-				Once you filled it in if you want you can easily make changes by clicking the Edit button and saving
-				it.
-				You can also search for your Stars by using the Search filled.
-				If there are any comments from your TA or Mentor you can find them in the
+			<h3 className="use-h3">How to use the STAR APP</h3>
+			<p className="use-p">
+				Add your Stars by filling out the form. Once you filled it in if you
+				want you can easily make changes by clicking the Edit button and saving
+				it. You can also search for your Stars by using the Search filled. If
+				there are any comments from your TA or Mentor you can find them in the
 				Comment section.
 			</p>
 			<Link to="/dashboard">
