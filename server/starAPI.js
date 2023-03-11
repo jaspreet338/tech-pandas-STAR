@@ -11,12 +11,12 @@ router.get("/stars", async (req, res) => {
 		let result;
 		if (user.role === "student") {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id",
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id ORDER BY s.favourite DESC",
 				[user.id]
 			);
 		} else {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id"
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id ORDER BY s.favourite DESC"
 			);
 		}
 		res.json(result.rows);
@@ -25,7 +25,6 @@ router.get("/stars", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
 //  Getting star by id
 
 router.get("/stars/:id", async (req, res) => {
@@ -256,5 +255,27 @@ router.put("/stars/:starId/comments/:commentId", async (req, res) => {
         res.status(500).json({ error: "Failed to update comment" });
     }
 });
+// PUT /stars/:id/favourite
+router.patch("/stars/:id/favourite", async (req, res) => {
+	const { id } = req.params;
+	const { favourite } = req.body;
+
+	try {
+		const star = await db.query(
+			"UPDATE stars SET favourite = $1 WHERE id = $2 RETURNING *",
+			[favourite, id]
+		);
+		res
+			.status(200)
+			.json({ message: "STAR favourite status updated", star: star.rows[0] });
+	} catch (err) {
+		logger.error(err);
+		// switch the favourite status back to false
+		const star = { ...req.body, id };
+		star.favourite = false;
+		res.status(500).json({ error: "Something went wrong", star });
+	}
+});
+
 
 export default router;
