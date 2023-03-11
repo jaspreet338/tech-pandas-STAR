@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./About.css";
 
 const About = () => (
-	<div>
+	<div className="about-wrapper">
 		<h1 className="head">What is STAR?</h1>
 		<article className="STAR">
 			<section className="situation">
@@ -25,9 +25,9 @@ const About = () => (
 		</article>
 
 		<article className="about">
-			<h3>About the App</h3>
+			<h3 className="about-h3">About the App</h3>
 			<section className="video">
-				<p>
+				<p className="about-p">
 					This app is an opportunity for you to record your growth and the
 					skills you pick up so that when you create your CV/resume and start
 					applying for jobs, you can see how far you have come and what you have
@@ -52,18 +52,20 @@ const About = () => (
 				></iframe>
 			</section>
 
-			<div>
+			<div className="div-concept">
 				<p>
 					This app ensures that does not happen. You can track what you have
 					learned, even if it is not aligned with your goals, it is good to see
 					the extra tasks you did and what you learned from that.
 					<p className="concept">
+						<br />
 						Do not forget any invisible work, i.e extra hours spent on learning
 						a new concept.
 					</p>
 				</p>
+				<br />
 				<p>
-					Please watch this video by Gargi Sharma where she discusses the
+					* Please watch this video by Gargi Sharma where she discusses the
 					importance of "bragging" about yourself and celebrating your
 					achievements.
 				</p>
@@ -73,14 +75,15 @@ const About = () => (
 		<div className="use">
 			<h3>How to use the STAR APP</h3>
 			<p>
-				Add your Stars by filling out the form. Once you filled it in if you
-				want you can easily make changes by clicking the Edit button and saving
-				it. You can also search for your Stars by using the Search filled. If
-				there are any comments from your TA or Mentor you can find them in the
+				Add your Stars by filling out the form.
+				Once you filled it in if you want you can easily make changes by clicking the Edit button and saving
+				it.
+				You can also search for your Stars by using the Search filled.
+				If there are any comments from your TA or Mentor you can find them in the
 				Comment section.
 			</p>
 			<Link to="/dashboard">
-				<button className="start">Let's Start</button>{" "}
+				<button className="heartbeat">Let's Start</button>{" "}
 			</Link>
 		</div>
 	</div>
