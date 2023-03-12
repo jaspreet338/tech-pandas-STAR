@@ -87,22 +87,22 @@ router.post("/stars", async (req, res) => {
 	const { name, description, situation, task, action, result } = req.body;
 
 	// Check if all required fields are provided
-	if (!name || !description || !situation ||!task ||!action ||!result) {
+	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Missing required fields!" });
 	}
 
-	try {
-		const { rows: users } = await db.query("SELECT id FROM users");
-		if (users.length === 0) {
-			return res.status(404).json({ error: "No users found" });
-		}
+	// Check if user is authenticated
+	if (!req.session.user || !req.session.user.id) {
+		return res.status(401).json({ error: "Not authenticated" });
+	}
 
-		// Randomly select a user ID from the available ones
-		const userId = users[Math.floor(Math.random() * users.length)].id;
+	try {
+		// Use userId from session object
+		const user_id = req.session.user.id;
 
 		await db.query(
 			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-			[name, description, userId, situation, task, action, result]
+			[name, description, user_id, situation, task, action, result]
 		);
 		res.status(201).send();
 	} catch (error) {
@@ -111,18 +111,17 @@ router.post("/stars", async (req, res) => {
 	}
 });
 
-
 // Adding comments to the database
 
 router.post("/stars/:id/comments", async (req, res) => {
 	const { comment } = req.body;
+	const starId = req.params.id;
 
 	// Check if comment is provided
 	if (!comment) {
 		return res.status(400).json({ error: "Missing comment field!" });
 	}
 
-	const starId = req.params.id;
 	try {
 		// Check if the star exists
 		const starResult = await db.query("SELECT * FROM stars WHERE id = $1", [
@@ -133,21 +132,18 @@ router.post("/stars/:id/comments", async (req, res) => {
 			return res.status(404).json({ error: "Star not found" });
 		}
 
-		// Retrieve all user IDs from the users table
-		const { rows: users } = await db.query("SELECT id FROM users");
-
-		// Check if any users were found
-		if (users.length === 0) {
-			return res.status(404).json({ error: "No users found" });
+		// Check if user is authenticated
+		if (!req.session.user || !req.session.user.id) {
+			return res.status(401).json({ error: "Not authenticated" });
 		}
 
-		// Randomly select a user ID from the available ones
-		const randomUserId = users[Math.floor(Math.random() * users.length)].id;
+		// Retrieve the authenticated user ID from the session object
+		const user_id = req.session.user.id;
 
 		// Insert the comment into the database
 		await db.query(
 			"INSERT INTO comments (star_id, user_id, comment) VALUES ($1, $2, $3)",
-			[starId, randomUserId, comment]
+			[starId, user_id, comment]
 		);
 		res.status(201).json({ message: "Comment successfully added" });
 	} catch (error) {
@@ -155,6 +151,7 @@ router.post("/stars/:id/comments", async (req, res) => {
 		res.status(500).json({ error: "Failed to add comment" });
 	}
 });
+
 
 //   deleting star from the database by id
 
