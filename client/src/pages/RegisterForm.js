@@ -39,7 +39,7 @@ function RegisterForm() {
 		})
 			.then((response) => response.json())
 			.then(() => {
-				return navigate("/dashboard");
+				return navigate("/about");
 			})
 			.catch((error) => {
 				console.warn(error);

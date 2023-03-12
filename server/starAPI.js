@@ -9,12 +9,12 @@ router.get("/stars", async (req, res) => {
 		let result;
 		if (user.role === "student") {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id",
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id ORDER BY s.favourite DESC",
 				[user.id]
 			);
 		} else {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id"
+				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id ORDER BY s.favourite DESC"
 			);
 		}
 		res.json(result.rows);
@@ -23,7 +23,6 @@ router.get("/stars", async (req, res) => {
 		res.status(500).json(error);
 	}
 });
-
 //  Getting star by id
 router.get("/stars/:id", async (req, res) => {
     const id = req.params.id;
@@ -80,9 +79,10 @@ router.get("/users/:id/stars", async (req, res) => {
 router.post("/stars", async (req, res) => {
 	const { name, description, situation, task, action, result } = req.body;
 	// Check if all required fields are provided
-	if (!name || !description || !situation ||!task ||!action ||!result) {
+	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Missing required fields!" });
 	}
+<<<<<<< HEAD
 	try {
 		const { rows: users } = await db.query("SELECT id FROM users");
 		if (users.length === 0) {
@@ -90,9 +90,21 @@ router.post("/stars", async (req, res) => {
 		}
 		// Randomly select a user ID from the available ones
 		const userId = users[Math.floor(Math.random() * users.length)].id;
+=======
+
+	// Check if user is authenticated
+	if (!req.session.user || !req.session.user.id) {
+		return res.status(401).json({ error: "Not authenticated" });
+	}
+
+	try {
+		// Use userId from session object
+		const user_id = req.session.user.id;
+
+>>>>>>> main
 		await db.query(
 			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-			[name, description, userId, situation, task, action, result]
+			[name, description, user_id, situation, task, action, result]
 		);
 		res.status(201).send();
 	} catch (error) {
@@ -101,18 +113,17 @@ router.post("/stars", async (req, res) => {
 	}
 });
 
-
 // Adding comments to the database
 
 router.post("/stars/:id/comments", async (req, res) => {
 	const { comment } = req.body;
+	const starId = req.params.id;
 
 	// Check if comment is provided
 	if (!comment) {
 		return res.status(400).json({ error: "Missing comment field!" });
 	}
 
-	const starId = req.params.id;
 	try {
 		// Check if the star exists
 		const starResult = await db.query("SELECT * FROM stars WHERE id = $1", [
@@ -123,21 +134,18 @@ router.post("/stars/:id/comments", async (req, res) => {
 			return res.status(404).json({ error: "Star not found" });
 		}
 
-		// Retrieve all user IDs from the users table
-		const { rows: users } = await db.query("SELECT id FROM users");
-
-		// Check if any users were found
-		if (users.length === 0) {
-			return res.status(404).json({ error: "No users found" });
+		// Check if user is authenticated
+		if (!req.session.user || !req.session.user.id) {
+			return res.status(401).json({ error: "Not authenticated" });
 		}
 
-		// Randomly select a user ID from the available ones
-		const randomUserId = users[Math.floor(Math.random() * users.length)].id;
+		// Retrieve the authenticated user ID from the session object
+		const user_id = req.session.user.id;
 
 		// Insert the comment into the database
 		await db.query(
 			"INSERT INTO comments (star_id, user_id, comment) VALUES ($1, $2, $3)",
-			[starId, randomUserId, comment]
+			[starId, user_id, comment]
 		);
 		res.status(201).json({ message: "Comment successfully added" });
 	} catch (error) {
@@ -145,6 +153,7 @@ router.post("/stars/:id/comments", async (req, res) => {
 		res.status(500).json({ error: "Failed to add comment" });
 	}
 });
+
 
 //   deleting star from the database by id
 
@@ -237,5 +246,27 @@ router.put("/stars/:starId/comments/:commentId", async (req, res) => {
         res.status(500).json({ error: "Failed to update comment" });
     }
 });
+// PUT /stars/:id/favourite
+router.patch("/stars/:id/favourite", async (req, res) => {
+	const { id } = req.params;
+	const { favourite } = req.body;
+
+	try {
+		const star = await db.query(
+			"UPDATE stars SET favourite = $1 WHERE id = $2 RETURNING *",
+			[favourite, id]
+		);
+		res
+			.status(200)
+			.json({ message: "STAR favourite status updated", star: star.rows[0] });
+	} catch (err) {
+		logger.error(err);
+		// switch the favourite status back to false
+		const star = { ...req.body, id };
+		star.favourite = false;
+		res.status(500).json({ error: "Something went wrong", star });
+	}
+});
+
 
 export default router;
