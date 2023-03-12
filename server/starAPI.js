@@ -82,15 +82,6 @@ router.post("/stars", async (req, res) => {
 	if (!name || !description || !situation || !task || !action || !result) {
 		return res.status(400).json({ error: "Missing required fields!" });
 	}
-<<<<<<< HEAD
-	try {
-		const { rows: users } = await db.query("SELECT id FROM users");
-		if (users.length === 0) {
-			return res.status(404).json({ error: "No users found" });
-		}
-		// Randomly select a user ID from the available ones
-		const userId = users[Math.floor(Math.random() * users.length)].id;
-=======
 
 	// Check if user is authenticated
 	if (!req.session.user || !req.session.user.id) {
@@ -101,7 +92,6 @@ router.post("/stars", async (req, res) => {
 		// Use userId from session object
 		const user_id = req.session.user.id;
 
->>>>>>> main
 		await db.query(
 			"INSERT INTO stars (name, description, user_id, situation, task, action, result) VALUES ($1, $2, $3, $4, $5, $6, $7)",
 			[name, description, user_id, situation, task, action, result]
