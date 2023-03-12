@@ -210,31 +210,32 @@ router.put("/stars/:id", async (req, res) => {
 });
 
 // Modify comments by id
-router.put("/stars/:id/comments/:commentId", async (req, res) => {
-    const { id, commentId } = req.params;
-	const { comment } = req.body;
-
-	if (!comment) {
-		return res.status(400).json({ error: "Comments are required!" });
-	}
-
-	try {
-		await db.query(
-			"UPDATE comments SET star_id = $1, comment = $2 WHERE id = $3",
-			[commentId, comment, id]
-		);
-		const queryResult = await db.query("SELECT * FROM comments WHERE id = $1", [id]);
-
-		if (queryResult.rowCount === 0) {
-			return res.status(404).json({ error: `Comment with id ${id} not found` });
-		}
-
-		res.status(200).json(queryResult.rows[0]);
-	} catch (error) {
-		logger.error(error);
-		res.status(500).json({ error: "Failed to update comment" });
-	}
-
+router.put("/stars/:starId/comments/:commentId", async (req, res) => {
+    const { starId, commentId } = req.params;
+    const { comment } = req.body;
+    try {
+        const starResult = await db.query(`
+            SELECT *
+            FROM stars
+            WHERE id = $1
+        `, [starId]);
+        if (starResult.rows.length === 0) {
+            return res.status(404).json({ error: `Star with id ${starId} not found` });
+        }
+        const result = await db.query(`
+            UPDATE comments
+            SET comment = $1
+            WHERE id = $2
+            RETURNING *
+        `, [comment, commentId]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: `Comment with id ${commentId} not found` });
+        }
+        res.json(result.rows[0]);
+    } catch (error) {
+        logger.error(error);
+        res.status(500).json({ error: "Failed to update comment" });
+    }
 });
 
 export default router;
