@@ -5,14 +5,22 @@ import Home from "./pages/Home";
 import RegisterForm from "./pages/RegisterForm";
 import SingleStarView from "./pages/SingleStarView";
 
-const App = () => (
-	<Routes>
-		<Route path="/" element={<Home />} />
-		<Route path="/about" element={<About />} />
-		<Route path="/dashboard" element={<Dashboard />} />
-		<Route path="/register" element={<RegisterForm />} />
-		<Route path="/star/:id" element={<SingleStarView />} />
-	</Routes>
-);
+const App = () => {
+
+	window.history.pushState(null, "", window.location.href);
+	window.onpopstate = function () {
+		window.history.go(1);
+	};
+
+	return (
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/about" element={<About />} />
+			<Route path="/dashboard" element={<Dashboard />} />
+			<Route path="/register" element={<RegisterForm />} />
+			<Route path="/star/:id" element={<SingleStarView />} />
+		</Routes>
+	);
+};
 
 export default App;
