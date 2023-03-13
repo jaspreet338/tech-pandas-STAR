@@ -9,12 +9,11 @@ router.get("/stars", async (req, res) => {
 		let result;
 		if (user.role === "student") {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id WHERE s.user_id = $1 GROUP BY s.id, c.user_id ORDER BY s.favourite DESC",
-				[user.id]
+				"SELECT s.*, u.name AS creator_name, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id INNER JOIN users u ON s.creator_id = u.id WHERE s.user_id = $1 GROUP BY s.id, u.name, c.user_id ORDER BY s.favourite DESC"
 			);
 		} else {
 			result = await db.query(
-				"SELECT s.*, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id GROUP BY s.id, c.user_id ORDER BY s.favourite DESC"
+				"SELECT s.*, u.name AS creator_name, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id INNER JOIN users u ON s.creator_id = u.id GROUP BY s.id, u.name, c.user_id ORDER BY s.favourite DESC"
 			);
 		}
 		res.json(result.rows);
