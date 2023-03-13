@@ -8,11 +8,11 @@ const router = Router();
 router.get("/stars", async (req, res) => {
 	const user = req.session.user;
 	const sqlA = `
-		select s.*, u.name as creator, count(c.id) as comment_count from stars as s
-		inner join users as u on s.user_id = u.id 
-		left join comments as c on s.id = c.star_id `;
+		SELECT s.*, u.name AS creator, count(c.id) AS comment_count FROM stars AS s
+		INNER JOIN users AS u ON s.user_id = u.id 
+		LEFT JOIN comments AS c ON s.id = c.star_id `;
 	const sqlB = "WHERE s.user_id = $1 ";
-	const sqlC = "group by s.id, u.name ";
+	const sqlC = "GROUP BY s.id, u.name ";
 
 
 	try {
