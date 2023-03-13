@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import FavouriteIcon from "./FavouriteIcon";
+import "./Component/Dashboard.css";
 
 const SingleStar = ({ user, star, setStars }) => {
 	const [editing, setEditing] = useState(false);
@@ -23,7 +24,7 @@ const SingleStar = ({ user, star, setStars }) => {
 				<Row>
 					<Col sm={12} md={6}>
 						<Link to={`/star/${star.id}`}>
-							<Card.Title>{star.name}</Card.Title>
+							<Card.Title className="link">{star.name}</Card.Title>
 						</Link>
 						<FavouriteIcon star={star} />
 						<Card.Text>

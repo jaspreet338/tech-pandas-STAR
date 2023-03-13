@@ -47,13 +47,13 @@ const StarList = ({ user }) => {
 		);
 	}
 	return (
-		<div className="star-container">
+		<div className="starContainer">
 			{/* <h2>Welcome to your Star List</h2> */}
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
 					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
 					<Search updateFilter={setStarSearch} placeholder="search stars" />
-					<ul className="list-group">
+					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
