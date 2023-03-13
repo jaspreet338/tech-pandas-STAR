@@ -57,7 +57,7 @@ const SingleStar = ({ user, star, setStars }) => {
 							</span>{" "}
 							{star.description}
 						</Card.Text>
-						<Card.Text>
+						<Card.Text className="comment">
 							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
 								Comment:
 							</span>{" "}
