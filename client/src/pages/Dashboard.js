@@ -2,9 +2,10 @@
  import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import StarList from "./StarList";
+import "./Component/Dashboard.css";
 
 const  Dashboard = () => {
-	const [user, setUser] = useState({ name:"", role:"" });
+	const [user, setUser] = useState({ name:"" });
 	useEffect(() => {
 		fetch("/api/users")
 		.then((res) => res.json())
@@ -13,7 +14,7 @@ const  Dashboard = () => {
 	return (
 		<div>
 			<Navbar />
-			<h1>Hello {user.name} ({user.role})</h1>
+			<h1 className="greeting">Hello {user.name} </h1>
 
 			<StarList user={user} />
 		</div>

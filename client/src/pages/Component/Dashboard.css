@@ -1,0 +1,13 @@
+body {
+    margin :0;
+    padding: 0;
+    border :0;
+
+}
+
+.greeting {
+    margin-left: 5rem;
+    color: black;
+    font-weight: bold;
+    
+}

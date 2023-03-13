@@ -48,7 +48,7 @@ const StarList = ({ user }) => {
 	}
 	return (
 		<div className="star-container">
-			<h2>Welcome to your Star List</h2>
+			{/* <h2>Welcome to your Star List</h2> */}
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
 					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
