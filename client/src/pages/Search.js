@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Component/Dashboard.css";
 
 const Search = ({ updateFilter ,placeholder }) => {
 	const [input, setInput] = useState("");
@@ -15,15 +16,15 @@ const Search = ({ updateFilter ,placeholder }) => {
 		<div className="input-group mt-10">
 			<input
 				type="search"
-				className="form-control rounded"
+				className="searchBar"
 				placeholder={placeholder}
 				aria-label={placeholder}
 				aria-describedby="search-addon"
 				onChange={handleSearch}
 				value={input}
 			/>
-			<button type="button" className="btn btn-outline-primary" onClick={clearSearch}>
-				x
+			<button type="button" className="btnS" onClick={clearSearch}>
+				Search
 			</button>
 		</div>
 	);
