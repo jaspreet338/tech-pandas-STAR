@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import logo from "./cyf_brand.png";
-import GithubButton from "react-github-login-button";
+import githubLogo from "./github-mark-white.png";
 
 export function Home() {
 const githubLoginUrl = "https://github.com/login/oauth/authorize";
@@ -38,12 +38,12 @@ return (
 					</article>
 				</div>
 				<div className="login_git">
-					<h2 className="header">Welcome to</h2>
+					<h2 className="header">WELCOME TO</h2>
 					<h1 className="login_git-h1">
 						STAR
 					</h1>
 					<Link to={url} className="link">
-						<GithubButton className="git_btn"></GithubButton>
+						<button className="git_btn"><img src={githubLogo} alt="github-logo" className="git-logo" />{"  "}Sign in with Github</button>
 					</Link>
 				</div>
 			</div>
