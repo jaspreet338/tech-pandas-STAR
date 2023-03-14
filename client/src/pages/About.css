@@ -1,10 +1,5 @@
 
-body {
-    margin :0;
-    padding: 0;
-    border :0;
 
-}
 
 .head {
     text-align: center;
@@ -25,13 +20,12 @@ body {
 }
 
 .situation, .action {
-    background-color: #ee4434;
+    background-color: #f3f3f3;
     padding: 20px;
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.25)
 }
 
 .situation-h4, .action-h4 {
-    color: white;
     font-weight: 700;
 }
 
@@ -57,8 +51,7 @@ body {
 
 .video {
     display: grid;
-    grid-template-columns: 500px 500px;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
     justify-content:space-around;
     gap: 50px;
     margin-top: 30px;
@@ -74,11 +67,12 @@ body {
     margin-bottom: 40px;
     font-size: xx-large;
     font-weight: 700;
+    text-decoration: underline #ee4434;
 }
 
 .about-p {
-    width: 550px;
-    
+    width: 500px;
+    text-align: left;
 }
 
 
@@ -95,7 +89,7 @@ body {
 }
 
 .use {
-    text-align: center;
+   
     margin-top: 40px;
 }
 
@@ -105,11 +99,13 @@ body {
     text-align: center;
     justify-content: center;
     margin-top: 20px;
+    text-align: left;
 }
 
 
 .about-wrapper {
-    padding: 3rem;
+    padding-top: 3rem;
+
     font-size: large;
 }
 
@@ -119,94 +115,3 @@ body {
     padding-bottom: 20px;
 }
 
-.heartbeat {
-    background-color: #ee4434;
-    width: 150px;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    font-size: larger;
-    font-weight: 700;
-    color:#fff;
-    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.25);
-    -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-    animation: heartbeat 1.5s ease-in-out infinite both;
-}
-
-@-webkit-keyframes heartbeat {
-    from {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-
-    10% {
-        -webkit-transform: scale(0.91);
-        transform: scale(0.91);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    17% {
-        -webkit-transform: scale(0.98);
-        transform: scale(0.98);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-
-    33% {
-        -webkit-transform: scale(0.87);
-        transform: scale(0.87);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    45% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-}
-
-@keyframes heartbeat {
-    from {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-
-    10% {
-        -webkit-transform: scale(0.91);
-        transform: scale(0.91);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    17% {
-        -webkit-transform: scale(0.98);
-        transform: scale(0.98);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-
-    33% {
-        -webkit-transform: scale(0.87);
-        transform: scale(0.87);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-    }
-
-    45% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-    }
-}
