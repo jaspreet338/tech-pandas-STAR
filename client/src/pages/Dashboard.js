@@ -1,5 +1,4 @@
-
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import StarList from "./StarList";
 import "./Component/Dashboard.css";
@@ -16,9 +15,9 @@ const  Dashboard = () => {
 			<Navbar />
 			<h1 className="greeting">Hello {user.name} </h1>
 
-			<StarList user={user} />
-		</div>
-	);
+            <StarList user={user} />
+        </div>
+    );
 };
 
 export default Dashboard;

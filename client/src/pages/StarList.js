@@ -8,6 +8,8 @@ const StarList = ({ user }) => {
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [starSearch, setStarSearch] = useState("");
+	const [creatorSearch, setCreatorSearch] = useState("");
+
 
 	useEffect(() => {
 		if (stars === null) {
@@ -46,12 +48,18 @@ const StarList = ({ user }) => {
 				star.description.toLowerCase().includes(lowerCaseSearch)
 		);
 	}
+	if (creatorSearch.trim() !== "") {
+		const lowerCaseSearch = creatorSearch.trim().toLowerCase();
+
+		filteredStars = filteredStars.filter((star) =>
+			star.creator.toLowerCase().includes(lowerCaseSearch)
+		);
+	}
 	return (
 		<div className="starContainer">
-			{/* <h2>Welcome to your Star List</h2> */}
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
-					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
+					<Search updateFilter={setCreatorSearch} placeholder="search by creator's name" />
 					<Search updateFilter={setStarSearch} placeholder="search stars" />
 					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
