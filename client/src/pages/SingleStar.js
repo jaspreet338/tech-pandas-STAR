@@ -24,8 +24,8 @@ const SingleStar = ({ user, star, setStars }) => {
 					<Col sm={12} md={6}>
                          <Link to={`/star/${star.id}`}>
 							<Card.Title>{star.name}</Card.Title>
-							<Card.Text>{star.creator_name}</Card.Text>
 						</Link>
+						<Card.Text>{star.creator}</Card.Text>
 						<FavouriteIcon star={star} />
 						<Card.Text>
 							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
