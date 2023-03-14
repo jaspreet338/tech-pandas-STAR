@@ -1,7 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
 import logo from "/home/codeyourfuture/Documents/CYF/Final-CYF-Project/tech-pandas-STAR/client/src/pages/images/cyf_brand.png";
 import "./Component/Dashboard.css";
@@ -13,13 +10,6 @@ function CustomNavbar() {
     // const myCookieValue = Cookies.get("myCookie");
 
 	// console.log(myCookieValue);
-	const linkStyle = {
-		fontSize: "1.2rem",
-		padding: "0.3rem",
-		// border: "1px solid #fff",
-		margin: "0 0.5rem",
-		fontWeight: "bold", // add fontWeight to make text bolder
-	};
 
 	function logout() {
 		// console.log(id);
@@ -35,20 +25,15 @@ function CustomNavbar() {
 
 	return (
 		<>
-			<Navbar className="navbar">
-				<Container>
-				<img className="logo" src={logo} alt="Logo" />;
-					<Navbar.Brand href="/">CYF-STARs</Navbar.Brand>
-					<Nav className="justify-content-end" style={{ width: "100%" }}>
-						<Nav.Link href="/about" style={linkStyle}>
-							About
-						</Nav.Link>
-						<Nav.Link className="logout" onClick={logout} style={linkStyle}>
+			<navbar className="navbar">
+				{/* <Container> */}
+					<img className="logo" src={logo} alt="Logo" />;
+					{/* <Nav className="justify-content-end" style={{ width: "100%", color: "white" }}> */}
+						<button className="logout" onClick={logout} >
 							Log out
-						</Nav.Link>
-					</Nav>
-				</Container>
-			</Navbar>
+						</button>
+				{/* </Container> */}
+			</navbar>
 		</>
 	);
 }
