@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
+import logo from "/home/codeyourfuture/Documents/CYF/Final-CYF-Project/tech-pandas-STAR/client/src/pages/images/cyf_brand.png";
 import "./Component/Dashboard.css";
 // import Cookies from "js-cookie";
 
@@ -36,6 +37,7 @@ function CustomNavbar() {
 		<>
 			<Navbar className="navbar">
 				<Container>
+				<img className="logo" src={logo} alt="Logo" />;
 					<Navbar.Brand href="/">CYF-STARs</Navbar.Brand>
 					<Nav className="justify-content-end" style={{ width: "100%" }}>
 						<Nav.Link href="/about" style={linkStyle}>
