@@ -1,0 +1,15 @@
+.card-body-comment {
+    border: 2px solid black;
+    background-color: #dadad3;
+    min-height: 105px;
+    padding: 20px 10px;
+  }
+  
+  .btn-orange {
+    background-color: #ee4434;
+    font-weight: 700;
+  }
+  
+  .addcomment-edit {
+    float: right;
+  }
