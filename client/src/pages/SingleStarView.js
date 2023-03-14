@@ -8,7 +8,6 @@ import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
-import NavbarButton from "./Component/NavbarButton";
 
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
@@ -47,9 +46,7 @@ const SingleStarView = () => {
 
 	return (
 		<div className="container my-4">
-			<Navbar>
-                <NavbarButton name="Dashboard" link="/dashboard" />
-            </Navbar>
+			<Navbar />
 			{star && (
 				<Card key={star.id} className="shadow">
 					<Card.Body>

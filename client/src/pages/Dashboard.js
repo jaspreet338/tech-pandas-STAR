@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import NavbarButton from "./Component/NavbarButton";
 import StarList from "./StarList";
 
 const  Dashboard = () => {
-    const navigate = useNavigate();
     const [user, setUser] = useState({ name:"", role:"" });
     useEffect(() => {
         fetch("/api/users")
@@ -13,23 +10,9 @@ const  Dashboard = () => {
         .then((data) => setUser(data));
     }, []);
 
-    function logout() {
-        // console.log(id);
-        fetch("/api/logout", { method: "POST" })
-            .then((res) => res)
-            .then((data) => {
-                console.log(data);
-                return navigate("/");
-            })
-            .catch((error) => console.error(error));
-    }
-
     return (
         <div>
-            <Navbar>
-                <NavbarButton name="About" link="/about" />
-                <NavbarButton name="Log out" clicked={logout} />
-            </Navbar>
+            <Navbar />
             <h1>Hello {user.name} ({user.role})</h1>
 
             <StarList user={user} />
