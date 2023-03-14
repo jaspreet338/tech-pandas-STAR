@@ -1,0 +1,53 @@
+.card-body {
+    border: 2px solid black;
+    min-height: 290px;
+    background-color: #dadad3;
+    padding: 20px 10px;
+  }
+  
+  button {
+    border-radius: 0px;
+  }
+  
+  .btn-orange {
+    background-color: #ee4434;
+    /* font-weight: 700; */
+    border-radius: 0;
+  }
+  
+  .addcomment {
+    float: right;
+  }
+  
+  .addcomment button {
+    padding: 10px 40px;
+    font-size: 20px;
+    float: right;
+  }
+  
+  .start-title {
+    border-bottom: 2px solid black;
+    display: inline-block;
+  }
+  
+  .body-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+  }
+  
+  .right {
+    margin-left: 50px;
+    line-height: 10px;
+  }
+  
+  .left p {
+    font-weight: 700;
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+    line-height: 10px;
+  }
