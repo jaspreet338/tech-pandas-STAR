@@ -5,16 +5,20 @@ const router = Router();
 // Getting all star from the database
 router.get("/stars", async (req, res) => {
 	const user = req.session.user;
+	const sqlA = `
+		SELECT s.*, u.name AS creator, count(c.id) AS comment_count FROM stars AS s
+		INNER JOIN users AS u ON s.user_id = u.id 
+		LEFT JOIN comments AS c ON s.id = c.star_id `;
+	const sqlB = "WHERE s.user_id = $1 ";
+	const sqlC = "GROUP BY s.id, u.name ";
+
+
 	try {
 		let result;
 		if (user.role === "student") {
-			result = await db.query(
-				"SELECT s.*, u.name AS creator_name, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id INNER JOIN users u ON s.creator_id = u.id WHERE s.user_id = $1 GROUP BY s.id, u.name, c.user_id ORDER BY s.favourite DESC"
-			);
+			result = await db.query(sqlA + sqlB + sqlC, [user.id]);
 		} else {
-			result = await db.query(
-				"SELECT s.*, u.name AS creator_name, COUNT(c.id) AS comment_count, c.user_id FROM stars s LEFT JOIN comments c ON s.id = c.star_id INNER JOIN users u ON s.creator_id = u.id GROUP BY s.id, u.name, c.user_id ORDER BY s.favourite DESC"
-			);
+			result = await db.query(sqlA + sqlC);
 		}
 		res.json(result.rows);
 	} catch (error) {
@@ -28,13 +32,14 @@ router.get("/stars/:id", async (req, res) => {
     try {
         const result = await db.query(`
             SELECT 
-                s.*, 
+                s.*, u.name AS creator,
                 CASE WHEN COUNT(c) = 0 THEN 
                     to_json('{}'::json[]) 
                 ELSE 
                     to_json(ARRAY_AGG(c))
                 END AS comments
             FROM stars AS s 
+			INNER JOIN users AS u ON s.user_id = u.id
             LEFT JOIN (
                 SELECT comments.*, users.name AS commenter
                 FROM comments 
@@ -43,7 +48,7 @@ router.get("/stars/:id", async (req, res) => {
             ) AS c
             ON s.id = c.star_id
             WHERE s.id = $1
-            GROUP BY s.id, s.*;
+            GROUP BY s.id, u.name;
         `, [id]);
 
         if (result.rows.length === 0) {

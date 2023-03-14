@@ -20,7 +20,7 @@ function SingleComment({ comment, refreshStar, user }) {
 					{comment.commenter} {comment.created_at}
 				</Card.Subtitle>
 				<Card.Text>{comment.comment}</Card.Text>
-				{user.role === "TA" || user.role === "mentor" ? (
+				{user.id === comment.user_id? (
 				<>
 				<div className="mb-3">
 					<Button onClick={() => setEditing(true)}>Edit Comment</Button>
