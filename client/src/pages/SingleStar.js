@@ -22,7 +22,7 @@ const SingleStar = ({ user, star, setStars }) => {
 		<Card key={star.id} className="my-3 shadow">
 			<Card.Body>
 				<Row>
-					<Col sm={12} md={6}>
+					{/* <Col sm={12} md={6}> */}
 						<Link to={`/star/${star.id}`}>
 							<Card.Title className="link">{star.name}</Card.Title>
 						</Link>
@@ -65,7 +65,7 @@ const SingleStar = ({ user, star, setStars }) => {
 								{star.comment_count}
 							</Badge>{" "}
 						</Card.Text>
-					</Col>
+					{/* </Col> */}
 					<Col
 						sm={12}
 						md={6}
