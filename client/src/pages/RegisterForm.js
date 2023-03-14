@@ -39,7 +39,7 @@ function RegisterForm() {
 		})
 			.then((response) => response.json())
 			.then(() => {
-				return navigate("/dashboard");
+				return navigate("/about");
 			})
 			.catch((error) => {
 				console.warn(error);
@@ -49,8 +49,8 @@ function RegisterForm() {
 		<div className="wrapper">
 			<div className="image">
 				<img
-					src="https://tinyurl.com/2pa3jyxu"
-					alt="logo"
+					src="https://tinyurl.com/7jb8zs4j"
+					alt="STAR"
 					className="cyf-img"
 				/>
 			</div>
@@ -58,8 +58,6 @@ function RegisterForm() {
 				className="p-4 m-4"
 				style={{
 					width: "500px",
-					borderRadius: "25px",
-					borderStyle: "groove",
 					height: "85vh",
 				}}
 			>

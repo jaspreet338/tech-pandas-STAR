@@ -1,84 +1,86 @@
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Raleway', sans-serif;
 }
- 
- .form-container {
-    
-  border-radius: 25px;
-  border-style:groove;
-  height: 85vh;
-  /* width: 70vh; */
-    background-color: white;
-    border-radius: 5px;
-    width: 550px;
-    margin: 20px auto;
-    padding: 20px;
+
+.form-container {
+	border-radius: 25px;
+	border-style: groove;
+	height: 85vh;
+	/* width: 70vh; */
+	background-color: white;
+	border-radius: 5px;
+	width: 550px;
+	margin: 20px auto;
+	padding: 20px;
 }
 
 h1 {
-    text-decoration: solid;
-    color:blue
+	text-decoration: solid;
+	color: blue;
 }
 .form-body {
-    text-align: left;
-    padding: 20px 10px;
-    margin-top: 2.5rem ;
+	text-align: left;
+	padding: 20px 10px;
+	margin-top: 2.5rem;
 }
 
-.form-body > *{
-    padding: 5px;
+.form-body > * {
+	padding: 5px;
 }
 
 .cyf-img {
-    float: left;
-    height:250px;
-    width:760px;
-    margin-right: 200px;
-    margin-bottom: 150px;
-    
+	float: left;
+	height: 250px;
+	width: 760px;
+	margin-right: 200px;
+	margin-bottom: 150px;
+	height: 80vh;
+	width: 500px;
+	margin-right: 0px;
+	margin-bottom: 150px;
+	margin-top: 100px;
 }
 
 .p-4 m-4 {
- float: right;
- 
- 
+	float: right;
 }
 .wrapper {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-   
-    
-
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-color: blue;
+	border-width: 35px;
+	box-sizing: border-box;
+	border-style: solid;
+	background-color: blanchedalmond;
 }
 
 .form_label {
-text-align: left;
-padding: 0.25rem 0;
-width: 40%;
-font-size: 25px;
+	text-align: left;
+	padding: 0.25rem 0;
+	width: 40%;
+	font-size: 25px;
 }
 
- .form_input {
-	margin:0.5rem, 0;
+.form_input {
+	margin: 0.5rem, 0;
 	padding: 1rem;
-	/* border: none; */
 	border-radius: 10px;
-    width: 90%;
-    margin-left: 0.5rem;
-   
-} 
+	width: 90%;
+	margin-left: 0.5rem;
+}
 
 select {
-    margin:0.5rem, 0;
+	margin: 0.5rem, 0;
 	padding: 1rem;
 	/* border: none; 
 	border-radius: 10px;
     width: 60%;
     margin-left: 2rem;*/
-}  
+}
 
 Button {
 	margin-top: 1rem;
@@ -86,14 +88,9 @@ Button {
 	padding: 20px;
 	border-radius: 10px;
 	cursor: pointer;
-    
-    
 }
 .btn {
 	background: none;
 	color: white;
-    background-color: blue;
-    
-   
-
+	background-color: blue;
 }
