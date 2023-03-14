@@ -8,6 +8,8 @@ const StarList = ({ user }) => {
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [starSearch, setStarSearch] = useState("");
+	const [creatorSearch, setCreatorSearch] = useState("");
+
 
 	useEffect(() => {
 		if (stars === null) {
@@ -46,25 +48,34 @@ const StarList = ({ user }) => {
 				star.description.toLowerCase().includes(lowerCaseSearch)
 		);
 	}
+	if (creatorSearch.trim() !== "") {
+		const lowerCaseSearch = creatorSearch.trim().toLowerCase();
+
+		filteredStars = filteredStars.filter((star) =>
+			star.creator.toLowerCase().includes(lowerCaseSearch)
+		);
+	}
 	return (
 		<div className="star-container">
 			<h2>Welcome to your Star List</h2>
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
-					{/* <Search setSearch={setUserSearch} placeholder="filter users" /> */}
-					<Search updateFilter={setStarSearch} placeholder="search stars" />
-					<ul className="list-group">
-						{loading && <span>Loading, please wait until stars loads...</span>}
-						{error && <span>{"There is a problem fetching the  data "}</span>}
-						{filteredStars.map((star) => (
-							<li id="list-item" key={star.id}>
-								<SingleStar user={user} star={star} setStars={setStars} />
-							</li>
-						))}
-					</ul>
-				</>
-			) : (
-				<>
+				<div className="search-container">
+                    <Search updateFilter={setCreatorSearch} placeholder="search by creator name" />
+                    <Search updateFilter={setStarSearch} placeholder="search stars" />
+               </div>
+				<ul className="list-group">
+					{loading && <span>Loading, please wait until stars loads...</span>}
+					{error && <span>{"There is a problem fetching the data "}</span>}
+					{filteredStars.map((star) => (
+						<li id="list-item" key={star.id}>
+							<SingleStar user={user} star={star} setStars={setStars} />
+						</li>
+					))}
+				</ul>
+			</>
+		) : (
+			<>
 					<AddForm setStars={setStars} />
 					<Search updateFilter={setStarSearch} placeholder="search stars" />
 					<ul className="list-group">
