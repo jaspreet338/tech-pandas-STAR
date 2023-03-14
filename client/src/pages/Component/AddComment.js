@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import "./AddComment.css";
+
 
 
 const AddComment = ({ star, setStar }) => {
