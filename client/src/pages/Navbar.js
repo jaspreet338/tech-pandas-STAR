@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
 import "./Component/Dashboard.css";
+import logo from "./cyf_brand.png";
 // import Cookies from "js-cookie";
 
 
@@ -36,11 +37,8 @@ function CustomNavbar() {
 		<>
 			<Navbar className="navbar">
 				<Container>
-					<Navbar.Brand href="/">CYF-STARs</Navbar.Brand>
+					<img src={logo} alt="cyf-logo" />
 					<Nav className="justify-content-end" style={{ width: "100%" }}>
-						<Nav.Link href="/about" style={linkStyle}>
-							About
-						</Nav.Link>
 						<Nav.Link className="logout" onClick={logout} style={linkStyle}>
 							Log out
 						</Nav.Link>
