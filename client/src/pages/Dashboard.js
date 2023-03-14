@@ -1,23 +1,40 @@
-
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import NavbarButton from "./Component/NavbarButton";
 import StarList from "./StarList";
 
 const  Dashboard = () => {
-	const [user, setUser] = useState({ name:"", role:"" });
-	useEffect(() => {
-		fetch("/api/users")
-		.then((res) => res.json())
-		.then((data) => setUser(data));
-	}, []);
-	return (
-		<div>
-			<Navbar />
-			<h1>Hello {user.name} ({user.role})</h1>
+    const navigate = useNavigate();
+    const [user, setUser] = useState({ name:"", role:"" });
+    useEffect(() => {
+        fetch("/api/users")
+        .then((res) => res.json())
+        .then((data) => setUser(data));
+    }, []);
 
-			<StarList user={user} />
-		</div>
-	);
+    function logout() {
+        // console.log(id);
+        fetch("/api/logout", { method: "POST" })
+            .then((res) => res)
+            .then((data) => {
+                console.log(data);
+                return navigate("/");
+            })
+            .catch((error) => console.error(error));
+    }
+
+    return (
+        <div>
+            <Navbar>
+                <NavbarButton name="About" link="/about" />
+                <NavbarButton name="Log out" clicked={logout} />
+            </Navbar>
+            <h1>Hello {user.name} ({user.role})</h1>
+
+            <StarList user={user} />
+        </div>
+    );
 };
 
 export default Dashboard;
