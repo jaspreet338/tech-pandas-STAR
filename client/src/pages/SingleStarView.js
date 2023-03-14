@@ -51,6 +51,7 @@ const SingleStarView = () => {
 						<Row>
 							<Col sm={12} md={6}>
 								<Card.Title>{star.name}</Card.Title>
+								<Card.Text>{star.creator_name}</Card.Text>
 								<Card.Text className="mb-3">
 									<span className="font-weight-bold">Situation: </span>
 									{star.situation}
