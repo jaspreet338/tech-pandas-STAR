@@ -81,7 +81,7 @@ const StarList = ({ user }) => {
 				<>
 					<AddForm setStars={setStars} />
 					<Search updateFilter={setStarSearch} placeholder="search stars" />
-					<ul className="list-group">
+					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (
