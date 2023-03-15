@@ -127,6 +127,7 @@ return (
 		</div>
 		<footer>
 			<div className="social-container">
+				<p className="copy-p">Copyright &copy; 2023</p>
 				<p className="social-p">Follow us</p>
 				<a
 					href="https://www.linkedin.com/company/15224414/admin/"
