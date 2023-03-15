@@ -12,6 +12,7 @@ import {
 import logo from "./cyf_brand.png";
 import githubLogo from "./github-mark-white.png";
 import  photo from "./photo.jpg";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
 export function Home() {
 const githubLoginUrl = "https://github.com/login/oauth/authorize";
@@ -129,33 +130,27 @@ return (
 		</div>
 		<footer>
 			<div className="social-container">
-				<h3>Follow us</h3>
+				<p className="social-p">Follow us</p>
 				<a
-					href="https://www.youtube.com/c/jamesqquick"
-					className="youtube social"
+					href="https://www.linkedin.com/company/15224414/admin/"
+					className="iconS"
 				>
 					<FontAwesomeIcon icon={faLinkedin} size="2x" />
 				</a>
-				<a
-					href="https://www.facebook.com/learnbuildteach/"
-					className="facebook social"
-				>
+				<a href="https://www.facebook.com/codeyourfuture.io" className="iconS">
 					<FontAwesomeIcon icon={faFacebook} size="2x" />
 				</a>
-				<a
-					href="https://www.twitter.com/jamesqquick"
-					className="twitter social"
-				>
+				<a href="https://twitter.com/CodeYourFuture" className="iconS">
 					<FontAwesomeIcon icon={faTwitter} size="2x" />
 				</a>
-				<a
-					href="https://www.instagram.com/learnbuildteach"
-					className="instagram social"
-				>
+				<a href="https://www.instagram.com/codeyourfuture_/" className="iconS">
 					<FontAwesomeIcon icon={faInstagram} size="2x" />
 				</a>
-				<a href="jk" className="Github">
+				<a href="https://github.com/CodeYourFuture" className="iconS">
 					<FontAwesomeIcon icon={faGithub} size="2x" />
+				</a>
+				<a href="jk" className="iconS">
+					<FontAwesomeIcon icon={faEnvelope} size="2x" />
 				</a>
 			</div>
 		</footer>
