@@ -65,7 +65,10 @@ const StarList = ({ user }) => {
 							updateFilter={setCreatorSearch}
 							placeholder="search by creator's name"
 						/>
-						<Search updateFilter={setStarSearch} placeholder="search stars..." />
+						<Search
+							updateFilter={setStarSearch}
+							placeholder="search stars..."
+						/>
 					</div>
 					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
@@ -79,8 +82,10 @@ const StarList = ({ user }) => {
 				</>
 			) : (
 				<>
-					<AddForm setStars={setStars} />
-					<Search updateFilter={setStarSearch} placeholder="search stars" />
+					<div className="search-student">
+						<Search updateFilter={setStarSearch} placeholder="search stars" />
+						<AddForm setStars={setStars} />
+					</div>
 					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
