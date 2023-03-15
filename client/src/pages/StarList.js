@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SingleStar from "./SingleStar";
 import AddForm from "./AddForm";
 import Search from "./Search";
+import "./Component/Dashboard.css";
 
 const StarList = ({ user }) => {
 	const [stars, setStars] = useState(null);
@@ -59,8 +60,13 @@ const StarList = ({ user }) => {
 		<div className="starContainer">
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
-					<Search updateFilter={setCreatorSearch} placeholder="search by creator's name" />
-					<Search updateFilter={setStarSearch} placeholder="search stars" />
+					<div className="search">
+						<Search
+							updateFilter={setCreatorSearch}
+							placeholder="search by creator's name"
+						/>
+						<Search updateFilter={setStarSearch} placeholder="search stars..." />
+					</div>
 					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
