@@ -9,8 +9,7 @@ body {
 	border-radius: 25px;
 	border-style: groove;
 	height: 85vh;
-	/* width: 70vh; */
-	background-color: white;
+    background-color: white;
 	border-radius: 5px;
 	width: 550px;
 	margin: 20px auto;
@@ -33,30 +32,29 @@ h1 {
 
 .cyf-img {
 	float: left;
-	height: 250px;
-	width: 760px;
-	margin-right: 200px;
-	margin-bottom: 150px;
-	height: 80vh;
-	width: 500px;
-	margin-right: 0px;
-	margin-bottom: 150px;
-	margin-top: 100px;
+	height: 350px;
+	width: 100%;
+    margin-right: 0px;
+	object-fit: cover;
 }
 
 .p-4 m-4 {
 	float: right;
 }
+
+
 .wrapper {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	row-gap: 5px;
+	margin-bottom: 10rem;
 	border-color: rgb(131, 131, 148);
 	border-width: 25px;
 	box-sizing: border-box;
 	border-style: solid;
 	background-color: rgb(251, 244, 235);
-}
+		
+	}
 
 .form_label {
 	text-align: left;
@@ -76,10 +74,6 @@ h1 {
 select {
 	margin: 0.5rem, 0;
 	padding: 1rem;
-	/* border: none; 
-	border-radius: 10px;
-    width: 60%;
-    margin-left: 2rem;*/
 }
 
 Button {
@@ -94,4 +88,42 @@ Button {
 	color: white;
 	background-color: #ee4434;
 	font-weight: 600;
+}
+
+@media (min-width: 768px) {
+
+	.cyf-img {
+		transform: rotate(360deg);
+		height: 350px;
+		width: 550px;
+		
+	}
+
+	.register {
+		margin-top: 100px;
+	}
+
+	.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	
+}
+
+	.form_label {
+	text-align: left;
+	padding: 0.15rem 0;
+	width: 40%;
+	font-size: 20px;
+	}
+
+    .form_input {
+	margin: 0.5rem, 0;
+	padding: 0.7rem;
+	border-radius: 5px;
+	width: 90%;
+	
+	}
+	
 }
