@@ -6,40 +6,41 @@
     margin-top: 20px;
 }
 
-.btnS {
-    background-color:  #ee4434;
-    color: white;
-    height: 50px;
-    width: 100px;
-    margin-top: 5px;
-    font-weight: 600;
-    
-}
 
 .searchBar {
     margin-left: 8.5rem;
-    width: 550px;
-    height: 50px;
+    width: 50%;
+    height: 5%;
     margin-top: 5px;
-    padding: 25px;
+    padding: 20px;
     border: none;
     box-shadow: 0px 0px 5px 5px rgba(103, 101, 101, 0.25);
     
 }
 
 .search {
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: 550px 550px;
+    grid-template-columns: 50% 50%;
+    margin-right: 6rem;
 }
 
-.creator {
-    font-weight: bold;
-}
-
-.icon {
+.search-student {
+    margin-top: 20px;
     display: flex;
-    float: left;
 }
+
+.add-btn {
+    /* position: relative; */
+    margin-right: -35rem;
+    margin-top: 10px;
+}
+
+.div-name-icon {
+    display: flex;
+    margin-left: 50%;
+}
+
 
 .listGroup {
     display: grid;
@@ -47,8 +48,9 @@
     justify-content: center;
     margin-top: 50px;
     list-style: none;
-    grid-template-columns: 100rem;
-    
+    grid-template-columns: 100%;
+    margin-left: 6.4rem;
+    margin-right: 7.8rem;
 }
 
 #list-item {
@@ -56,17 +58,7 @@
       
 }
 
-.link {
-    display: flex;
-    text-align: center;
-    justify-content: space-evenly;
-    font-size: 30px;
-    text-decoration: underline;
-}
 
-.comment {
-    text-align: end;
-   }
 
 .logout {
     background-color: #ee4434;
@@ -76,8 +68,8 @@
     margin-right: 8.5rem;
     text-align: center;
     font-size: 1.2rem;
-    padding: 8px 10px;
-   
+    padding: 1.5px 8px;
+    border-radius: 8px;
 } 
 
 .navbar {
@@ -92,6 +84,76 @@
     margin-left: 8.5rem;
  }
 
- .search-student {
-    display: inline;
+
+.div-comment-editBtn {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: 28rem;
+    
+}
+
+.badge{
+    margin-top: -10px;
+}
+
+
+
+ @media (min-width: 768px) {
+    .greeting {
+        font-size: 20px;
+    }
+
+    .btnS {
+        
+    }
+
+    .searchBar {
+        
+
+    }
+
+    .search {
+        
+    }
+
+    .div-name-icon {
+       
+    }
+
+
+    .listGroup {
+        
+    }
+
+    .logout {
+      
+
+    }
+
+    .navbar {
+      
+    }
+
+    .logo {
+        
+    }
+
+    .search-student {
+        
+    }
+
+    .add-btn {
+        
+    }
+
+    .div-comment-editBtn {
+       
+
+    }
+
+    .badge {
+       
+    }
  }
