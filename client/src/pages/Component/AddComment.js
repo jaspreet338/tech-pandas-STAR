@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-
 const AddComment = ({ star, setStar }) => {
     const [comment, setComment] = useState("");
     const [show, setShow] = useState("");
