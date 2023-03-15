@@ -127,12 +127,6 @@ function RegisterForm() {
 					</Form.Group>
 					<div>
 						<Button
-							style={{
-								marginTop: "20px",
-								d: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-							}}
 							className="btn"
 							variant="primary"
 							onClick={register}
