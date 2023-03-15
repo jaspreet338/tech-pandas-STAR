@@ -53,7 +53,9 @@ const SingleStarView = () => {
 						<Row>
 							<Col sm={12} md={6}>
 								<Card.Title>{star.name}</Card.Title>
-								<Card.Text>{star.creator}</Card.Text>
+								{user.role === "TA" || user.role === "mentor" ? (
+              <span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
+            ) : null}
 								<Card.Text className="mb-3">
 									<span className="font-weight-bold">Situation: </span>
 									{star.situation}
