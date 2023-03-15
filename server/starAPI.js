@@ -10,7 +10,7 @@ router.get("/stars", async (req, res) => {
 		INNER JOIN users AS u ON s.user_id = u.id 
 		LEFT JOIN comments AS c ON s.id = c.star_id `;
 	const sqlB = "WHERE s.user_id = $1 ";
-	const sqlC = "GROUP BY s.id, u.name ";
+	const sqlC = "GROUP BY s.id, u.name ORDER BY s.favourite DESC ";
 
 
 	try {
