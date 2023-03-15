@@ -1,15 +1,9 @@
-body {
-    margin :0;
-    padding: 0;
-    border :0;
-
-}
 
 .greeting {
     margin-left: 8.5rem;
     color: black;
     font-weight: bold;
-    
+    margin-top: 20px;
 }
 
 .btnS {
@@ -36,7 +30,6 @@ body {
 .search {
     display: grid;
     grid-template-columns: 550px 550px;
-   
 }
 
 .creator {
@@ -80,23 +73,25 @@ body {
     color: white;
     font-weight: 600;
     border: none;
-    margin-right: 9rem;
-    height: 50px;
-    width: 110px;
+    margin-right: 8.5rem;
     text-align: center;
     font-size: 1.2rem;
-   
+    padding: 8px 10px;
    
 } 
 
-   .navbar {
+.navbar {
     background-color: #f3f3f3;
     width: 100%;
     height: 75px;
    }
 
-   .logo {
+.logo {
     width: 150px;
     height: 50px;
     margin-left: 8.5rem;
+ }
+
+ .search-student {
+    display: inline;
  }
