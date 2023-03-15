@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
+import Navbar from "./Navbar";
 
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
@@ -45,13 +46,14 @@ const SingleStarView = () => {
 
 	return (
 		<div className="container my-4">
+			<Navbar />
 			{star && (
 				<Card key={star.id} className="shadow">
 					<Card.Body>
 						<Row>
 							<Col sm={12} md={6}>
 								<Card.Title>{star.name}</Card.Title>
-								<Card.Text>{star.creator_name}</Card.Text>
+								<Card.Text>{star.creator}</Card.Text>
 								<Card.Text className="mb-3">
 									<span className="font-weight-bold">Situation: </span>
 									{star.situation}

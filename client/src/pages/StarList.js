@@ -8,28 +8,8 @@ const StarList = ({ user }) => {
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [starSearch, setStarSearch] = useState("");
-	const [comments, setComments] = useState(null);
 	const [creatorSearch, setCreatorSearch] = useState("");
 
-	useEffect(() => {
-		fetch("/api/comments")
-			.then((res) => {
-				if (res.status === 500) {
-					throw new Error(res.status);
-				} else {
-					return res.json();
-				}
-			})
-			.then((data) => {
-				console.log(data);
-				setComments(data);
-				setLoading(false);
-			})
-			.catch((err) => {
-				setComments(null);
-				setError(err);
-			});
-	}, [comments]);
 
 	useEffect(() => {
 		if (stars === null) {
@@ -72,7 +52,7 @@ const StarList = ({ user }) => {
 		const lowerCaseSearch = creatorSearch.trim().toLowerCase();
 
 		filteredStars = filteredStars.filter((star) =>
-			star.creator_name.toLowerCase().includes(lowerCaseSearch)
+			star.creator.toLowerCase().includes(lowerCaseSearch)
 		);
 	}
 	return (
@@ -81,14 +61,9 @@ const StarList = ({ user }) => {
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
 				<div className="search-container">
-					<input
-						type="text"
-						placeholder="search by creator name"
-						value={creatorSearch}
-						onChange={(e) => setCreatorSearch(e.target.value)}
-					/>
-					<Search updateFilter={setStarSearch} placeholder="search stars" />
-				</div>
+                    <Search updateFilter={setCreatorSearch} placeholder="search by creator name" />
+                    <Search updateFilter={setStarSearch} placeholder="search stars" />
+               </div>
 				<ul className="list-group">
 					{loading && <span>Loading, please wait until stars loads...</span>}
 					{error && <span>{"There is a problem fetching the data "}</span>}
