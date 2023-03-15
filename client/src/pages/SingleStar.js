@@ -25,7 +25,9 @@ const SingleStar = ({ user, star, setStars }) => {
 						<Link to={`/star/${star.id}`}>
 							<Card.Title>{star.name}</Card.Title>
 						</Link>
-						<Card.Text>{star.creator}</Card.Text>
+						{user.role === "TA" || user.role === "mentor" ? (
+              <span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
+            ) : null}
 						<FavouriteIcon star={star} />
 						<Card.Text>
 							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
