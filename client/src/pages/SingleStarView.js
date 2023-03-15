@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
-import "./SingleStarView.css";
+
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
 	const [addComment, setAddComment] = useState(false);

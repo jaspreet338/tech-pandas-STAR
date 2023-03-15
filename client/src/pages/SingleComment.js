@@ -2,7 +2,6 @@ import { Card } from "react-bootstrap";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import EditComment from "./Component/EditComment";
-import "./SingleComment.css";
 
 function SingleComment({ comment, refreshStar, user }) {
 	const [editing, setEditing] = useState(false);
