@@ -48,12 +48,8 @@ function RegisterForm() {
 	}
 	return (
 		<div className="wrapper">
-			<div className="image">
-				<img
-					src={image}
-					alt="STAR"
-					className="cyf-img"
-				/>
+			<div className="image px-4 mx-4 pt-4 mt-4">
+				<img src={image} alt="STAR" className="cyf-img" />
 			</div>
 			<div
 				className="p-4 m-4"
@@ -62,7 +58,7 @@ function RegisterForm() {
 					height: "85vh",
 				}}
 			>
-				<Form style={{ backgroundImage: 'url("./cyf_brand.png")' }}>
+				<Form className="register">
 					<h1>Register Here</h1>
 					<Form.Group>
 						<Form.Label className="form_label">Username </Form.Label>
