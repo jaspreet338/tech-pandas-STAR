@@ -13,7 +13,7 @@ const  Dashboard = () => {
 	return (
 		<div>
 			<Navbar />
-			<h1 className="greeting">Hello {user.name} </h1>
+			<h1 className="greeting">Hello {user.name}!</h1>
 
             <StarList user={user} />
         </div>
