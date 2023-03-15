@@ -23,68 +23,95 @@ const SingleStar = ({ user, star, setStars }) => {
 			<Card.Body>
 				<Row>
 					{/* <Col sm={12} md={6}> */}
+					<div className="div-name-icon">
 						<Link to={`/star/${star.id}`}>
-							<Card.Title className="link">{star.name}</Card.Title>
+							<Card.Title
+								className="link"
+								style={{
+									fontSize: "1.4rem",
+									fontWeight: "bold",
+									marginRight: "4px",
+								}}
+							>
+								{star.name}
+							</Card.Title>
 						</Link>
-						<Card.Text className="creator">Created by {star.creator}</Card.Text>
-						<FavouriteIcon className="icon" star={star} />
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Situation:
-							</span>{" "}
-							{star.situation}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Task:
-							</span>{" "}
-							{star.task}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Action:
-							</span>{" "}
-							{star.action}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Result:
-							</span>{" "}
-							{star.result}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Description:
-							</span>{" "}
-							{star.description}
-						</Card.Text>
-						<Card.Text className="comment">
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+						<FavouriteIcon
+							className="icon"
+							style={{ marginTop: "-10px", marginLeft: "20px" }}
+							star={star}
+						/>
+					</div>
+					<Card.Text className="creator">
+						<b>Created by </b>
+						{star.creator}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Situation:
+						</span>{" "}
+						{star.situation}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Task:</span>{" "}
+						{star.task}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Action:
+						</span>{" "}
+						{star.action}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Result:
+						</span>{" "}
+						{star.result}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Description:
+						</span>{" "}
+						{star.description}
+					</Card.Text>
+					<div className="div-comment-editBtn">
+						<div className="comment">
+							<span
+								style={{
+									fontSize: "1.2rem",
+									textAlign: "center",
+								}}
+							>
 								Comment:
-							</span>{" "}
-							<Badge pill bg="success">
+							</span>
+							<Badge
+								pill
+								bg="neutral"
+								style={{
+									backgroundColor: "white",
+									color: "black",
+									fontSize: "1.3rem",
+								}}
+								className="badge"
+							>
 								{star.comment_count}
 							</Badge>{" "}
-						</Card.Text>
-					{/* </Col> */}
-					<Col
-						sm={12}
-						md={6}
-						className="d-flex justify-content-center align-items-center"
-					>
-						{user.role === "TA" || user.role === "mentor" ? null : (
-							<>
-								<Button onClick={() => setEditing(true)} className="ml-">
-									Edit STAR
-								</Button>
-								<EditForm
-									active={editing}
-									star={star}
-									refreshStars={refreshStars}
-								/>
-							</>
-						)}
-					</Col>
+						</div>
+						<Col sm={12} md={6} className="d-flex">
+							{user.role === "TA" || user.role === "mentor" ? null : (
+								<>
+									<Button onClick={() => setEditing(true)} className="editBtn">
+										Edit
+									</Button>
+									<EditForm
+										active={editing}
+										star={star}
+										refreshStars={refreshStars}
+									/>
+								</>
+							)}
+						</Col>
+					</div>
 				</Row>
 			</Card.Body>
 		</Card>
