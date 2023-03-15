@@ -240,26 +240,32 @@ router.put("/stars/:starId/comments/:commentId", async (req, res) => {
         res.status(500).json({ error: "Failed to update comment" });
     }
 });
-// PUT /stars/:id/favourite
+// patch/stars/:id/favourite
 router.patch("/stars/:id/favourite", async (req, res) => {
-	const { id } = req.params;
-	const { favourite } = req.body;
+  const { id } = req.params;
+  const { favourite } = req.body;
 
-	try {
-		const star = await db.query(
-			"UPDATE stars SET favourite = $1 WHERE id = $2 RETURNING *",
-			[favourite, id]
-		);
-		res
-			.status(200)
-			.json({ message: "STAR favourite status updated", star: star.rows[0] });
-	} catch (err) {
-		logger.error(err);
-		// switch the favourite status back to false
-		const star = { ...req.body, id };
-		star.favourite = false;
-		res.status(500).json({ error: "Something went wrong", star });
-	}
+  try {
+    // Check if user is authorized to update favourite status
+    const user = req.session.user;
+    if (!user || user.role === "TA" || user.role === "mentor") {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const star = await db.query(
+      "UPDATE stars SET favourite = $1 WHERE id = $2 RETURNING *",
+      [favourite, id]
+    );
+    res
+      .status(200)
+      .json({ message: "STAR favourite status updated", star: star.rows[0] });
+  } catch (err) {
+    logger.error(err);
+    // switch the favourite status back to false
+    const star = { ...req.body, id };
+    star.favourite = false;
+    res.status(500).json({ error: "Something went wrong", star });
+  }
 });
 
 
