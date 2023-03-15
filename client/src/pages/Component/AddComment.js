@@ -43,9 +43,9 @@ const AddComment = ({ star, setStar }) => {
 
 	return (
 		<div className="floatedButton">
-			<Button onClick={handleShow} className="float-right">
+			<div className="addBtn"><Button onClick={handleShow} className="btn-add">
 				Add Comment
-			</Button>
+			</Button></div>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Comment</Modal.Title>

@@ -2,8 +2,13 @@
   .cardSize{
     width: 1081px;
     height: 297px;
+    width: 100%;
   }
-  
+
+  .floatedButton button{
+    background-color: #EE4434;
+  }
+
   .comment-body{
     height: 98px;
     background-color: #f3f3f3;

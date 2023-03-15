@@ -52,7 +52,7 @@ const SingleStarView = () => {
 				<Card key={star.id} className="shadow">
 					<Card.Body className="cardSize">
 						{/* <Row> */}
-							<Col sm={12} md={10}>
+							<Col sm={12} md={12}>
 								<Card.Title>{star.name}</Card.Title>
 								<Card.Text>{star.creator}</Card.Text>
 								<Card.Text className="mb-3">

@@ -24,7 +24,7 @@ function SingleComment({ comment, refreshStar, user }) {
 				{user.id === comment.user_id? (
 				<>
 				<div className="mb-3 Edit">
-					<Button onClick={() => setEditing(true)}>Edit Comment</Button>
+					<Button onClick={() => setEditing(true)}>Edit</Button>
 				</div>
 				<EditComment
 					comment={comment}
