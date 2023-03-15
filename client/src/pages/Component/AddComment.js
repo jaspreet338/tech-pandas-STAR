@@ -12,7 +12,6 @@ const AddComment = ({ star, setStar }) => {
     const [show, setShow] = useState("");
     const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
 	const handleAddComment = async (id) => {
             console.log(id);
 		try {
@@ -43,8 +42,8 @@ const AddComment = ({ star, setStar }) => {
 
 
 	return (
-		<div>
-			<Button onClick={handleShow} className="ml-">
+		<div className="floatedButton">
+			<Button onClick={handleShow} className="float-right">
 				Add Comment
 			</Button>
 			<Modal show={show} onHide={handleClose} centered>

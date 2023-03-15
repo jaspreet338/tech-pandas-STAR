@@ -2,3 +2,7 @@
     background-color: #ee4434;
     font-weight: 700;
   }
+
+  .floatedButton{
+    float: right;
+  }

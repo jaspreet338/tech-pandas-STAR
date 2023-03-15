@@ -3,6 +3,12 @@
     min-height: 290px;
     background-color: #dadad3;
     padding: 20px 10px;
+
+  }
+
+  .cardSize{
+    width: 1081px;
+    height: 297;
   }
   
   button {
