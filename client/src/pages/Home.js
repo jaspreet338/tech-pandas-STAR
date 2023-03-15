@@ -24,10 +24,7 @@ const githubLoginUrl = "https://github.com/login/oauth/authorize";
 return (
 	<main className="main-login" role="main">
 		<>
-			<div>
-				<img src={logo} alt="logo" className="cyf-logo" />
-			</div>
-
+				<img src={logo} alt="logo" className="cyf-lg" />
 			<div className="login_wrapper">
 				<div className="text-flicker-in-glow">
 					<article className="star_article">
