@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { BsChevronDown } from "react-icons/bs";
+import image from "/home/codeyourfuture/Documents/CYF/Final-CYF-Project/tech-pandas-STAR/client/src/pages/Component/star.jpeg";
 import "./Registration.css";
 
 function RegisterForm() {
@@ -49,7 +50,7 @@ function RegisterForm() {
 		<div className="wrapper">
 			<div className="image">
 				<img
-					src="https://tinyurl.com/7jb8zs4j"
+					src={image}
 					alt="STAR"
 					className="cyf-img"
 				/>
