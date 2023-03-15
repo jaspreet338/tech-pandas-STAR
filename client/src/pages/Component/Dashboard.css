@@ -34,6 +34,15 @@ body {
    
 }
 
+.creator {
+    font-weight: bold;
+}
+
+.icon {
+    display: flex;
+    float: left;
+}
+
 .listGroup {
     display: grid;
     text-align: center;
