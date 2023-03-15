@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { BsChevronDown } from "react-icons/bs";
-import image from "/home/codeyourfuture/Documents/CYF/Final-CYF-Project/tech-pandas-STAR/client/src/pages/Component/star.jpeg";
+import image from "./Component/star.jpeg";
 import "./Registration.css";
 
 function RegisterForm() {
