@@ -26,13 +26,10 @@ function CustomNavbar() {
 	return (
 		<>
 			<navbar className="navbar">
-				{/* <Container> */}
 					<img className="logo" src={logo} alt="Logo" />;
-					{/* <Nav className="justify-content-end" style={{ width: "100%", color: "white" }}> */}
 						<button className="logout" onClick={logout} >
 							Log out
 						</button>
-				{/* </Container> */}
 			</navbar>
 		</>
 	);
