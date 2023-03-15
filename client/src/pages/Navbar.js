@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "/home/codeyourfuture/Documents/CYF/Final-CYF-Project/tech-pandas-STAR/client/src/pages/images/cyf_brand.png";
+import logo from "./images/cyf_brand.png";
 import "./Component/Dashboard.css";
 // import Cookies from "js-cookie";
 
