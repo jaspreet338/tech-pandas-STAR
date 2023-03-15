@@ -1,59 +1,21 @@
-.card-body {
-    border: 2px solid black;
-    min-height: 290px;
-    background-color: #dadad3;
-    padding: 20px 10px;
-
-  }
 
   .cardSize{
     width: 1081px;
-    height: 297;
+    height: 297px;
   }
   
-  button {
-    border-radius: 0px;
+  .comment-body{
+    height: 98px;
+    background-color: #f3f3f3;
   }
-  
-  .btn-orange {
-    background-color: #ee4434;
-    /* font-weight: 700; */
-    border-radius: 0;
-  }
-  
-  .addcomment {
+
+  .Edit button{
     float: right;
+    position: relative;
+    bottom: 45px;
+    background-color: #EE4434;
   }
+
+
+
   
-  .addcomment button {
-    padding: 10px 40px;
-    font-size: 20px;
-    float: right;
-  }
-  
-  .start-title {
-    border-bottom: 2px solid black;
-    display: inline-block;
-  }
-  
-  .body-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 40px;
-  }
-  
-  .right {
-    margin-left: 50px;
-    line-height: 10px;
-  }
-  
-  .left p {
-    font-weight: 700;
-  }
-  
-  .left {
-    display: flex;
-    flex-direction: column;
-    line-height: 10px;
-  }

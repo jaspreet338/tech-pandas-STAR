@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import EditComment from "./Component/EditComment";
+import "./SingleStarView.css";
 
 function SingleComment({ comment, refreshStar, user }) {
 	const [editing, setEditing] = useState(false);
@@ -15,14 +16,14 @@ function SingleComment({ comment, refreshStar, user }) {
 
 	return (
 		<div className="my-3">
-			<Card body>
+			<Card body className="comment-body">
 				<Card.Subtitle className="mb-2 text-muted">
 					{comment.commenter} {comment.created_at}
 				</Card.Subtitle>
 				<Card.Text>{comment.comment}</Card.Text>
 				{user.id === comment.user_id? (
 				<>
-				<div className="mb-3">
+				<div className="mb-3 Edit">
 					<Button onClick={() => setEditing(true)}>Edit Comment</Button>
 				</div>
 				<EditComment
