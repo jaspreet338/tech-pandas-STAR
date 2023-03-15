@@ -91,7 +91,7 @@ const SingleStarView = () => {
 							) : (
 								<Col sm={12} md={6} className="d-flex flex-column">
 									<div className="mb-3">
-										<Button onClick={() => setEditing(true)}>Edit STAR</Button>
+										<Button onClick={() => setEditing(true)}>Edit</Button>
 									</div>
 									<EditForm
 										active={editing}
