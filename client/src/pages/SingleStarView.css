@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap');
-
-.container{
-  font-family: 'Lato', sans-serif;
-font-family: 'Lobster', cursive;
-}
 
 .cardSize {
   width: 1081px;
@@ -11,8 +5,17 @@ font-family: 'Lobster', cursive;
   width: 100%;
 }
 
+.card-title{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 .floatedButton button {
   background-color: #EE4434;
+  float: right;
+    position: relative;
+    bottom: 26px;
 }
 
 .comment-body {
