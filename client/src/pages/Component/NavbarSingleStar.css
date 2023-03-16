@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 75px;
+   }
+.logo {
+    width: 150px;
+    height: 50px;
+    margin-left: 8.5rem;
+ }
+ .cyf-img {
+     float: left;
+     height: 350px;
+     width: 100%;
+     margin-right: 0px;
+     object-fit: cover;
+ }
