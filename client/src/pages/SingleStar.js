@@ -97,12 +97,12 @@ const SingleStar = ({ user, star, setStars }) => {
 								{star.comment_count}
 							</Badge>{" "}
 						</div>
-						<Col sm={12} md={6} className="d-flex">
+						<div className="d-flex">
 							{user.role === "TA" || user.role === "mentor" ? null : (
 								<>
-									<Button onClick={() => setEditing(true)} className="editBtn">
+									<button onClick={() => setEditing(true)} className="editBtn">
 										Edit
-									</Button>
+									</button>
 									<EditForm
 										active={editing}
 										star={star}
@@ -110,7 +110,7 @@ const SingleStar = ({ user, star, setStars }) => {
 									/>
 								</>
 							)}
-						</Col>
+						</div>
 					</div>
 				</Row>
 			</Card.Body>
