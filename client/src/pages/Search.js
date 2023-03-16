@@ -9,7 +9,7 @@ const Search = ({ updateFilter ,placeholder }) => {
 		updateFilter(e.target.value);
 	};
 	return (
-		<div className="input-group mt-10">
+		<div className="input-gp">
 			<input
 				type="search"
 				className="searchBar"
