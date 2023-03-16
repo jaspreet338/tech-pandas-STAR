@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import FavouriteIcon from "./FavouriteIcon";

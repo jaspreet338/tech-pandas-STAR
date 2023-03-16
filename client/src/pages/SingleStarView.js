@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import EditForm from "./EditForm";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -94,16 +93,16 @@ const SingleStarView = () => {
 									/>
 								</Col>
 							) : (
-								<Col sm={12} md={6} className="editBtn">
+								<div >
 									<div>
-										<button onClick={() => setEditing(true)}>Edit</button>
+										<button className="editBtn" onClick={() => setEditing(true)}>Edit</button>
 									</div>
 									<EditForm
 										active={editing}
 										star={star}
 										refreshStars={refreshStars}
 									/>
-								</Col>
+								</div>
 							)}
 						</Row>
 					</Card.Body>
