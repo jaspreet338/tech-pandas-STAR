@@ -1,26 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap');
 
-  .cardSize{
-    width: 1081px;
-    height: 297px;
-    width: 100%;
-  }
+.container{
+  font-family: 'Lato', sans-serif;
+font-family: 'Lobster', cursive;
+}
 
-  .floatedButton button{
-    background-color: #EE4434;
-  }
+.cardSize {
+  width: 1081px;
+  height: 297px;
+  width: 100%;
+}
 
-  .comment-body{
-    height: 98px;
-    background-color: #f3f3f3;
-  }
+.floatedButton button {
+  background-color: #EE4434;
+}
 
-  .Edit button{
-    float: right;
-    position: relative;
-    bottom: 45px;
-    background-color: #EE4434;
-  }
+.comment-body {
+  height: 98px;
+  background-color: #f3f3f3;
+}
 
+.Edit button {
+  float: right;
+  position: relative;
+  bottom: 45px;
+  background-color: #EE4434;
+}
 
-
-  
+.list-group {
+  padding-top: 22px;
+}
