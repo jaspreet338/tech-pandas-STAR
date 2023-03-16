@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
+// import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
-import "./SingleStarView.css";
+import NavbarButton from "./Component/NavbarButton";
 
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
@@ -47,7 +47,9 @@ const SingleStarView = () => {
 
 	return (
 		<div className="container my-4">
-			<Navbar />
+			<Navbar>
+                <NavbarButton name="Dashboard" link="/dashboard" />
+           </Navbar>
 			{star && (
 				<Card key={star.id} className="shadow">
 					<Card.Body className="cardSize">
