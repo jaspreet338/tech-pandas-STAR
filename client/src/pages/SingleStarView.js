@@ -50,7 +50,7 @@ const SingleStarView = () => {
 
 		<div className="container my-4">
 			<Navbar className="navbar">
-            <NavbarButton name="Dashboard" link="/dashboard" />
+            <NavbarButton className="dashboard" name="Dashboard" link="/dashboard" />
 			<img className="logo" src={logo} alt="Logo" />;
            </Navbar>
 			{star && (
