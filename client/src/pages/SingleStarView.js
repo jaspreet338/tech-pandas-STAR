@@ -9,7 +9,7 @@ import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
 import NavbarButton from "./Component/NavbarButton";
-import logo from "./cyf_brand.png";
+import "./NavbarSingleStar.css";
 
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
@@ -51,7 +51,6 @@ const SingleStarView = () => {
 		<div className="container my-4">
 			<Navbar className="navbar">
             <NavbarButton className="dashboard" name="Dashboard" link="/dashboard" />
-			<img className="logo" src={logo} alt="Logo" />;
            </Navbar>
 			{star && (
 				<Card key={star.id} className="shadow">
