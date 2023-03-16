@@ -27,7 +27,6 @@ const  Dashboard = () => {
     return (
         <div>
            <Navbar>
-                <NavbarButton name="About" link="/about" />
                 <NavbarButton name="Log out" clicked={logout} />
             </Navbar>
             <h1 className="greeting">Hello {user.name}!</h1>
