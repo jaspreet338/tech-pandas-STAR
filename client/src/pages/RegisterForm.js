@@ -59,7 +59,7 @@ function RegisterForm() {
 				}}
 			>
 				<Form className="register">
-					<h1>Register Here</h1>
+					<h1 className="register-h1">Register Here</h1>
 					<Form.Group>
 						<Form.Label className="form_label">Username </Form.Label>
 						<Form.Control
@@ -123,11 +123,7 @@ function RegisterForm() {
 						/>
 					</Form.Group>
 					<div>
-						<Button
-							className="btn"
-							variant="primary"
-							onClick={register}
-						>
+						<Button className="btn" variant="primary" onClick={register}>
 							Register
 						</Button>
 					</div>
