@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import EditForm from "./EditForm";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
+// import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
@@ -52,9 +52,9 @@ const SingleStarView = () => {
            </Navbar>
 			{star && (
 				<Card key={star.id} className="shadow">
-					<Card.Body>
-						<Row>
-							<Col sm={12} md={6}>
+					<Card.Body className="cardSize">
+						{/* <Row> */}
+							<Col sm={12} md={12}>
 								<Card.Title>{star.name}</Card.Title>
 								{user.role === "TA" || user.role === "mentor" ? (
               <span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
@@ -79,20 +79,16 @@ const SingleStarView = () => {
 									<span className="font-weight-bold">Description: </span>
 									{star.description}
 								</Card.Text>
-								<CommentList
-									comments={star.comments}
-									refreshStar={refreshStars}
-									user={user}
-								/>
+
 							</Col>
 							{user.role === "TA" || user.role === "mentor" ? (
-								<Col sm={12} md={6} className="d-flex flex-column">
+
 									<AddComment
 										active={addComment}
 										star={star}
 										setStar={setStar}
 									/>
-								</Col>
+
 							) : (
 								<Col sm={12} md={6} className="d-flex flex-column">
 									<div className="mb-3">
@@ -105,8 +101,13 @@ const SingleStarView = () => {
 									/>
 								</Col>
 							)}
-						</Row>
+						{/* </Row> */}
 					</Card.Body>
+					<CommentList
+									comments={star.comments}
+									refreshStar={refreshStars}
+									user={user}
+								/>
 				</Card>
 			)}
 		</div>
