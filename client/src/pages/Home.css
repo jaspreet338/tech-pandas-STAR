@@ -76,8 +76,9 @@ body{
 }
 
 .git-logo {
-	width: 12%;
-	height: 12px;
+	margin-left: 0.3vw;
+	width: 2vw;
+	height: 2vw;
 }
 
 .link {
@@ -259,30 +260,6 @@ body{
 		.login_git {
 			margin-left: -3vw;
 		}
-	
-		.git_btn {
-			
-		}
-	
-		.git_btn:hover {
-			
-		}
-	
-		.git-logo {
-			
-		}
-	
-		.link {
-	
-		}
-	
-		.header {
-		}
-	
-		.login_git-h1 {
-			
-		}
-
 	
 		.text-flicker-in-glow {
 			margin-right: 20vw;
