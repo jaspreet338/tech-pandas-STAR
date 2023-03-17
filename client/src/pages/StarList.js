@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SingleStar from "./SingleStar";
 import AddForm from "./AddForm";
 import Search from "./Search";
+import "./Component/Dashboard.css";
 
 const StarList = ({ user }) => {
 	const [stars, setStars] = useState(null);
@@ -56,29 +57,36 @@ const StarList = ({ user }) => {
 		);
 	}
 	return (
-		<div className="star-container">
-			<h2>Welcome to your Star List</h2>
+		<div className="starContainer">
 			{user.role === "TA" || user.role === "mentor" ? (
 				<>
-				<div className="search-container">
-                    <Search updateFilter={setCreatorSearch} placeholder="search by creator name" />
-                    <Search updateFilter={setStarSearch} placeholder="search stars" />
-               </div>
-				<ul className="list-group">
-					{loading && <span>Loading, please wait until stars loads...</span>}
-					{error && <span>{"There is a problem fetching the data "}</span>}
-					{filteredStars.map((star) => (
-						<li id="list-item" key={star.id}>
-							<SingleStar user={user} star={star} setStars={setStars} />
-						</li>
-					))}
-				</ul>
-			</>
-		) : (
-			<>
-					<AddForm setStars={setStars} />
-					<Search updateFilter={setStarSearch} placeholder="search stars" />
-					<ul className="list-group">
+					<div className="search">
+						<Search
+							updateFilter={setCreatorSearch}
+							placeholder="search by creator's name"
+						/>
+						<Search
+							updateFilter={setStarSearch}
+							placeholder="search stars..."
+						/>
+					</div>
+					<ul className="listGroup">
+						{loading && <span>Loading, please wait until stars loads...</span>}
+						{error && <span>{"There is a problem fetching the  data "}</span>}
+						{filteredStars.map((star) => (
+							<li id="list-item" key={star.id}>
+								<SingleStar user={user} star={star} setStars={setStars} />
+							</li>
+						))}
+					</ul>
+				</>
+			) : (
+				<>
+					<div className="search-student">
+						<Search updateFilter={setStarSearch} placeholder="search stars" />
+						<AddForm setStars={setStars} />
+					</div>
+					<ul className="listGroup">
 						{loading && <span>Loading, please wait until stars loads...</span>}
 						{error && <span>{"There is a problem fetching the  data "}</span>}
 						{filteredStars.map((star) => (

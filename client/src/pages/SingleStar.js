@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import FavouriteIcon from "./FavouriteIcon";
+import "./Component/Dashboard.css";
 
 const SingleStar = ({ user, star, setStars }) => {
 	const [editing, setEditing] = useState(false);
@@ -21,71 +20,96 @@ const SingleStar = ({ user, star, setStars }) => {
 		<Card key={star.id} className="my-3 shadow">
 			<Card.Body>
 				<Row>
-					<Col sm={12} md={6}>
+					{/* <Col sm={12} md={6}> */}
+					<div className="div-name-icon">
 						<Link to={`/star/${star.id}`}>
-							<Card.Title>{star.name}</Card.Title>
+							<Card.Title
+								className="link"
+								style={{
+									fontSize: "1.4rem",
+									fontWeight: "bold",
+									marginRight: "4px",
+								}}
+							>
+								{star.name}
+							</Card.Title>
 						</Link>
-						{user.role === "TA" || user.role === "mentor" ? (
-              <span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
-            ) : null}
-						<FavouriteIcon star={star} />
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Situation:
-							</span>{" "}
-							{star.situation}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Task:
-							</span>{" "}
-							{star.task}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Action:
-							</span>{" "}
-							{star.action}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Result:
-							</span>{" "}
-							{star.result}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
-								Description:
-							</span>{" "}
-							{star.description}
-						</Card.Text>
-						<Card.Text>
-							<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+						<FavouriteIcon
+							className="icon"
+							style={{ marginTop: "-10px", marginLeft: "20px" }}
+							star={star}
+						/>
+					</div>
+					<Card.Text className="creator">
+						<b>Created by </b>
+						{star.creator}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Situation:
+						</span>{" "}
+						{star.situation}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>Task:</span>{" "}
+						{star.task}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Action:
+						</span>{" "}
+						{star.action}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Result:
+						</span>{" "}
+						{star.result}
+					</Card.Text>
+					<Card.Text>
+						<span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+							Description:
+						</span>{" "}
+						{star.description}
+					</Card.Text>
+					<div className="div-comment-editBtn">
+						<div className="comment">
+							<span
+								style={{
+									fontSize: "1.2rem",
+									textAlign: "center",
+								}}
+							>
 								Comment:
-							</span>{" "}
-							<Badge pill bg="success">
+							</span>
+							<Badge
+								pill
+								bg="neutral"
+								style={{
+									backgroundColor: "white",
+									color: "black",
+									fontSize: "1.3rem",
+								}}
+								className="badge"
+							>
 								{star.comment_count}
 							</Badge>{" "}
-						</Card.Text>
-					</Col>
-					<Col
-						sm={12}
-						md={6}
-						className="d-flex justify-content-center align-items-center"
-					>
-						{user.role === "TA" || user.role === "mentor" ? null : (
-							<>
-								<Button onClick={() => setEditing(true)} className="ml-">
-									Edit STAR
-								</Button>
-								<EditForm
-									active={editing}
-									star={star}
-									refreshStars={refreshStars}
-								/>
-							</>
-						)}
-					</Col>
+						</div>
+						<div className="d-flex">
+							{user.role === "TA" || user.role === "mentor" ? null : (
+								<>
+									<button onClick={() => setEditing(true)} className="editBtn">
+										Edit
+									</button>
+									<EditForm
+										active={editing}
+										star={star}
+										refreshStars={refreshStars}
+									/>
+								</>
+							)}
+						</div>
+					</div>
 				</Row>
 			</Card.Body>
 		</Card>

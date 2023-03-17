@@ -2,18 +2,17 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./NavbarSingleStar.css";
-
+import logo from "./images/cyf_brand.png";
 
 const CustomNavbar = ({ children }) => (
-    <Navbar bg="primary" variant="dark">
-        <Container>
-            <Navbar.Brand href="/">CYF-STARs</Navbar.Brand>
-            <Nav className="justify-content-end" style={{ width: "100%" }}>
-                {children}
-            </Nav>
-        </Container>
-    </Navbar>
+	<Navbar>
+		<Container>
+			<img src={logo} alt="cyf logo" className="logo" />
+			<Nav className="justify-content-end" style={{ width: "100%" }}>
+				{children}
+			</Nav>
+		</Container>
+	</Navbar>
 );
 
 export default CustomNavbar;

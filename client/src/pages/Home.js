@@ -9,7 +9,7 @@ import {
 	faInstagram,
 	faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import logo from "./cyf_brand.png";
+import logo from "./images/cyf_brand.png";
 import githubLogo from "./github-mark-white.png";
 import  photo from "./photo.jpg";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
