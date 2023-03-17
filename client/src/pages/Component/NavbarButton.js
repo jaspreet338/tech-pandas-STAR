@@ -1,5 +1,5 @@
 import React from "react";
-
+import Nav from "react-bootstrap/Nav";
 
 
 const NavbarButton = ({ name, link, clicked }) =>
@@ -8,9 +8,9 @@ const NavbarButton = ({ name, link, clicked }) =>
 			{name}
 		</button>
 	) : (
-		<button href={link} className="logout">
+		<Nav.Link href={link} className="logout">
 			{name}
-		</button>
+		</Nav.Link>
 	);
 
 export default NavbarButton;
