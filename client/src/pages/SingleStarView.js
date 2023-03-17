@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import EditForm from "./EditForm";
 import Card from "react-bootstrap/Card";
 // import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
