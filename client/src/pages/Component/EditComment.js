@@ -67,6 +67,7 @@ const EditComment = ({
 					<Button variant="danger" onClick={handleClose}>
 						Cancel
 					</Button>
+					{" "}
 					<Button variant="success" type="submit" onClick={handleSave}>
 						Save
 					</Button>

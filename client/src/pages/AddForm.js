@@ -61,9 +61,9 @@ const AddForm = ({ setStars }) => {
 
 	return (
 		<div>
-			<Button onClick={handleShow} className="ml-">
+			<button onClick={handleShow} className="add-btn">
 				Add STAR
-			</Button>
+			</button>
 			<Modal show={showForm} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Your Star </Modal.Title>

@@ -40,9 +40,11 @@ const AddComment = ({ star, setStar }) => {
 
 	return (
 		<div className="floatedButton">
-			<div className="addBtn"><Button onClick={handleShow} className="btn-add">
-				Add Comment
-			</Button></div>
+			<div className="addBtn">
+				<Button onClick={handleShow} className="btn-add">
+					Add Comment
+				</Button>
+			</div>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Comment</Modal.Title>
@@ -56,14 +58,18 @@ const AddComment = ({ star, setStar }) => {
 								value={comment}
 								onChange={(e) => setComment(e.target.value)}
 							/>
-                            </Form.Group>
-                        <Button variant="danger" onClick={handleClose}>
-                            Cancel
-                        </Button>
-                        <Button variant="success" type="submit" onClick={() => handleAddComment(star.id)}>
-                            Save
-                        </Button>
-                    </Form>
+						</Form.Group>
+						<Button variant="danger" onClick={handleClose}>
+							Cancel
+						</Button>{" "}
+						<Button
+							variant="success"
+							type="submit"
+							onClick={() => handleAddComment(star.id)}
+						>
+							Save
+						</Button>
+					</Form>
 				</Modal.Body>
 			</Modal>
 		</div>
