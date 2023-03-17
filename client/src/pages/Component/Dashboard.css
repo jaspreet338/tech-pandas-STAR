@@ -49,6 +49,7 @@
     border-radius: 8px;
     margin-left: -20vw;
     margin-top: 10px;
+    position: relative;
 }
 
 .div-name-icon {
