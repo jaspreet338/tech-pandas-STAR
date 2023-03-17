@@ -49,12 +49,12 @@ const SingleStarView = () => {
 			<Navbar>
 					<NavbarButton name="Dashboard" link="/dashboard" />
 			</Navbar>
-			<div className="container my-4">
+			<div className="container">
 				{star && (
 					<Card key={star.id} className="shadow">
 						<Card.Body className="cardSize">
 							{/* <Row> */}
-								<Col sm={12} md={12}>
+								{/* <Col sm={12} md={12}> */}
 									<Card.Title>{star.name}</Card.Title>
 									{user.role === "TA" || user.role === "mentor" ? (
 				<span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
@@ -80,7 +80,7 @@ const SingleStarView = () => {
 										{star.description}
 									</Card.Text>
 
-								</Col>
+								{/* </Col> */}
 								{user.role === "TA" || user.role === "mentor" ? (
 
 										<AddComment
