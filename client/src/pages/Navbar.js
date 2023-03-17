@@ -3,18 +3,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./NavbarSingleStar.css";
+import logo from "./images/cyf_brand.png";
 
-
-	return (
-		<>
-			<navbar className="navbar">
-					<img className="logo" src={logo} alt="Logo" />;
-						<button  onClick={logout} >
-							{ children }
-						</button>
-			</navbar>
-		</>
-	);
-
+const CustomNavbar = ({ children }) => (
+	<Navbar>
+		<Container>
+			<img src={logo} alt="cyf logo" className="logo" />
+			<Nav className="justify-content-end" style={{ width: "100%" }}>
+				{children}
+			</Nav>
+		</Container>
+	</Navbar>
+);
 
 export default CustomNavbar;

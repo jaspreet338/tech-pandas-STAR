@@ -45,71 +45,73 @@ const SingleStarView = () => {
 	}, [id, star]);
 
 	return (
-		<div className="container my-4">
+		<>
 			<Navbar>
-                <NavbarButton name="Dashboard" link="/dashboard" />
-           </Navbar>
-			{star && (
-				<Card key={star.id} className="shadow">
-					<Card.Body className="cardSize">
-						{/* <Row> */}
-							<Col sm={12} md={12}>
-								<Card.Title>{star.name}</Card.Title>
+					<NavbarButton name="Dashboard" link="/dashboard" />
+			</Navbar>
+			<div className="container my-4">
+				{star && (
+					<Card key={star.id} className="shadow">
+						<Card.Body className="cardSize">
+							{/* <Row> */}
+								<Col sm={12} md={12}>
+									<Card.Title>{star.name}</Card.Title>
+									{user.role === "TA" || user.role === "mentor" ? (
+				<span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
+				) : null}
+									<Card.Text className="mb-3">
+										<span className="font-weight-bold">Situation: </span>
+										{star.situation}
+									</Card.Text>
+									<Card.Text className="mb-3">
+										<span className="font-weight-bold">Task: </span>
+										{star.task}
+									</Card.Text>
+									<Card.Text className="mb-3">
+										<span className="font-weight-bold">Action: </span>
+										{star.action}
+									</Card.Text>
+									<Card.Text className="mb-3">
+										<span className="font-weight-bold">Result: </span>
+										{star.result}
+									</Card.Text>
+									<Card.Text className="mb-3">
+										<span className="font-weight-bold">Description: </span>
+										{star.description}
+									</Card.Text>
+
+								</Col>
 								{user.role === "TA" || user.role === "mentor" ? (
-              <span style={{ fontSize: "1rem", fontWeight: "bold" }}> Star Creator Name: {star.creator ? star.creator : "Unknown"} </span>
-            ) : null}
-								<Card.Text className="mb-3">
-									<span className="font-weight-bold">Situation: </span>
-									{star.situation}
-								</Card.Text>
-								<Card.Text className="mb-3">
-									<span className="font-weight-bold">Task: </span>
-									{star.task}
-								</Card.Text>
-								<Card.Text className="mb-3">
-									<span className="font-weight-bold">Action: </span>
-									{star.action}
-								</Card.Text>
-								<Card.Text className="mb-3">
-									<span className="font-weight-bold">Result: </span>
-									{star.result}
-								</Card.Text>
-								<Card.Text className="mb-3">
-									<span className="font-weight-bold">Description: </span>
-									{star.description}
-								</Card.Text>
 
-							</Col>
-							{user.role === "TA" || user.role === "mentor" ? (
+										<AddComment
+											active={addComment}
+											star={star}
+											setStar={setStar}
+										/>
 
-									<AddComment
-										active={addComment}
-										star={star}
-										setStar={setStar}
-									/>
-
-							) : (
-								<div >
-									<div>
-										<button className="editBtn" onClick={() => setEditing(true)}>Edit</button>
+								) : (
+									<div >
+										<div>
+											<button className="editBtn" onClick={() => setEditing(true)}>Edit</button>
+										</div>
+										<EditForm
+											active={editing}
+											star={star}
+											refreshStars={refreshStars}
+										/>
 									</div>
-									<EditForm
-										active={editing}
-										star={star}
-										refreshStars={refreshStars}
+								)}
+							{/* </Row> */}
+						</Card.Body>
+						<CommentList
+										comments={star.comments}
+										refreshStar={refreshStars}
+										user={user}
 									/>
-								</div>
-							)}
-						{/* </Row> */}
-					</Card.Body>
-					<CommentList
-									comments={star.comments}
-									refreshStar={refreshStars}
-									user={user}
-								/>
-				</Card>
-			)}
-		</div>
+					</Card>
+				)}
+			</div>
+		</>
 	);
 };
 
