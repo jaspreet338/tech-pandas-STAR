@@ -9,7 +9,6 @@ const AddComment = ({ star, setStar }) => {
     const [show, setShow] = useState("");
     const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
-
 	const handleAddComment = async (id) => {
             console.log(id);
 		try {
@@ -40,10 +39,10 @@ const AddComment = ({ star, setStar }) => {
 
 
 	return (
-		<div>
-			<Button onClick={handleShow} className="ml-">
+		<div className="floatedButton">
+			<div className="addBtn"><Button onClick={handleShow} className="btn-add">
 				Add Comment
-			</Button>
+			</Button></div>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>Comment</Modal.Title>

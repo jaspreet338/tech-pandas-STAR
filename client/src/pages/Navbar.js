@@ -1,26 +1,8 @@
-import React, { Children } from "react";
-import { useNavigate } from "react-router-dom";
-import logo from "./images/cyf_brand.png";
-import "./Component/Dashboard.css";
-// import Cookies from "js-cookie";
-
-
-function CustomNavbar({ children }) {
-	const navigate = useNavigate();
-    // const myCookieValue = Cookies.get("myCookie");
-
-	// console.log(myCookieValue);
-
-	function logout() {
-		// console.log(id);
-		fetch("/api/logout", { method: "POST" })
-			.then((res) => res)
-			.then((data) => {
-				console.log(data);
-				return navigate("/");
-			})
-			.catch((error) => console.error(error));
-	}
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import "./NavbarSingleStar.css";
 
 
 	return (
@@ -33,6 +15,6 @@ function CustomNavbar({ children }) {
 			</navbar>
 		</>
 	);
-}
+
 
 export default CustomNavbar;
