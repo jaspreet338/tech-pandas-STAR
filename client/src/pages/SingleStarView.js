@@ -7,7 +7,7 @@ import CommentList from "./CommentList";
 import AddComment from "./Component/AddComment";
 import Navbar from "./Navbar";
 import NavbarButton from "./Component/NavbarButton";
-import "./NavbarSingleStar.css";
+
 
 const SingleStarView = () => {
 	const [editing, setEditing] = useState(false);
